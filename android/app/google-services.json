@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "270220560832-n4id7hafd31o845q4dpdvrdps6igbkj1.apps.googleusercontent.com",
+          "client_id": "270220560832-4212n111qii6lsi67aumunoc4tij0tf2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.svindland.watertrack",
-            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+            "certificate_hash": "ac6662aaa70a9426a939df474d7c1cb94a0c7f7d"
           }
         },
         {
@@ -38,6 +38,13 @@
             {
               "client_id": "270220560832-8gum3iuev4ivc7l1hcv9l7d8f8c6smvn.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "270220560832-tl6ee8m2qa4v4dnvqau3l4qqsjq522kb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.svindland.watertrack"
+              }
             }
           ]
         }
