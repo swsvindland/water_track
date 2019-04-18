@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:flutter_auth_buttons/flutter_auth_buttons.dart";
 import 'auth.dart';
 
 void main() => runApp(MyApp());
@@ -18,11 +19,8 @@ class MyApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              MaterialButton(
-                onPressed: () => authService.googleSignIn(),
-                color: Colors.white,
-                textColor: Colors.black,
-                child: Text('Login with Google'),
+              GoogleSignInButton(
+                onPressed: () => authService.googleSignIn()
               ),
               MaterialButton(
                 onPressed: () => authService.signOut(),
@@ -39,4 +37,35 @@ class MyApp extends StatelessWidget {
 }
 
 
+class UserProfile extends StatefulWidget {
+  @override
+  UserProfileState createState() => UserProfileState();
+}
 
+class UserProfileState extends State<UserProfile> {
+  Map<String, dynamic> _profile;
+  bool _loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    authService.profile
+      .listen((state) => setState(() => _profile = state));
+
+    authService.loading
+      .listen((state) => setState(() => _loading = state));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(20.0),
+          child: Text(_profile.toString()),
+        ),
+        Text(_loading.toString())
+      ],
+    );
+  }
+}
