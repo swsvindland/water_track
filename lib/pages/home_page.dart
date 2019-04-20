@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:water_track/containers/counter/counter.dart';
+import 'package:water_track/containers/counter/increase_counter.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -16,15 +18,12 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Text('You have pushed the button this many times: ',),
-              new Text('0'),
+              new Counter(),
             ],
           )
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: () => print('PRESSED!'),
-        child: new Icon(Icons.add),
-      ),
+      floatingActionButton: new IncreaseCountButton()
     );
   }
 }
