@@ -5,16 +5,19 @@ import 'package:redux_logging/redux_logging.dart';
 import 'models/app_state.dart';
 import 'reducers/app_reducer.dart';
 import 'pages/home_page.dart';
+import 'middleware/auth_middleware.dart';
 
 void main() => runApp(new MainApp());
 
 class MainApp extends StatelessWidget {
-  final String title = 'Me Suite';
+  final String title = 'WaterTrack';
 
   final store = new Store<AppState>(
     appReducer,
     initialState: new AppState(),
-    middleware: [new LoggingMiddleware.printer()],
+    middleware: []
+      ..addAll(createAuthMiddleware())
+      ..add(new LoggingMiddleware.printer()),
   );
 
   @override
