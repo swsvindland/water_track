@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:water_track/containers/counter/counter.dart';
 import 'package:water_track/containers/counter/increase_counter.dart';
+import 'package:water_track/containers/auth_button/auth_button_container.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -17,6 +18,7 @@ class HomePage extends StatelessWidget {
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              new GoogleAuthButtonContainer(),
               new Text('You have pushed the button this many times: ',),
               new Counter(),
             ],
