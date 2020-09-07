@@ -1,46 +1,46 @@
 {
   "project_info": {
-    "project_number": "270220560832",
-    "firebase_url": "https://watertrack-c2490.firebaseio.com",
-    "project_id": "watertrack-c2490",
-    "storage_bucket": "watertrack-c2490.appspot.com"
+    "project_number": "490539529973",
+    "firebase_url": "https://watertrack-dded0.firebaseio.com",
+    "project_id": "watertrack-dded0",
+    "storage_bucket": "watertrack-dded0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:270220560832:android:b30ec952de728562",
+        "mobilesdk_app_id": "1:490539529973:android:b4079c2f0e0489fe43f7bc",
         "android_client_info": {
           "package_name": "com.svindland.watertrack"
         }
       },
       "oauth_client": [
         {
-          "client_id": "270220560832-4212n111qii6lsi67aumunoc4tij0tf2.apps.googleusercontent.com",
+          "client_id": "490539529973-habha48v3hkks4n0ipp1d5e33jrg4n8h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.svindland.watertrack",
-            "certificate_hash": "ac6662aaa70a9426a939df474d7c1cb94a0c7f7d"
+            "certificate_hash": "fd4ca916376fb6a57d5717d54b80b43bc253e23e"
           }
         },
         {
-          "client_id": "270220560832-8gum3iuev4ivc7l1hcv9l7d8f8c6smvn.apps.googleusercontent.com",
+          "client_id": "490539529973-e19gk8oili2fc5snvme8knfjloonjvaq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYmEjsGmfRj4nfl7TzTcjo4SAiHAGh5uk"
+          "current_key": "AIzaSyDLvWJLgwHKHEfrap9_uhSEjKXNa1Ymvxg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "270220560832-8gum3iuev4ivc7l1hcv9l7d8f8c6smvn.apps.googleusercontent.com",
+              "client_id": "490539529973-e19gk8oili2fc5snvme8knfjloonjvaq.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "270220560832-tl6ee8m2qa4v4dnvqau3l4qqsjq522kb.apps.googleusercontent.com",
+              "client_id": "490539529973-tsifrea5rut9asg4rrqsqhprakoo141c.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.svindland.watertrack"
