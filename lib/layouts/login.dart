@@ -1,13 +1,32 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:io' show Platform;
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  final Widget child;
+
+  LoginPage({Key key, this.child}) : super(key: key);
+
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  bool loggingIn;
+
+  @override
+  initState() {
+    super.initState();
+    setState(() {
+      loggingIn = false;
+    });
+  }
 
   void updateUserData(User user) async {
     DocumentReference ref = _db.collection('users').doc(user.uid);
@@ -36,54 +55,90 @@ class LoginPage extends StatelessWidget {
                 child: SvgPicture.asset('assets/icons/water_track_logo.svg'),
               ),
               SizedBox(height: 40),
-              MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0)),
-                minWidth: 100.0,
-                height: 45,
-                color: Colors.white,
-                child: Row(
+              Conditional.single(
+                context: context,
+                conditionBuilder: (BuildContext context) => loggingIn,
+                widgetBuilder: (BuildContext context) =>
+                    CircularProgressIndicator(),
+                fallbackBuilder: (BuildContext context) => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    FaIcon(FontAwesomeIcons.google),
-                    SizedBox(width: 10),
-                    Text('Sign In with Google',
-                        style:
-                            new TextStyle(fontSize: 16.0, color: Colors.black)),
+                    MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0)),
+                      minWidth: 100.0,
+                      height: 45,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          FaIcon(FontAwesomeIcons.google),
+                          SizedBox(width: 10),
+                          Text('Sign In with Google',
+                              style: new TextStyle(
+                                  fontSize: 16.0, color: Colors.black)),
+                        ],
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          loggingIn = true;
+                        });
+                        signInWithGoogle().then((User user) {
+                          if (user != null) {
+                            updateUserData(user);
+                            navigatorKey.currentState.pushNamedAndRemoveUntil(
+                                '/home', (Route<dynamic> route) => false);
+                          }
+                        });
+                        setState(() {
+                          loggingIn = false;
+                        });
+                      },
+                    ),
+                    SizedBox(height: 25),
+                    Conditional.single(
+                      context: context,
+                      conditionBuilder: (BuildContext context) =>
+                          Platform.isIOS,
+                      widgetBuilder: (BuildContext context) => MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0)),
+                        minWidth: 100.0,
+                        height: 45,
+                        color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            FaIcon(FontAwesomeIcons.apple),
+                            SizedBox(width: 10),
+                            Text('Sign In with Apple',
+                                style: new TextStyle(
+                                    fontSize: 16.0, color: Colors.black)),
+                          ],
+                        ),
+                        onPressed: () async {
+                          setState(() {
+                            loggingIn = true;
+                          });
+                          signInWithApple().then((User user) {
+                            if (user != null) {
+                              updateUserData(user);
+                              navigatorKey.currentState.pushNamedAndRemoveUntil(
+                                  '/home', (Route<dynamic> route) => false);
+                            }
+                          });
+                          setState(() {
+                            loggingIn = false;
+                          });
+                        },
+                      ),
+                      fallbackBuilder: (BuildContext context) => Text(''),
+                    ),
                   ],
                 ),
-                onPressed: () {
-                  signInWithGoogle().then((User user) {
-                    if(user != null) {
-                      updateUserData(user);
-                      navigatorKey.currentState.pushNamedAndRemoveUntil(
-                          '/home', (Route<dynamic> route) => false);
-                      }
-                  });
-                },
-              ),
-              SizedBox(height: 25),
-              MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0)),
-                minWidth: 100.0,
-                height: 45,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    FaIcon(FontAwesomeIcons.apple),
-                    SizedBox(width: 10),
-                    Text('Sign In with Apple',
-                        style:
-                            new TextStyle(fontSize: 16.0, color: Colors.black)),
-                  ],
-                ),
-                onPressed: () async {
-                  await signInWithApple();
-                },
               ),
             ],
           ),

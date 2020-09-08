@@ -1,3 +1,4 @@
+import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -23,13 +24,32 @@ Future<User> signInWithGoogle() async {
 }
 
 Future<User> signInWithApple() async {
-  print('Apple Sign In');
+  try {
 
-  return null;
+    final AuthorizationResult appleResult = await AppleSignIn.performRequests([
+      AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
+    ]);
+
+    if (appleResult.error != null) {
+      // handle errors from Apple here
+    }
+
+    final AuthCredential credential = OAuthProvider('apple.com').credential(
+      accessToken: String.fromCharCodes(appleResult.credential.authorizationCode),
+      idToken: String.fromCharCodes(appleResult.credential.identityToken),
+    );
+
+    final UserCredential authResult = await _auth.signInWithCredential(credential);
+    User user = authResult.user;
+
+    return user;
+  } catch (error) {
+    print(error);
+    return null;
+  }
 }
 
 void signOut() async {
   await _googleSignIn.signOut();
-
-  print("User Sign Out");
+  await _auth.signOut();
 }

@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:water_track/models/drink.dart';
 import 'package:water_track/services/api.dart';
+import 'package:water_track/services/sign_in.dart';
+import 'package:water_track/utils/constants.dart';
 import 'package:water_track/widgets/buttons/buttons.dart';
 import 'package:water_track/layouts/about.dart';
 import 'package:provider/provider.dart';
-import 'package:water_track/widgets/buttons/graph.dart';
+import 'package:water_track/widgets/graph.dart';
 
 class HomePage extends StatefulWidget {
   final Widget child;
@@ -41,6 +43,10 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => AboutPage()),
                   );
                 }
+                if (result == Popup.logOut) {
+                  signOut();
+                  navigatorKey.currentState.pushNamedAndRemoveUntil('/login', (route) => false);
+                }
               },
               icon: Icon(Icons.more_vert),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<Popup>>[
@@ -49,6 +55,13 @@ class _HomePageState extends State<HomePage> {
                   child: ListTile(
                     leading: Icon(Icons.info),
                     title: Text('About'),
+                  ),
+                ),
+                const PopupMenuItem<Popup>(
+                  value: Popup.logOut,
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Log Out'),
                   ),
                 ),
               ].toList(),
@@ -67,12 +80,11 @@ class _HomePageState extends State<HomePage> {
                 flex: 5,
                 child: Graph()
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 75),
               Expanded(
                 flex: 3,
                 child: Buttons()
               ),
-              SizedBox(height: 25),
             ],
           ),
         ),
@@ -81,4 +93,4 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-enum Popup { about, settings }
+enum Popup { about, settings, logOut }

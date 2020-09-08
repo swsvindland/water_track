@@ -36,7 +36,7 @@ class _SplashState extends State<SplashScreenPage> {
     // checking whether user already loggedIn or not
     User currentUser = FirebaseAuth.instance.currentUser;
 
-    if (currentUser == null) {
+    if (currentUser == null || currentUser.uid == null) {
       Timer(Duration(seconds: 2),
               () => navigatorKey.currentState.pushReplacementNamed("/login"));
     } else {

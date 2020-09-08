@@ -54,7 +54,7 @@ class Graph extends StatelessWidget {
         Expanded(
             child: charts.PieChart(_createData(drinks),
                 animate: true,
-                animationDuration: Duration(seconds: 1),
+                animationDuration: Duration(milliseconds: 300),
                 defaultRenderer: new charts.ArcRendererConfig(arcWidth: 30))),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

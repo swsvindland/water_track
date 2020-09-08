@@ -20,7 +20,7 @@ class DrinkButton extends StatelessWidget {
         MaterialButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
-          minWidth: 115.0,
+          minWidth: 125.0,
           height: 35,
           color: color,
           child: new Text(title,
