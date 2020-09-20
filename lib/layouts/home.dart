@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:water_track/layouts/layouts.dart';
 import 'package:water_track/models/drink.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/sign_in.dart';
@@ -37,6 +38,12 @@ class _HomePageState extends State<HomePage> {
           actions: <Widget>[
             PopupMenuButton<Popup>(
               onSelected: (Popup result) {
+                if (result == Popup.settings) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                }
                 if (result == Popup.about) {
                   Navigator.push(
                     context,
@@ -50,6 +57,13 @@ class _HomePageState extends State<HomePage> {
               },
               icon: Icon(Icons.more_vert),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<Popup>>[
+                const PopupMenuItem<Popup>(
+                  value: Popup.settings,
+                  child: ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Settings'),
+                  ),
+                ),
                 const PopupMenuItem<Popup>(
                   value: Popup.about,
                   child: ListTile(
