@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:water_track/models/models.dart';
+import 'package:water_track/services/database_service.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:water_track/widgets/unit_switch.dart';
 
 class SettingsPage extends StatefulWidget {
   final Widget child;
@@ -11,24 +15,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  Unit selectedUnit = Unit.imperial;
-
-  void changeUnit() {
-    if(selectedUnit == Unit.imperial) {
-      setState(() {
-        selectedUnit = Unit.metric;
-      });
-    } else {
-      setState(() {
-        selectedUnit = Unit.imperial;
-      });
-    }
-
-    print(selectedUnit);
-  }
+  final db = DatabaseService();
 
   @override
   Widget build(BuildContext context) {
+    var user = Provider.of<User>(context);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -41,71 +33,32 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 60,
-              ),
-              Text(
-                'Settings',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-              SizedBox(
-                height: 45,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    disabledColor: Colors.grey[200],
-                    minWidth: 100.0,
-                    height: 35,
-                    color: Colors.white,
-                    child: new Text('Imperial'),
-                    onPressed: selectedUnit == Unit.metric ? () => changeUnit() : null
-                  ),
-                  MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    disabledColor: Colors.grey[200],
-                    minWidth: 100.0,
-                    height: 35,
-                    color: Colors.white,
-                    child: new Text('Metric'),
-                    onPressed: selectedUnit == Unit.imperial ? () => changeUnit() : null
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  TextField(
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        WhitelistingTextInputFormatter.digitsOnly
-                      ],
-                      decoration: InputDecoration(
-                          labelText:"Daily Water intake goal",
-                          hintText: "Daily Water intake goal",
-                      )
-                  )
-                ],
-              ),
-            ],
+      body: StreamProvider<Preferences>.value(
+        initialData: Preferences.empty(),
+        value: db.streamPreferences(user.uid),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 60,
+                ),
+                Text(
+                  'Settings',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+                SizedBox(
+                  height: 45,
+                ),
+                UnitSwitch()
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-enum Unit {imperial, metric}

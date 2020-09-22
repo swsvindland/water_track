@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "490539529973",
+    "firebase_url": "https://watertrack-dded0.firebaseio.com",
+    "project_id": "watertrack-dded0",
+    "storage_bucket": "watertrack-dded0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490539529973:android:b4079c2f0e0489fe43f7bc",
+        "android_client_info": {
+          "package_name": "com.svindland.watertrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490539529973-8gba1idnn93rmn6slhn2f7acab88qq7b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.svindland.watertrack",
+            "certificate_hash": "e4c8b092ad08e506ae1ca477d40cf86add80e9ac"
+          }
+        },
+        {
+          "client_id": "490539529973-habha48v3hkks4n0ipp1d5e33jrg4n8h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.svindland.watertrack",
+            "certificate_hash": "fd4ca916376fb6a57d5717d54b80b43bc253e23e"
+          }
+        },
+        {
+          "client_id": "490539529973-e19gk8oili2fc5snvme8knfjloonjvaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLvWJLgwHKHEfrap9_uhSEjKXNa1Ymvxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490539529973-e19gk8oili2fc5snvme8knfjloonjvaq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490539529973-tsifrea5rut9asg4rrqsqhprakoo141c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.svindland.watertrack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

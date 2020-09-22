@@ -33,19 +33,18 @@ class _SplashState extends State<SplashScreenPage> {
   }
 
   navigateUser() {
-    // checking whether user already loggedIn or not
     User currentUser = FirebaseAuth.instance.currentUser;
 
     if (currentUser == null || currentUser.uid == null) {
-      Timer(Duration(seconds: 2),
+      Timer(Duration(milliseconds: 850),
               () => navigatorKey.currentState.pushReplacementNamed("/login"));
     } else {
       Timer(
-        Duration(seconds: 2),
+        Duration(milliseconds: 500),
             () {
           updateUserData(currentUser);
-          navigatorKey.currentState
-              .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+          navigatorKey.currentState.pushNamedAndRemoveUntil(
+              '/home', (Route<dynamic> route) => false);
         },
       );
     }
