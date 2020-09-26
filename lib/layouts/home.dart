@@ -10,21 +10,8 @@ import 'package:water_track/layouts/about.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/widgets/graph.dart';
 
-class HomePage extends StatefulWidget {
-  final Widget child;
-
-  HomePage({Key key, this.child}) : super(key: key);
-
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   final db = DatabaseService();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +39,8 @@ class _HomePageState extends State<HomePage> {
                 }
                 if (result == Popup.logOut) {
                   signOut();
-                  navigatorKey.currentState.pushNamedAndRemoveUntil('/login', (route) => false);
+                  navigatorKey.currentState
+                      .pushNamedAndRemoveUntil('/login', (route) => false);
                 }
               },
               icon: Icon(Icons.more_vert),
@@ -93,14 +81,15 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 flex: 5,
                 child: Card(
-                  child: Graph()
-                )
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Graph(),
+                ),
               ),
               SizedBox(height: 25),
-              Expanded(
-                flex: 3,
-                child: Buttons()
-              ),
+              Expanded(flex: 3, child: Buttons()),
             ],
           ),
         ),
