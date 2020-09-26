@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:water_track/layouts/layouts.dart';
 import 'package:water_track/models/drink.dart';
+import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
@@ -74,23 +75,27 @@ class HomePage extends StatelessWidget {
         body: StreamProvider<Drinks>.value(
           initialData: Drinks.empty(),
           value: db.streamDrinks(user.uid),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                flex: 5,
-                child: Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
+          child: StreamProvider<Preferences>.value(
+            initialData: Preferences.empty(),
+            value: db.streamPreferences(user.uid),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  flex: 5,
+                  child: Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Graph(),
                   ),
-                  child: Graph(),
                 ),
-              ),
-              SizedBox(height: 25),
-              Expanded(flex: 3, child: Buttons()),
-            ],
+                SizedBox(height: 25),
+                Expanded(flex: 3, child: Buttons()),
+              ],
+            ),
           ),
         ),
       ),

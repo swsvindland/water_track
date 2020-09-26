@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:water_track/models/preferences.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:water_track/utils/helper.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -21,17 +23,6 @@ class _SplashState extends State<SplashScreenPage> {
     navigateUser();
   }
 
-  void updateUserData(User user) async {
-    DocumentReference ref = _db.collection('users').doc(user.uid);
-
-    return ref.set({
-      'uid': user.uid,
-      'email': user.email,
-      'displayName': user.displayName,
-      'lastSeen': DateTime.now()
-    });
-  }
-
   navigateUser() {
     User currentUser = FirebaseAuth.instance.currentUser;
 
@@ -42,7 +33,8 @@ class _SplashState extends State<SplashScreenPage> {
       Timer(
         Duration(milliseconds: 500),
             () {
-          updateUserData(currentUser);
+          updateUserData(_db, currentUser);
+          createDefaultPreferences(_db, currentUser);
           navigatorKey.currentState.pushNamedAndRemoveUntil(
               '/home', (Route<dynamic> route) => false);
         },

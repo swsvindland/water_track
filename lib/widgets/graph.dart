@@ -3,12 +3,10 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:provider/provider.dart';
 import 'package:water_track/models/drink.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:water_track/models/models.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
 
 class Graph extends StatelessWidget {
-  static final int total = 128;
-  static final int totalWater = 96;
-
   static List<charts.Series<GraphDrinks, String>> _createData(Drinks drinks) {
     var none = drinks.water +
                 drinks.energyDrink +
@@ -49,6 +47,7 @@ class Graph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final drinks = Provider.of<Drinks>(context);
+    final preferences = Provider.of<Preferences>(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,9 +73,9 @@ class Graph extends StatelessWidget {
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
-                maxValue: totalWater,
+                maxValue: preferences.waterGoal,
                 currentValue: drinks.water,
-                displayText: 'oz',
+                displayText: preferences.unit == Unit.imperial ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200],
                 progressColor: Colors.blue[800],
               ),
@@ -88,14 +87,14 @@ class Graph extends StatelessWidget {
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
-                maxValue: total,
+                maxValue: preferences.totalGoal,
                 currentValue: drinks.water +
                     drinks.energyDrink +
                     drinks.tea +
                     drinks.coffee +
                     drinks.sparklingWater +
                     drinks.soda,
-                displayText: 'oz',
+                displayText: preferences.unit == Unit.imperial ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200],
                 progressColor: Colors.blueGrey,
               ),

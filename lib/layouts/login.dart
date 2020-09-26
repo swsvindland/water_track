@@ -8,6 +8,8 @@ import 'package:water_track/utils/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io' show Platform;
 
+import 'package:water_track/utils/helper.dart';
+
 class LoginPage extends StatefulWidget {
   final Widget child;
 
@@ -25,17 +27,6 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     setState(() {
       loggingIn = false;
-    });
-  }
-
-  void updateUserData(User user) async {
-    DocumentReference ref = _db.collection('users').doc(user.uid);
-
-    return ref.set({
-      'uid': user.uid,
-      'email': user.email,
-      'displayName': user.displayName,
-      'lastSeen': DateTime.now()
     });
   }
 
@@ -87,7 +78,8 @@ class _LoginPageState extends State<LoginPage> {
                         });
                         signInWithGoogle().then((User user) {
                           if (user != null) {
-                            updateUserData(user);
+                            updateUserData(_db, user);
+                            createDefaultPreferences(_db, user);
                             navigatorKey.currentState.pushNamedAndRemoveUntil(
                                 '/home', (Route<dynamic> route) => false);
                           }
@@ -125,7 +117,8 @@ class _LoginPageState extends State<LoginPage> {
                           });
                           signInWithApple().then((User user) {
                             if (user != null) {
-                              updateUserData(user);
+                              updateUserData(_db, user);
+                              createDefaultPreferences(_db, user);
                               navigatorKey.currentState.pushNamedAndRemoveUntil(
                                   '/home', (Route<dynamic> route) => false);
                             }

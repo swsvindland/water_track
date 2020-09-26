@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:water_track/widgets/goals.dart';
 import 'package:water_track/widgets/unit_switch.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -53,7 +54,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(
                   height: 45,
                 ),
-                UnitSwitch()
+                UnitSwitch(),
+                SizedBox(height: 15),
+                Goals()
               ],
             ),
           ),
