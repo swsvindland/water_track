@@ -92,9 +92,11 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Expanded(
                 flex: 5,
-                child: Graph()
+                child: Card(
+                  child: Graph()
+                )
               ),
-              SizedBox(height: 75),
+              SizedBox(height: 25),
               Expanded(
                 flex: 3,
                 child: Buttons()

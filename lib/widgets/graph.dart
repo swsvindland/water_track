@@ -3,6 +3,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:provider/provider.dart';
 import 'package:water_track/models/drink.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:water_track/services/graph_animation_provider.dart';
 
 class Graph extends StatelessWidget {
   static final int total = 128;
@@ -10,16 +11,16 @@ class Graph extends StatelessWidget {
 
   static List<charts.Series<GraphDrinks, String>> _createData(Drinks drinks) {
     var none = drinks.water +
-        drinks.energyDrink +
-        drinks.tea +
-        drinks.coffee +
-        drinks.sparklingWater +
-        drinks.soda >= total ? 0 : total - (drinks.water +
-        drinks.energyDrink +
-        drinks.tea +
-        drinks.coffee +
-        drinks.sparklingWater +
-        drinks.soda);
+                drinks.energyDrink +
+                drinks.tea +
+                drinks.coffee +
+                drinks.sparklingWater +
+                drinks.soda +
+                drinks.sportsDrink +
+                drinks.alcohol ==
+            0
+        ? 1
+        : 0;
 
     var data = [
       new GraphDrinks('Water', drinks.water, Colors.blue[800]),
@@ -28,6 +29,8 @@ class Graph extends StatelessWidget {
       new GraphDrinks('Tea', drinks.tea, Colors.green),
       new GraphDrinks('Soda', drinks.soda, Colors.red),
       new GraphDrinks('Energy Drink', drinks.energyDrink, Colors.purple),
+      new GraphDrinks('Sports Drink', drinks.sportsDrink, Colors.yellow),
+      new GraphDrinks('Alcohol', drinks.alcohol, Colors.black),
       new GraphDrinks('None', none, Colors.grey[200])
     ];
 
@@ -53,16 +56,21 @@ class Graph extends StatelessWidget {
       children: [
         Expanded(
             child: charts.PieChart(_createData(drinks),
-                animate: true,
+                animate: context.watch<GraphAnimationProvider>().animate,
                 animationDuration: Duration(milliseconds: 300),
                 defaultRenderer: new charts.ArcRendererConfig(arcWidth: 30))),
+        Container(
+            width: 75,
+            height: 15,
+            child: Text("Breakdown", textAlign: TextAlign.center)),
+        SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: 75,
-              height: 150,
+              height: MediaQuery.of(context).size.height * 0.2,
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
@@ -76,7 +84,7 @@ class Graph extends StatelessWidget {
             SizedBox(width: 25),
             Container(
               width: 75,
-              height: 150,
+              height: MediaQuery.of(context).size.height * 0.2,
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
@@ -93,7 +101,24 @@ class Graph extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
+        SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+                width: 75,
+                height: 20,
+                child: Text("Water", textAlign: TextAlign.center)),
+            SizedBox(width: 25),
+            Container(
+                width: 75,
+                height: 20,
+                child: Text("Total", textAlign: TextAlign.center)),
+          ],
+        ),
+        SizedBox(height: 15)
       ],
     );
   }
