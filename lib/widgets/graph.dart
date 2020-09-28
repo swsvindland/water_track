@@ -93,7 +93,9 @@ class Graph extends StatelessWidget {
                     drinks.tea +
                     drinks.coffee +
                     drinks.sparklingWater +
-                    drinks.soda,
+                    drinks.soda +
+                    drinks.sportsDrink +
+                    drinks.alcohol,
                 displayText: preferences.unit == Unit.imperial ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200],
                 progressColor: Colors.blueGrey,

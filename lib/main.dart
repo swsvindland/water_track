@@ -24,6 +24,7 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Water Track',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.lightBlue),
         navigatorKey: navigatorKey,
         initialRoute: '/',
