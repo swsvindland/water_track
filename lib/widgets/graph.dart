@@ -59,7 +59,6 @@ class Graph extends StatelessWidget {
                 animationDuration: Duration(milliseconds: 300),
                 defaultRenderer: new charts.ArcRendererConfig(arcWidth: 30))),
         Container(
-            width: 75,
             height: 15,
             child: Text("Breakdown", textAlign: TextAlign.center)),
         SizedBox(height: 15),
