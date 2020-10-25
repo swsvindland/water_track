@@ -1,6 +1,22 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:water_track/models/preferences.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+
+void setFCMData(FirebaseFirestore db, FirebaseMessaging fcm, User user,) async {
+  String fcmToken = await fcm.getToken();
+
+  if(fcmToken != null) {
+    var tokenRef = db.collection('tokens').doc(user.uid);
+    tokenRef.set({
+      'created': FieldValue.serverTimestamp(),
+      'platform': Platform.operatingSystem,
+      'token': fcmToken
+    });
+  }
+}
 
 void createDefaultPreferences(FirebaseFirestore db, User user) async {
   DocumentSnapshot snapshot = await db.collection('preferences').doc(user.uid).get();
@@ -10,7 +26,10 @@ void createDefaultPreferences(FirebaseFirestore db, User user) async {
       'unit': Unit.imperial.value,
       'waterGoal': 96,
       'totalGoal': 128,
-      'drinkSize': 8
+      'drinkSize': 8,
+      'start': 7,
+      'end': 20,
+      'timezone': new Timestamp.now()
     });
   }
 }

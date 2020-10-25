@@ -1,10 +1,10 @@
 import 'dart:async';
-
+import 'dart:io';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:water_track/models/preferences.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:water_track/utils/helper.dart';
 
@@ -15,10 +15,20 @@ class SplashScreenPage extends StatefulWidget {
 
 class _SplashState extends State<SplashScreenPage> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseMessaging _fcm = FirebaseMessaging();
+  StreamSubscription iosSubscription;
 
   @override
   void initState() {
     super.initState();
+
+    if (Platform.isIOS) {
+      iosSubscription = _fcm.onIosSettingsRegistered.listen((data) {
+        // save the token  OR subscribe to a topic here
+      });
+
+      _fcm.requestNotificationPermissions(IosNotificationSettings());
+    }
 
     navigateUser();
   }
@@ -35,6 +45,7 @@ class _SplashState extends State<SplashScreenPage> {
             () {
           updateUserData(_db, currentUser);
           createDefaultPreferences(_db, currentUser);
+          setFCMData(_db, _fcm, currentUser);
           navigatorKey.currentState.pushNamedAndRemoveUntil(
               '/home', (Route<dynamic> route) => false);
         },

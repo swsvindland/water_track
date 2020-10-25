@@ -5,6 +5,7 @@ import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:water_track/widgets/goals.dart';
+import 'package:water_track/widgets/notifications.dart';
 import 'package:water_track/widgets/unit_switch.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -40,24 +41,28 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Center(
           child: Padding(
             padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: 60,
-                ),
-                Text(
-                  'Settings',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-                SizedBox(
-                  height: 45,
-                ),
-                UnitSwitch(),
-                SizedBox(height: 15),
-                Goals()
-              ],
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Settings',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  UnitSwitch(),
+                  SizedBox(height: 15),
+                  Goals(),
+                  Notifications()
+                ],
+              ),
             ),
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +21,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseMessaging _fcm = FirebaseMessaging();
   bool loggingIn;
 
   @override
@@ -80,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                           if (user != null) {
                             updateUserData(_db, user);
                             createDefaultPreferences(_db, user);
+                            setFCMData(_db, _fcm, user);
                             navigatorKey.currentState.pushNamedAndRemoveUntil(
                                 '/home', (Route<dynamic> route) => false);
                           }
@@ -119,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (user != null) {
                               updateUserData(_db, user);
                               createDefaultPreferences(_db, user);
+                              setFCMData(_db, _fcm, user);
                               navigatorKey.currentState.pushNamedAndRemoveUntil(
                                   '/home', (Route<dynamic> route) => false);
                             }

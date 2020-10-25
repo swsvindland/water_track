@@ -5,8 +5,10 @@ class Preferences {
   int waterGoal;
   int totalGoal;
   int drinkSize;
+  int start;
+  int end;
 
-  Preferences({this.unit, this.waterGoal, this.totalGoal, this.drinkSize});
+  Preferences({this.unit, this.waterGoal, this.totalGoal, this.drinkSize, this.start, this.end});
 
   void setWaterGoal(int value) {
     waterGoal = value;
@@ -20,9 +22,17 @@ class Preferences {
     drinkSize = value;
   }
 
+  void setStartTime(int value) {
+    start = value;
+  }
+
+  void setEndTime(int value) {
+    end = value;
+  }
+
   static Preferences empty() {
     return Preferences(
-        unit: Unit.imperial, waterGoal: 96, totalGoal: 128, drinkSize: 8);
+        unit: Unit.imperial, waterGoal: 96, totalGoal: 128, drinkSize: 8, start: 7, end: 20);
   }
 
   factory Preferences.fromMap(Map data) {
@@ -31,7 +41,10 @@ class Preferences {
         unit: Unit.define(data['unit']) ?? Unit.imperial,
         waterGoal: data['waterGoal'] ?? (data['unit'] == Unit.imperial ? 96 : 3000),
         totalGoal: data['totalGoal'] ?? (data['unit'] == Unit.imperial ? 128 : 4000),
-        drinkSize: data['drinkSize'] ?? (data['unit'] == Unit.imperial ? 8 : 200),);
+        drinkSize: data['drinkSize'] ?? (data['unit'] == Unit.imperial ? 8 : 200),
+        start: data['start'],
+        end: data['end']
+    );
   }
 
   static Map<String, dynamic> toMap(Preferences data) {
@@ -40,7 +53,9 @@ class Preferences {
       'unit': data.unit.value,
       'waterGoal': data.waterGoal,
       'totalGoal': data.totalGoal,
-      'drinkSize': data.drinkSize
+      'drinkSize': data.drinkSize,
+      'start': data.start,
+      'end': data.end
     };
   }
 
