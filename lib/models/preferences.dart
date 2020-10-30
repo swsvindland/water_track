@@ -37,13 +37,14 @@ class Preferences {
 
   factory Preferences.fromMap(Map data) {
     data = data ?? {};
+
     return Preferences(
         unit: Unit.define(data['unit']) ?? Unit.imperial,
         waterGoal: data['waterGoal'] ?? (data['unit'] == Unit.imperial ? 96 : 3000),
         totalGoal: data['totalGoal'] ?? (data['unit'] == Unit.imperial ? 128 : 4000),
         drinkSize: data['drinkSize'] ?? (data['unit'] == Unit.imperial ? 8 : 200),
-        start: data['start'],
-        end: data['end']
+        start: data['start'].toDate().hour,
+        end: data['end'].toDate().hour
     );
   }
 
@@ -54,8 +55,8 @@ class Preferences {
       'waterGoal': data.waterGoal,
       'totalGoal': data.totalGoal,
       'drinkSize': data.drinkSize,
-      'start': data.start,
-      'end': data.end
+      'start': DateTime.parse('2000-01-01 ${data.start.toString().padLeft(2, '0')}:00:00'),
+      'end': DateTime.parse('2000-01-01 ${data.end.toString().padLeft(2, '0')}:00:00'),
     };
   }
 

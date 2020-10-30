@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:water_track/models/preferences.dart';
+import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 
 class Notifications extends StatefulWidget {
@@ -14,10 +14,12 @@ class _NotificationsState extends State<Notifications> {
   final db = DatabaseService();
   int start;
   int end;
+  bool set = false;
 
   void update(User user, Preferences preferences) {
     preferences.setStartTime(start);
     preferences.setEndTime(end);
+    set = false;
 
     db.updatePreferences(user.uid, preferences);
   }
@@ -29,10 +31,8 @@ class _NotificationsState extends State<Notifications> {
     final preferences = Provider.of<Preferences>(context);
 
     setState(() {
-      if (start == null) {
+      if (!set) {
         start = preferences.start;
-      }
-      if (end == null) {
         end = preferences.end;
       }
     });
@@ -46,76 +46,76 @@ class _NotificationsState extends State<Notifications> {
         padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
         child: Column(
           children: [
+            Text('Reminder Notification'),
+            SizedBox(height: 20),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  "Start",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 36),
+                Column(
+                  children: [
+                    Text(
+                      "Start",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    OutlineButton(
+                      onPressed: () async {
+                        TimeOfDay picked = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay(hour: 12, minute: 00),
+                          builder: (BuildContext context, Widget child) {
+                            return MediaQuery(
+                              data: MediaQuery.of(context)
+                                  .copyWith(alwaysUse24HourFormat: true),
+                              child: child,
+                            );
+                          },
+                        );
+
+                        setState(() {
+                          start = picked.hour;
+                          set = true;
+                        });
+                      },
+                      child: Text('$start:00'),
+                    ),
+                  ],
                 ),
-                Text(
-                  "End",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 36),
-                ),
+                SizedBox(width: 20),
+                Column(
+                  children: [
+                    Text(
+                      "End",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    OutlineButton(
+                      onPressed: () async {
+                        TimeOfDay picked = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay(hour: 12, minute: 00),
+                          builder: (BuildContext context, Widget child) {
+                            return MediaQuery(
+                              data: MediaQuery.of(context)
+                                  .copyWith(alwaysUse24HourFormat: true),
+                              child: child,
+                            );
+                          },
+                        );
+
+                        setState(() {
+                          end = picked.hour;
+                          set = true;
+                        });
+                      },
+                      child: Text('${end}:00'),
+                    )
+                  ],
+                )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () async {
-                    TimeOfDay picked = await showTimePicker(
-                      context: context,
-                      initialTime: TimeOfDay(hour: 12, minute: 00),
-                      builder: (BuildContext context, Widget child) {
-                        return MediaQuery(
-                          data: MediaQuery.of(context)
-                              .copyWith(alwaysUse24HourFormat: true),
-                          child: child,
-                        );
-                      },
-                    );
-
-                    setState(() {
-                      start = picked.hour;
-                    });
-                  },
-                  child: Text(
-                    "${start}:00",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 36),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    TimeOfDay picked = await showTimePicker(
-                      context: context,
-                      initialTime: TimeOfDay(hour: 12, minute: 00),
-                      builder: (BuildContext context, Widget child) {
-                        return MediaQuery(
-                          data: MediaQuery.of(context)
-                              .copyWith(alwaysUse24HourFormat: true),
-                          child: child,
-                        );
-                      },
-                    );
-
-                    setState(() {
-                      end = picked.hour;
-                    });
-                  },
-                  child: Text(
-                    "${end}:00",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 36),
-                  ),
-                ),
-              ],
-            ),
+            SizedBox(height: 20),
             MaterialButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0)),

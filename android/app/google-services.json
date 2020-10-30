@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "490539529973-n87jjdbhrcqnm2e57hclca3ih8oi509f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.svindland.watertrack",
+            "certificate_hash": "a5356f74d8ff97aeb7fe208f7c6d857cdcf4cac4"
+          }
+        },
+        {
           "client_id": "490539529973-g9f5pncq1a01m9264uv8j1f927c0udsl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

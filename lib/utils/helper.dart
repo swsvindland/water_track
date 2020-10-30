@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:water_track/models/preferences.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 
 void setFCMData(FirebaseFirestore db, FirebaseMessaging fcm, User user,) async {
   String fcmToken = await fcm.getToken();
@@ -27,9 +26,8 @@ void createDefaultPreferences(FirebaseFirestore db, User user) async {
       'waterGoal': 96,
       'totalGoal': 128,
       'drinkSize': 8,
-      'start': 7,
-      'end': 20,
-      'timezone': new Timestamp.now()
+      'start': DateTime.parse('2000-01-01 ${7.toString().padLeft(2, '0')}:00:00'),
+      'end': DateTime.parse('2000-01-01 ${20.toString().padLeft(2, '0')}:00:00'),
     });
   }
 }
