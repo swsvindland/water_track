@@ -57,7 +57,8 @@ export const sendNotifications = functions.pubsub.schedule('every 1 hours').onRu
                     }
                 } else if (start < currentHour && currentHour < end) {
                     payload = {
-                        notification: {
+                        notification: {                            
+                            title: "Good Job, Keep Going!",
                             body: "Drink 1 glass of water"
                         }
                     }
