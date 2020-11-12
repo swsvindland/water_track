@@ -49,6 +49,16 @@ Future<User> signInWithApple() async {
   }
 }
 
+Future<User> signInAnon() async {
+  UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
+
+  final User firebaseUser = userCredential.user;
+
+  final User currentUser = _auth.currentUser;
+  assert(firebaseUser.uid == currentUser.uid);
+  return firebaseUser;
+}
+
 void signOut() async {
   await _googleSignIn.signOut();
   await _auth.signOut();

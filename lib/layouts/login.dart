@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           FaIcon(FontAwesomeIcons.google),
                           SizedBox(width: 10),
-                          Text('Sign In with Google',
+                          Text('Continue with Google',
                               style: new TextStyle(
                                   fontSize: 16.0, color: Colors.black)),
                         ],
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             FaIcon(FontAwesomeIcons.apple),
                             SizedBox(width: 10),
-                            Text('Sign In with Apple',
+                            Text('Continue with Apple',
                                 style: new TextStyle(
                                     fontSize: 16.0, color: Colors.black)),
                           ],
@@ -132,7 +132,40 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         },
                       ),
-                      fallbackBuilder: (BuildContext context) => Text(''),
+                      fallbackBuilder: (BuildContext context) => SizedBox(height: 0),
+                    ),
+                    Conditional.single(
+                      context: context,
+                      conditionBuilder: (BuildContext context) => Platform.isIOS,
+                      widgetBuilder: (BuildContext context) => SizedBox(height: 25),
+                      fallbackBuilder: (BuildContext context) => SizedBox(height: 0)
+                    ),
+                    MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0)),
+                      minWidth: 100.0,
+                      height: 45,
+                      child:
+                          Text('Continue without Account',
+                              style: new TextStyle(
+                                  fontSize: 16.0, color: Colors.white)),
+                      onPressed: () {
+                        setState(() {
+                          loggingIn = true;
+                        });
+                        signInAnon().then((User user) {
+                          if (user != null) {
+                            updateUserData(_db, user);
+                            createDefaultPreferences(_db, user);
+                            setFCMData(_db, _fcm, user);
+                            navigatorKey.currentState.pushNamedAndRemoveUntil(
+                                '/home', (Route<dynamic> route) => false);
+                          }
+                        });
+                        setState(() {
+                          loggingIn = false;
+                        });
+                      },
                     ),
                   ],
                 ),
