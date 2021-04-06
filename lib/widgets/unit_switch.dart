@@ -7,15 +7,14 @@ import 'package:water_track/services/database_service.dart';
 class UnitSwitch extends StatelessWidget {
   final db = DatabaseService();
 
-  void onPressed(User user,Preferences preferences) {
+  void onPressed(User? user, Preferences preferences) {
     preferences.changeUnit();
-    db.updatePreferences(user.uid, preferences);
-
+    db.updatePreferences(user!.uid, preferences);
   }
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<User?>(context);
     final preferences = Provider.of<Preferences>(context);
 
     return Row(
@@ -30,7 +29,9 @@ class UnitSwitch extends StatelessWidget {
             height: 35,
             color: Colors.white,
             child: new Text('Imperial'),
-            onPressed: preferences.unit == Unit.metric ? () => onPressed(user, preferences) : null),
+            onPressed: preferences.unit == 'metric'
+                ? () => onPressed(user, preferences)
+                : null),
         MaterialButton(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -39,8 +40,9 @@ class UnitSwitch extends StatelessWidget {
             height: 35,
             color: Colors.white,
             child: new Text('Metric'),
-            onPressed:
-                preferences.unit == Unit.imperial ? () => onPressed(user, preferences) : null),
+            onPressed: preferences.unit == 'imperial'
+                ? () => onPressed(user, preferences)
+                : null),
       ],
     );
   }

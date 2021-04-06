@@ -5,29 +5,28 @@ import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 
 class Notifications extends StatefulWidget {
-  Notifications({Key key}) : super(key: key);
+  Notifications() : super();
 
   _NotificationsState createState() => _NotificationsState();
 }
 
 class _NotificationsState extends State<Notifications> {
   final db = DatabaseService();
-  int start;
-  int end;
+  late int start;
+  late int end;
   bool set = false;
 
-  void update(User user, Preferences preferences) {
+  void update(User? user, Preferences preferences) {
     preferences.setStartTime(start);
     preferences.setEndTime(end);
     set = false;
 
-    db.updatePreferences(user.uid, preferences);
+    db.updatePreferences(user!.uid, preferences);
   }
-
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<User?>(context);
     final preferences = Provider.of<Preferences>(context);
 
     setState(() {
@@ -59,22 +58,22 @@ class _NotificationsState extends State<Notifications> {
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 24),
                     ),
-                    OutlineButton(
+                    OutlinedButton(
                       onPressed: () async {
-                        TimeOfDay picked = await showTimePicker(
+                        TimeOfDay? picked = await showTimePicker(
                           context: context,
                           initialTime: TimeOfDay(hour: 12, minute: 00),
-                          builder: (BuildContext context, Widget child) {
+                          builder: (BuildContext context, Widget? child) {
                             return MediaQuery(
                               data: MediaQuery.of(context)
                                   .copyWith(alwaysUse24HourFormat: true),
-                              child: child,
+                              child: child ?? new Text('error'),
                             );
                           },
                         );
 
                         setState(() {
-                          start = picked.hour;
+                          start = picked!.hour;
                           set = true;
                         });
                       },
@@ -90,26 +89,26 @@ class _NotificationsState extends State<Notifications> {
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 24),
                     ),
-                    OutlineButton(
+                    OutlinedButton(
                       onPressed: () async {
-                        TimeOfDay picked = await showTimePicker(
+                        TimeOfDay? picked = await showTimePicker(
                           context: context,
                           initialTime: TimeOfDay(hour: 12, minute: 00),
-                          builder: (BuildContext context, Widget child) {
+                          builder: (BuildContext context, Widget? child) {
                             return MediaQuery(
                               data: MediaQuery.of(context)
                                   .copyWith(alwaysUse24HourFormat: true),
-                              child: child,
+                              child: child ?? new Text('error'),
                             );
                           },
                         );
 
                         setState(() {
-                          end = picked.hour;
+                          end = picked!.hour;
                           set = true;
                         });
                       },
-                      child: Text('${end}:00'),
+                      child: Text('$end:00'),
                     )
                   ],
                 )

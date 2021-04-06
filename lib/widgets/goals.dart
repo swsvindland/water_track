@@ -5,43 +5,41 @@ import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 
 class Goals extends StatefulWidget {
-  final Widget child;
-
-  Goals({Key key, this.child}) : super(key: key);
+  Goals() : super();
 
   _GoalsState createState() => _GoalsState();
 }
 
 class _GoalsState extends State<Goals> {
   final db = DatabaseService();
-  String waterGoal;
-  String totalGoal;
-  String drinkSize;
+  late String waterGoal;
+  late String totalGoal;
+  late String drinkSize;
 
-  void onPressed(User user, Preferences preferences) {
+  void onPressed(User? user, Preferences preferences) {
     preferences.changeUnit();
-    db.updatePreferences(user.uid, preferences);
+    db.updatePreferences(user!.uid, preferences);
   }
 
-  void updateGoals(User user, Preferences preferences) {
-    if (waterGoal != "" && waterGoal != null) {
+  void updateGoals(User? user, Preferences preferences) {
+    if (waterGoal != "") {
       preferences.setWaterGoal(int.parse(waterGoal));
     }
 
-    if (totalGoal != "" && totalGoal != null) {
+    if (totalGoal != "") {
       preferences.setTotalGoal(int.parse(totalGoal));
     }
 
-    if (drinkSize != "" && drinkSize != null) {
+    if (drinkSize != "") {
       preferences.setDrinkSize(int.parse(drinkSize));
     }
 
-    db.updatePreferences(user.uid, preferences);
+    db.updatePreferences(user!.uid, preferences);
   }
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<User?>(context);
     final preferences = Provider.of<Preferences>(context);
 
     return Card(

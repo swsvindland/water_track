@@ -13,7 +13,7 @@ class DatabaseService {
         .collection('days')
         .doc('${date.year}${date.month}${date.day}')
         .snapshots()
-        .map((snap) => Drinks.fromMap(snap.data()));
+        .map((snap) => Drinks.fromMap(snap.data()!));
   }
 
   Future<void> updateDrinks(String id, Drinks drinks) {
@@ -30,7 +30,7 @@ class DatabaseService {
         .collection('preferences')
         .doc(id)
         .snapshots()
-        .map((snap) => Preferences.fromMap(snap.data()));
+        .map((snap) => Preferences.fromMap(snap.data()!));
   }
 
   Future<void> updatePreferences(String id, Preferences preferences) {

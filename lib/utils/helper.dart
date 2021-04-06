@@ -2,12 +2,15 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:water_track/models/preferences.dart';
 
-void setFCMData(FirebaseFirestore db, FirebaseMessaging fcm, User user,) async {
-  String fcmToken = await fcm.getToken();
+void setFCMData(
+  FirebaseFirestore db,
+  FirebaseMessaging fcm,
+  User user,
+) async {
+  String? fcmToken = await fcm.getToken();
 
-  if(fcmToken != null) {
+  if (fcmToken != null) {
     var tokenRef = db.collection('tokens').doc(user.uid);
     tokenRef.set({
       'created': FieldValue.serverTimestamp(),
@@ -18,16 +21,19 @@ void setFCMData(FirebaseFirestore db, FirebaseMessaging fcm, User user,) async {
 }
 
 void createDefaultPreferences(FirebaseFirestore db, User user) async {
-  DocumentSnapshot snapshot = await db.collection('preferences').doc(user.uid).get();
+  DocumentSnapshot snapshot =
+      await db.collection('preferences').doc(user.uid).get();
 
-  if(!snapshot.exists) {
+  if (!snapshot.exists) {
     snapshot.reference.set({
-      'unit': Unit.imperial.value,
+      'unit': 'imperial',
       'waterGoal': 96,
       'totalGoal': 128,
       'drinkSize': 8,
-      'start': DateTime.parse('2000-01-01 ${7.toString().padLeft(2, '0')}:00:00'),
-      'end': DateTime.parse('2000-01-01 ${20.toString().padLeft(2, '0')}:00:00'),
+      'start':
+          DateTime.parse('2000-01-01 ${7.toString().padLeft(2, '0')}:00:00'),
+      'end':
+          DateTime.parse('2000-01-01 ${20.toString().padLeft(2, '0')}:00:00'),
     });
   }
 }

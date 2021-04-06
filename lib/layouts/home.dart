@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User>(context);
+    var user = Provider.of<User?>(context);
 
     return MaterialApp(
       home: Scaffold(
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                 }
                 if (result == Popup.logOut) {
                   signOut();
-                  navigatorKey.currentState
+                  navigatorKey.currentState!
                       .pushNamedAndRemoveUntil('/login', (route) => false);
                 }
               },
@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         body: StreamProvider<Drinks>.value(
           initialData: Drinks.empty(),
-          value: db.streamDrinks(user.uid),
+          value: db.streamDrinks(user!.uid),
           child: StreamProvider<Preferences>.value(
             initialData: Preferences.empty(),
             value: db.streamPreferences(user.uid),

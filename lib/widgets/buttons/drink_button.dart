@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 
 class DrinkButton extends StatelessWidget {
   final String title;
-  final Color color;
-  final Color textColor;
-  final Function inc;
-  final Function dec;
+  final Color? color;
+  final Color? textColor;
+  final Function()? inc;
+  final Function()? dec;
 
   DrinkButton(
-      {Key key,
-      @required this.title,
-      @required this.color,
-      @required this.inc,
-      @required this.dec,
+      {required this.title,
+      required this.color,
+      required this.inc,
+      required this.dec,
       this.textColor})
-      : super(key: key);
+      : super();
 
   @override
   Widget build(BuildContext context) {

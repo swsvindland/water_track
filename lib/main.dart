@@ -21,7 +21,7 @@ Future<void> _initializeFlutterFire() async {
         .setCrashlyticsCollectionEnabled(!kDebugMode);
   }
 
-  Function originalOnError = FlutterError.onError;
+  Function originalOnError = FlutterError.onError!;
   FlutterError.onError = (FlutterErrorDetails errorDetails) async {
     await FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
     originalOnError(errorDetails);
@@ -41,12 +41,11 @@ void main() async {
 }
 
 class App extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        StreamProvider<User>.value(
+        StreamProvider<User?>.value(
             initialData: FirebaseAuth.instance.currentUser,
             value: FirebaseAuth.instance.authStateChanges()),
         ChangeNotifierProvider<GraphAnimationProvider>(

@@ -5,16 +5,16 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          leading: new IconButton(
-            icon: new Icon(Icons.arrow_back),
-            color: Colors.white,
-            onPressed: () {
-              navigatorKey.currentState.pop();
-            },
-          ),
+      appBar: AppBar(
+        elevation: 0,
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            navigatorKey.currentState!.pop();
+          },
         ),
+      ),
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Padding(

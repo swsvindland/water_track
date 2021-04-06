@@ -12,17 +12,15 @@ import 'dart:io' show Platform;
 import 'package:water_track/utils/helper.dart';
 
 class LoginPage extends StatefulWidget {
-  final Widget child;
-
-  LoginPage({Key key, this.child}) : super(key: key);
+  LoginPage() : super();
 
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-  final FirebaseMessaging _fcm = FirebaseMessaging();
-  bool loggingIn;
+  final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+  late bool loggingIn;
 
   @override
   initState() {
@@ -78,12 +76,12 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           loggingIn = true;
                         });
-                        signInWithGoogle().then((User user) {
+                        signInWithGoogle().then((User? user) {
                           if (user != null) {
                             updateUserData(_db, user);
                             createDefaultPreferences(_db, user);
                             setFCMData(_db, _fcm, user);
-                            navigatorKey.currentState.pushNamedAndRemoveUntil(
+                            navigatorKey.currentState!.pushNamedAndRemoveUntil(
                                 '/home', (Route<dynamic> route) => false);
                           }
                         });
@@ -118,13 +116,14 @@ class _LoginPageState extends State<LoginPage> {
                           setState(() {
                             loggingIn = true;
                           });
-                          signInWithApple().then((User user) {
+                          signInWithApple().then((User? user) {
                             if (user != null) {
                               updateUserData(_db, user);
                               createDefaultPreferences(_db, user);
                               setFCMData(_db, _fcm, user);
-                              navigatorKey.currentState.pushNamedAndRemoveUntil(
-                                  '/home', (Route<dynamic> route) => false);
+                              navigatorKey.currentState!
+                                  .pushNamedAndRemoveUntil(
+                                      '/home', (Route<dynamic> route) => false);
                             }
                           });
                           setState(() {
@@ -132,33 +131,35 @@ class _LoginPageState extends State<LoginPage> {
                           });
                         },
                       ),
-                      fallbackBuilder: (BuildContext context) => SizedBox(height: 0),
+                      fallbackBuilder: (BuildContext context) =>
+                          SizedBox(height: 0),
                     ),
                     Conditional.single(
-                      context: context,
-                      conditionBuilder: (BuildContext context) => Platform.isIOS,
-                      widgetBuilder: (BuildContext context) => SizedBox(height: 25),
-                      fallbackBuilder: (BuildContext context) => SizedBox(height: 0)
-                    ),
+                        context: context,
+                        conditionBuilder: (BuildContext context) =>
+                            Platform.isIOS,
+                        widgetBuilder: (BuildContext context) =>
+                            SizedBox(height: 25),
+                        fallbackBuilder: (BuildContext context) =>
+                            SizedBox(height: 0)),
                     MaterialButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25.0)),
                       minWidth: 100.0,
                       height: 45,
-                      child:
-                          Text('Continue without Account',
-                              style: new TextStyle(
-                                  fontSize: 16.0, color: Colors.white)),
+                      child: Text('Continue without Account',
+                          style: new TextStyle(
+                              fontSize: 16.0, color: Colors.white)),
                       onPressed: () {
                         setState(() {
                           loggingIn = true;
                         });
-                        signInAnon().then((User user) {
+                        signInAnon().then((User? user) {
                           if (user != null) {
                             updateUserData(_db, user);
                             createDefaultPreferences(_db, user);
                             setFCMData(_db, _fcm, user);
-                            navigatorKey.currentState.pushNamedAndRemoveUntil(
+                            navigatorKey.currentState!.pushNamedAndRemoveUntil(
                                 '/home', (Route<dynamic> route) => false);
                           }
                         });

@@ -9,9 +9,7 @@ import 'package:water_track/widgets/notifications.dart';
 import 'package:water_track/widgets/unit_switch.dart';
 
 class SettingsPage extends StatefulWidget {
-  final Widget child;
-
-  SettingsPage({Key key, this.child}) : super(key: key);
+  SettingsPage() : super();
 
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -21,7 +19,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User>(context);
+    var user = Provider.of<User?>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,14 +28,14 @@ class _SettingsPageState extends State<SettingsPage> {
           icon: new Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            navigatorKey.currentState.pop();
+            navigatorKey.currentState!.pop();
           },
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: StreamProvider<Preferences>.value(
         initialData: Preferences.empty(),
-        value: db.streamPreferences(user.uid),
+        value: db.streamPreferences(user!.uid),
         child: Center(
           child: Padding(
             padding: EdgeInsets.fromLTRB(25, 0, 25, 0),

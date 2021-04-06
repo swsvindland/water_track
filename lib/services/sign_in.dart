@@ -5,8 +5,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-Future<User> signInWithGoogle() async {
-  final GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+Future<User?> signInWithGoogle() async {
+  final GoogleSignInAccount googleSignInAccount =
+      (await _googleSignIn.signIn())!;
   final GoogleSignInAuthentication gsa =
       await googleSignInAccount.authentication;
 
@@ -16,16 +17,15 @@ Future<User> signInWithGoogle() async {
   );
   final UserCredential authResult =
       await _auth.signInWithCredential(credential);
-  final User firebaseUser = authResult.user;
+  final User? firebaseUser = authResult.user;
 
-  final User currentUser = _auth.currentUser;
-  assert(firebaseUser.uid == currentUser.uid);
+  final User? currentUser = _auth.currentUser;
+  assert(firebaseUser?.uid == currentUser?.uid);
   return firebaseUser;
 }
 
-Future<User> signInWithApple() async {
+Future<User?> signInWithApple() async {
   try {
-
     final AuthorizationResult appleResult = await AppleSignIn.performRequests([
       AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
     ]);
@@ -35,12 +35,14 @@ Future<User> signInWithApple() async {
     }
 
     final AuthCredential credential = OAuthProvider('apple.com').credential(
-      accessToken: String.fromCharCodes(appleResult.credential.authorizationCode),
+      accessToken:
+          String.fromCharCodes(appleResult.credential.authorizationCode),
       idToken: String.fromCharCodes(appleResult.credential.identityToken),
     );
 
-    final UserCredential authResult = await _auth.signInWithCredential(credential);
-    User user = authResult.user;
+    final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+    User? user = authResult.user;
 
     return user;
   } catch (error) {
@@ -49,13 +51,14 @@ Future<User> signInWithApple() async {
   }
 }
 
-Future<User> signInAnon() async {
-  UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
+Future<User?> signInAnon() async {
+  UserCredential userCredential =
+      await FirebaseAuth.instance.signInAnonymously();
 
-  final User firebaseUser = userCredential.user;
+  final User? firebaseUser = userCredential.user;
 
-  final User currentUser = _auth.currentUser;
-  assert(firebaseUser.uid == currentUser.uid);
+  final User? currentUser = _auth.currentUser;
+  assert(firebaseUser?.uid == currentUser?.uid);
   return firebaseUser;
 }
 

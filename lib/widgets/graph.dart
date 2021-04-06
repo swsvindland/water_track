@@ -21,7 +21,7 @@ class Graph extends StatelessWidget {
         : 0;
 
     var data = [
-      new GraphDrinks('Water', drinks.water, Colors.blue[800]),
+      new GraphDrinks('Water', drinks.water, Colors.blue[800]!),
       new GraphDrinks('Coffee', drinks.coffee, Colors.brown),
       new GraphDrinks('Sparkling Water', drinks.sparklingWater, Colors.orange),
       new GraphDrinks('Tea', drinks.tea, Colors.green),
@@ -29,7 +29,7 @@ class Graph extends StatelessWidget {
       new GraphDrinks('Energy Drink', drinks.energyDrink, Colors.purple),
       new GraphDrinks('Sports Drink', drinks.sportsDrink, Colors.yellow),
       new GraphDrinks('Alcohol', drinks.alcohol, Colors.black),
-      new GraphDrinks('None', none, Colors.grey[200])
+      new GraphDrinks('None', none, Colors.grey[200]!)
     ];
 
     return [
@@ -59,8 +59,7 @@ class Graph extends StatelessWidget {
                 animationDuration: Duration(milliseconds: 300),
                 defaultRenderer: new charts.ArcRendererConfig(arcWidth: 30))),
         Container(
-            height: 15,
-            child: Text("Breakdown", textAlign: TextAlign.center)),
+            height: 15, child: Text("Breakdown", textAlign: TextAlign.center)),
         SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +73,7 @@ class Graph extends StatelessWidget {
                 direction: Axis.vertical,
                 maxValue: preferences.waterGoal,
                 currentValue: drinks.water,
-                displayText: preferences.unit == Unit.imperial ? 'oz' : 'ml',
+                displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200],
                 progressColor: Colors.blue[800],
               ),
@@ -95,7 +94,7 @@ class Graph extends StatelessWidget {
                     drinks.soda +
                     drinks.sportsDrink +
                     drinks.alcohol,
-                displayText: preferences.unit == Unit.imperial ? 'oz' : 'ml',
+                displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200],
                 progressColor: Colors.blueGrey,
               ),

@@ -15,38 +15,42 @@ class SplashScreenPage extends StatefulWidget {
 
 class _SplashState extends State<SplashScreenPage> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-  final FirebaseMessaging _fcm = FirebaseMessaging();
-  StreamSubscription iosSubscription;
+  final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+  late StreamSubscription iosSubscription;
 
   @override
   void initState() {
     super.initState();
 
     if (Platform.isIOS) {
-      iosSubscription = _fcm.onIosSettingsRegistered.listen((data) {
-        // save the token  OR subscribe to a topic here
-      });
-
-      _fcm.requestNotificationPermissions(IosNotificationSettings());
+      _fcm.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true,
+      );
     }
 
     navigateUser();
   }
 
   navigateUser() {
-    User currentUser = FirebaseAuth.instance.currentUser;
+    User? currentUser = FirebaseAuth.instance.currentUser;
 
     if (currentUser == null || currentUser.uid == null) {
       Timer(Duration(milliseconds: 850),
-              () => navigatorKey.currentState.pushReplacementNamed("/login"));
+          () => navigatorKey.currentState!.pushReplacementNamed("/login"));
     } else {
       Timer(
         Duration(milliseconds: 500),
-            () {
+        () {
           updateUserData(_db, currentUser);
           createDefaultPreferences(_db, currentUser);
           setFCMData(_db, _fcm, currentUser);
-          navigatorKey.currentState.pushNamedAndRemoveUntil(
+          navigatorKey.currentState!.pushNamedAndRemoveUntil(
               '/home', (Route<dynamic> route) => false);
         },
       );
@@ -56,9 +60,7 @@ class _SplashState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme
-          .of(context)
-          .primaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Padding(
           padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
