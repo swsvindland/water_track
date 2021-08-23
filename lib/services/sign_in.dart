@@ -1,4 +1,4 @@
-import 'package:apple_sign_in/apple_sign_in.dart';
+import 'package:the_apple_sign_in/the_apple_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -26,7 +26,7 @@ Future<User?> signInWithGoogle() async {
 
 Future<User?> signInWithApple() async {
   try {
-    final AuthorizationResult appleResult = await AppleSignIn.performRequests([
+    final AuthorizationResult appleResult = await TheAppleSignIn.performRequests([
       AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
     ]);
 
@@ -35,9 +35,8 @@ Future<User?> signInWithApple() async {
     }
 
     final AuthCredential credential = OAuthProvider('apple.com').credential(
-      accessToken:
-          String.fromCharCodes(appleResult.credential.authorizationCode),
-      idToken: String.fromCharCodes(appleResult.credential.identityToken),
+      accessToken: appleResult.credential?.authorizationCode?.toString(),
+      idToken: appleResult.credential?.identityToken?.toString(),
     );
 
     final UserCredential authResult =
