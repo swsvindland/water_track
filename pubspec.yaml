@@ -11,40 +11,39 @@ description: An application for tracking daily water intake.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.4.0+16
+version: 1.4.1+17
 
 environment:
-  sdk: ">=2.13.4 <3.0.0"
+  sdk: ">=2.14.4 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  font_awesome_flutter: ^9.1.0
+  font_awesome_flutter: ^9.2.0
   flutter_animation_progress_bar: ^2.0.1
-  charts_flutter: ^0.11.0
-  flutter_svg: ^0.22.0
-  provider: ^6.0.0
+  charts_flutter: ^0.12.0
+  flutter_svg: ^0.23.0+1
+  provider: ^6.0.1
   flutter_conditional_rendering: ^2.0.0
-  vnum: ^1.2.6
 
-  firebase_core: ^1.5.0
-  firebase_analytics: ^8.3.0
-  firebase_crashlytics: ^2.2.0
+  firebase_core: ^1.10.0
+  firebase_analytics: ^8.3.4
+  firebase_crashlytics: ^2.3.0
 
-  firebase_auth: ^3.0.2
-  google_sign_in: ^5.0.7
+  firebase_auth: ^3.2.0
+  google_sign_in: ^5.2.1
   the_apple_sign_in: ^1.1.1
 
-  cloud_firestore: ^2.5.0
+  cloud_firestore: ^3.1.0
 
-  firebase_messaging: ^10.0.5
+  firebase_messaging: ^11.1.0
 
   flutter_native_timezone: ^2.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  cupertino_icons: ^1.0.4
 
 dev_dependencies:
   flutter_test:

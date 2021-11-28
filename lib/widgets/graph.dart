@@ -48,16 +48,20 @@ class Graph extends StatelessWidget {
   Widget build(BuildContext context) {
     final drinks = Provider.of<Drinks>(context);
     final preferences = Provider.of<Preferences>(context);
+    var graphData = _createData(drinks);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(
-            child: charts.PieChart(_createData(drinks),
-                animate: context.watch<GraphAnimationProvider>().animate,
-                animationDuration: Duration(milliseconds: 300),
-                defaultRenderer: new charts.ArcRendererConfig(arcWidth: 30))),
+        graphData.length > 0
+            ? Flexible(
+                child: charts.PieChart<String>(graphData,
+                    animate: context.watch<GraphAnimationProvider>().animate,
+                    animationDuration: Duration(milliseconds: 300),
+                    defaultRenderer:
+                        new charts.ArcRendererConfig(arcWidth: 30)))
+            : Container(),
         Container(
             height: 15, child: Text("Breakdown", textAlign: TextAlign.center)),
         SizedBox(height: 15),
