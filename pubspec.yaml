@@ -11,10 +11,10 @@ description: An application for tracking daily water intake.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.4.1+17
+version: 1.4.2+18
 
 environment:
-  sdk: ">=2.14.4 <3.0.0"
+  sdk: ">=2.15.1 <3.0.0"
 
 dependencies:
   flutter:
@@ -23,21 +23,22 @@ dependencies:
   font_awesome_flutter: ^9.2.0
   flutter_animation_progress_bar: ^2.0.1
   charts_flutter: ^0.12.0
-  flutter_svg: ^0.23.0+1
-  provider: ^6.0.1
+  flutter_svg: ^1.0.0
+  provider: ^6.0.2
   flutter_conditional_rendering: ^2.0.0
+  crypto: ^3.0.1
 
-  firebase_core: ^1.10.0
-  firebase_analytics: ^8.3.4
-  firebase_crashlytics: ^2.3.0
+  firebase_core: ^1.10.6
+  firebase_analytics: ^9.0.4
+  firebase_crashlytics: ^2.4.4
 
-  firebase_auth: ^3.2.0
+  firebase_auth: ^3.3.4
   google_sign_in: ^5.2.1
-  the_apple_sign_in: ^1.1.1
+  sign_in_with_apple: ^3.3.0
 
-  cloud_firestore: ^3.1.0
+  cloud_firestore: ^3.1.5
 
-  firebase_messaging: ^11.1.0
+  firebase_messaging: ^11.2.4
 
   flutter_native_timezone: ^2.0.0
 
