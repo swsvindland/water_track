@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "490539529973-n87jjdbhrcqnm2e57hclca3ih8oi509f.apps.googleusercontent.com",
+          "client_id": "490539529973-8gba1idnn93rmn6slhn2f7acab88qq7b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.svindland.watertrack",
-            "certificate_hash": "a5356f74d8ff97aeb7fe208f7c6d857cdcf4cac4"
+            "certificate_hash": "e4c8b092ad08e506ae1ca477d40cf86add80e9ac"
           }
         },
         {
@@ -31,19 +31,19 @@
           }
         },
         {
-          "client_id": "490539529973-8gba1idnn93rmn6slhn2f7acab88qq7b.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.svindland.watertrack",
-            "certificate_hash": "e4c8b092ad08e506ae1ca477d40cf86add80e9ac"
-          }
-        },
-        {
           "client_id": "490539529973-habha48v3hkks4n0ipp1d5e33jrg4n8h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.svindland.watertrack",
             "certificate_hash": "fd4ca916376fb6a57d5717d54b80b43bc253e23e"
+          }
+        },
+        {
+          "client_id": "490539529973-n87jjdbhrcqnm2e57hclca3ih8oi509f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.svindland.watertrack",
+            "certificate_hash": "a5356f74d8ff97aeb7fe208f7c6d857cdcf4cac4"
           }
         },
         {

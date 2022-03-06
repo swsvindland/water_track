@@ -2,12 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:io' show Platform;
+import "package:os_detect/os_detect.dart" as Platform;
 
 import 'package:water_track/utils/helper.dart';
 
@@ -41,10 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 150,
-                child: SvgPicture.asset('assets/icons/water_track_logo.svg'),
-              ),
+              Icon(Icons.local_drink, size: 96.0, color: Colors.white),
               SizedBox(height: 40),
               Conditional.single(
                 context: context,
@@ -65,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          FaIcon(FontAwesomeIcons.google),
+                          Image.asset('images/google-logo.png', width: 24, height: 24),
                           SizedBox(width: 10),
                           Text('Continue with Google',
                               style: new TextStyle(
@@ -105,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            FaIcon(FontAwesomeIcons.apple),
+                            Icon(Icons.apple, size: 24),
                             SizedBox(width: 10),
                             Text('Continue with Apple',
                                 style: new TextStyle(
