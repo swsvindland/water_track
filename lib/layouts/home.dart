@@ -1,13 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:water_track/layouts/layouts.dart';
-import 'package:water_track/models/drink.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:water_track/widgets/buttons/buttons.dart';
-import 'package:water_track/layouts/about.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/widgets/graph.dart';
 
@@ -19,24 +16,20 @@ class HomePage extends StatelessWidget {
     var user = Provider.of<User?>(context);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          title: Text('WaterTrack', style: TextStyle(color: Colors.white)),
           backgroundColor: Theme.of(context).primaryColor,
           elevation: 0,
           actions: <Widget>[
             PopupMenuButton<Popup>(
               onSelected: (Popup result) {
                 if (result == Popup.settings) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()),
-                  );
+                  navigatorKey.currentState!.pushNamed('/settings');
                 }
                 if (result == Popup.about) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AboutPage()),
-                  );
+                  navigatorKey.currentState!.pushNamed('/about');
                 }
                 if (result == Popup.logOut) {
                   signOut();
