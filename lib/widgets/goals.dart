@@ -48,7 +48,7 @@ class _GoalsState extends State<Goals> {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
+        padding: EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -14,6 +14,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User?>(context);
+    var deviceSize = MediaQuery.of(context).size;
+
+    var paddingFactor = deviceSize.width < xs
+        ? 0.0
+        : deviceSize.width < sm
+            ? 4.0
+            : 16.0;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -71,23 +78,54 @@ class HomePage extends StatelessWidget {
           child: StreamProvider<Preferences>.value(
             initialData: Preferences.empty(),
             value: db.streamPreferences(user.uid),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  flex: 5,
-                  child: Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(paddingFactor, 0, paddingFactor, 0),
+              child: deviceSize.width < sm
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 5,
+                          child: Card(
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            child: Graph(),
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Expanded(flex: 3, child: Buttons()),
+                      ],
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: SizedBox(
+                                height: 500,
+                                child: Card(
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  child: Graph(),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 25),
+                            Expanded(flex: 1, child: Buttons()),
+                          ],
+                        ),
+                      ],
                     ),
-                    child: Graph(),
-                  ),
-                ),
-                SizedBox(height: 25),
-                Expanded(flex: 3, child: Buttons()),
-              ],
             ),
           ),
         ),

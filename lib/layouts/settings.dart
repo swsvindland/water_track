@@ -37,18 +37,19 @@ class _SettingsPageState extends State<SettingsPage> {
       body: StreamProvider<Preferences>.value(
         initialData: Preferences.empty(),
         value: db.streamPreferences(user!.uid),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(24),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Center(
+            child: SizedBox(
+              width: sm.toDouble(),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   UnitSwitch(),
-                  SizedBox(height: 15),
+                  SizedBox(height: 16),
                   Goals(),
+                  SizedBox(height: 16),
                   Notifications()
                 ],
               ),

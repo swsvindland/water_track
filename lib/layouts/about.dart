@@ -20,19 +20,31 @@ class AboutPage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Designed and Built by',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              Text(
-                'Sam Svindland',
-                style: TextStyle(color: Colors.white, fontSize: 12),
-              ),
-            ],
+          child: SizedBox(
+            width: sm.toDouble(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Designed and Built by',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                Text(
+                  'Sam Svindland',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
+                SizedBox(height: 36),
+                Text(
+                  'Version',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                Text(
+                  '1.6.0',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
+              ],
+            ),
           ),
         ),
       ),

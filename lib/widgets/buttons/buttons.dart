@@ -31,7 +31,11 @@ class Buttons extends StatelessWidget {
     final graphAnimation = Provider.of<GraphAnimationProvider>(context);
     final preferences = Provider.of<Preferences>(context);
 
-    return Wrap(spacing: 10.0, children: <Widget>[
+    return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        spacing: 8.0,
+        children: <Widget>[
       DrinkButton(
           title: 'Water',
           color: Colors.blue[800],
