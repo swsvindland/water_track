@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 
+import 'buttons/button.dart';
+
 class Goals extends StatefulWidget {
   Goals() : super();
 
@@ -62,7 +64,7 @@ class _GoalsState extends State<Goals> {
                 Text('drink size: ${preferences.drinkSize.toString()}'),
               ],
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -72,7 +74,7 @@ class _GoalsState extends State<Goals> {
                 waterGoal = value;
               },
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -82,7 +84,7 @@ class _GoalsState extends State<Goals> {
                 totalGoal = value;
               },
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -92,23 +94,19 @@ class _GoalsState extends State<Goals> {
                 drinkSize = value;
               },
             ),
-            SizedBox(height: 25),
-            MaterialButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0)),
-              minWidth: 125.0,
-              height: 35,
-              color: Colors.blue,
-              child: new Text(
+            SizedBox(height: 16),
+            Button(
+              onPressed: () {
+                updateGoals(user, preferences);
+              },
+              child: Text(
                 'Update',
                 style: new TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {
-                updateGoals(user, preferences);
-              },
+              variant: "secondary",
             ),
           ],
         ),

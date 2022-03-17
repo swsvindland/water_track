@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 
+import 'buttons/button.dart';
+
 class Notifications extends StatefulWidget {
   Notifications() : super();
 
@@ -114,23 +116,19 @@ class _NotificationsState extends State<Notifications> {
                 )
               ],
             ),
-            SizedBox(height: 20),
-            MaterialButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0)),
-              minWidth: 125.0,
-              height: 35,
-              color: Colors.blue,
-              child: new Text(
+            SizedBox(height: 16),
+            Button(
+              onPressed: () {
+                update(user, preferences);
+              },
+              child: Text(
                 'Update',
                 style: new TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {
-                update(user, preferences);
-              },
+              variant: "secondary",
             ),
           ],
         ),
