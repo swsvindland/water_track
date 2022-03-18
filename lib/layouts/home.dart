@@ -1,30 +1,32 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:water_track/models/models.dart';
-import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
-import 'package:water_track/widgets/buttons/buttons.dart';
-import 'package:provider/provider.dart';
-import 'package:water_track/widgets/graph.dart';
+import 'package:water_track/widgets/navigation_bottom.dart';
+import 'package:water_track/widgets/navigation_drawer.dart';
 
-class HomePage extends StatelessWidget {
-  final db = DatabaseService();
+import '../widgets/home.dart';
+import '../widgets/reports.dart';
+import '../widgets/settings.dart';
+
+class HomePage extends StatefulWidget {
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User?>(context);
-    var deviceSize = MediaQuery.of(context).size;
 
-    var paddingFactor = deviceSize.width < xs
-        ? 0.0
-        : deviceSize.width < sm
-            ? 4.0
-            : 16.0;
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('WaterTrack', style: TextStyle(color: Colors.white)),
           backgroundColor: Theme.of(context).primaryColor,
@@ -32,9 +34,6 @@ class HomePage extends StatelessWidget {
           actions: <Widget>[
             PopupMenuButton<Popup>(
               onSelected: (Popup result) {
-                if (result == Popup.settings) {
-                  navigatorKey.currentState!.pushNamed('/settings');
-                }
                 if (result == Popup.about) {
                   navigatorKey.currentState!.pushNamed('/about');
                 }
@@ -46,13 +45,6 @@ class HomePage extends StatelessWidget {
               },
               icon: Icon(Icons.more_vert),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<Popup>>[
-                const PopupMenuItem<Popup>(
-                  value: Popup.settings,
-                  child: ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text('Settings'),
-                  ),
-                ),
                 const PopupMenuItem<Popup>(
                   value: Popup.about,
                   child: ListTile(
@@ -72,66 +64,11 @@ class HomePage extends StatelessWidget {
           ],
         ),
         backgroundColor: Theme.of(context).primaryColor,
-        body: StreamProvider<Drinks>.value(
-          initialData: Drinks.empty(),
-          value: db.streamDrinks(user!.uid),
-          child: StreamProvider<Preferences>.value(
-            initialData: Preferences.empty(),
-            value: db.streamPreferences(user.uid),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(paddingFactor, 0, paddingFactor, 0),
-              child: deviceSize.width < sm
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          flex: 5,
-                          child: Card(
-                            elevation: 5,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Graph(),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        Expanded(flex: 3, child: Buttons()),
-                      ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(
-                                height: 500,
-                                child: Card(
-                                  elevation: 5,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  child: Graph(),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 25),
-                            Expanded(flex: 1, child: Buttons()),
-                          ],
-                        ),
-                      ],
-                    ),
-            ),
-          ),
-        ),
-      ),
+        drawer: MediaQuery.of(context).size.width > sm ?  NavigationDrawer(selectedIndex: _selectedIndex, onItemTapped: _onItemTapped) : null,
+        body: _selectedIndex == 0 ? Home() : _selectedIndex == 1 ? Reports() : Settings(),
+      bottomNavigationBar: MediaQuery.of(context).size.width < sm ?  NavigationBottom(selectedIndex: _selectedIndex, onItemTapped: _onItemTapped) : null,
     );
   }
 }
 
-enum Popup { about, settings, logOut }
+enum Popup { about, logOut }

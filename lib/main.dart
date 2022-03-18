@@ -28,17 +28,34 @@ class App extends StatelessWidget {
             create: (_) => GraphAnimationProvider()),
       ],
       child: MaterialApp(
-        title: 'Water Track',
+        title: 'WaterTrack',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.lightBlue),
-        navigatorKey: navigatorKey,
+        theme: ThemeData(
+          primarySwatch: Colors.lightBlue,
+          primaryTextTheme: TextTheme(
+            headline1: TextStyle(color: Colors.white),
+            headline2: TextStyle(color: Colors.white),
+            headline3: TextStyle(color: Colors.white),
+            headline4: TextStyle(color: Colors.white),
+            headline5: TextStyle(color: Colors.white),
+            headline6: TextStyle(color: Colors.white),
+            subtitle1: TextStyle(color: Colors.white),
+            subtitle2: TextStyle(color: Colors.white),
+            bodyText1: TextStyle(color: Colors.white),
+            bodyText2: TextStyle(color: Colors.white)
+          ),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.lightBlue,
+            foregroundColor: Colors.white
+          )
+        ),
         initialRoute: '/',
+        navigatorKey: navigatorKey,
         routes: {
           '/': (context) => SplashScreenPage(),
           '/login': (context) => LoginPage(),
           '/home': (context) => HomePage(),
           '/about': (context) => AboutPage(),
-          '/settings': (context) => SettingsPage()
         },
       ),
     );
