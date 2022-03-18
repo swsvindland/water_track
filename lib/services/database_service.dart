@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:water_track/models/models.dart';
 import 'dart:async';
 
@@ -12,7 +13,7 @@ class DatabaseService {
           .collection('drinks')
           .doc(id)
           .collection('days')
-          .doc('${date.year}${date.month}${date.day}')
+          .doc(DateUtils.dateOnly(date).toIso8601String())
           .snapshots()
           .map((snap) => Drinks.fromMap(snap.data()!));
     } catch (err) {
@@ -27,11 +28,25 @@ class DatabaseService {
           .collection('drinks')
           .doc(id)
           .collection('days')
-          .doc('${date.year}${date.month}${date.day}')
+          .doc(DateUtils.dateOnly(date).toIso8601String())
           .set(Drinks.toMap(drinks));
     } catch (err) {
       print(err);
       return Future.error(err);
+    }
+  }
+
+  Stream<Iterable<Drinks>> streamAllDrinks(String id) {
+    try {
+      return _db
+          .collection('drinks')
+          .doc(id)
+          .collection('days')
+          .snapshots()
+          .map((event) => event.docs.map((e) => Drinks.fromMap(e.data())));
+    } catch (err) {
+      print(err);
+      return Stream.error(err);
     }
   }
 

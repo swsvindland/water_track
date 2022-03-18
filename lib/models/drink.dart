@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Drinks {
   int water;
   int coffee;
@@ -7,6 +9,7 @@ class Drinks {
   int energyDrink;
   int sportsDrink;
   int alcohol;
+  DateTime date;
 
   Drinks(
       {required this.water,
@@ -16,7 +19,9 @@ class Drinks {
       required this.soda,
       required this.energyDrink,
       required this.sportsDrink,
-      required this.alcohol});
+      required this.alcohol,
+      required this.date,
+      });
 
   static Drinks empty() {
     return Drinks(
@@ -27,7 +32,9 @@ class Drinks {
         soda: 0,
         energyDrink: 0,
         sportsDrink: 0,
-        alcohol: 0);
+        alcohol: 0,
+        date: DateUtils.dateOnly(DateTime.now())
+    );
   }
 
   factory Drinks.fromMap(Map data) {
@@ -40,7 +47,9 @@ class Drinks {
         soda: data['soda'] ?? 0,
         energyDrink: data['energyDrink'] ?? 0,
         sportsDrink: data['sportsDrink'] ?? 0,
-        alcohol: data['alcohol'] ?? 0);
+        alcohol: data['alcohol'] ?? 0,
+        date: data['date'].toDate()
+    );
   }
 
   static Map<String, dynamic> toMap(Drinks data) {
@@ -53,7 +62,8 @@ class Drinks {
       'soda': data.soda,
       'energyDrink': data.energyDrink,
       'sportsDrink': data.sportsDrink,
-      'alcohol': data.alcohol
+      'alcohol': data.alcohol,
+      'date': DateUtils.dateOnly(DateTime.now())
     };
   }
 
