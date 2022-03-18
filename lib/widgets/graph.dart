@@ -62,15 +62,15 @@ class Graph extends StatelessWidget {
                         new charts.ArcRendererConfig(arcWidth: 30)))
             : Container(),
         Container(
-            height: 15, child: Text("Breakdown", textAlign: TextAlign.center)),
-        SizedBox(height: 15),
+            height: 16, child: Text("Breakdown", textAlign: TextAlign.center)),
+        SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 75,
-              height: MediaQuery.of(context).size.height * 0.2,
+              width: 60,
+              height: MediaQuery.of(context).size.height * 0.15,
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
@@ -81,10 +81,10 @@ class Graph extends StatelessWidget {
                 progressColor: Colors.blue[800] ?? Colors.blue,
               ),
             ),
-            SizedBox(width: 25),
+            SizedBox(width: 24),
             Container(
-              width: 75,
-              height: MediaQuery.of(context).size.height * 0.2,
+              width: 60,
+              height: MediaQuery.of(context).size.height * 0.15,
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
@@ -104,23 +104,23 @@ class Graph extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                width: 75,
-                height: 20,
+                width: 60,
+                height: 15,
                 child: Text("Water", textAlign: TextAlign.center)),
-            SizedBox(width: 25),
+            SizedBox(width: 24),
             Container(
-                width: 75,
-                height: 20,
+                width: 60,
+                height: 15,
                 child: Text("Total", textAlign: TextAlign.center)),
           ],
         ),
-        SizedBox(height: 15)
+        SizedBox(height: 8)
       ],
     );
   }
