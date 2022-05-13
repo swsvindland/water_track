@@ -74,8 +74,8 @@ class Graph extends StatelessWidget {
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
-                maxValue: preferences.waterGoal,
-                currentValue: drinks.water,
+                maxValue: preferences.waterGoal.toDouble(),
+                currentValue: drinks.water.toDouble(),
                 displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200] ?? Colors.white,
                 progressColor: Colors.blue[800] ?? Colors.blue,
@@ -88,7 +88,7 @@ class Graph extends StatelessWidget {
               child: FAProgressBar(
                 verticalDirection: VerticalDirection.up,
                 direction: Axis.vertical,
-                maxValue: preferences.totalGoal,
+                maxValue: preferences.totalGoal.toDouble(),
                 currentValue: drinks.water +
                     drinks.energyDrink +
                     drinks.tea +
@@ -96,7 +96,7 @@ class Graph extends StatelessWidget {
                     drinks.sparklingWater +
                     drinks.soda +
                     drinks.sportsDrink +
-                    drinks.alcohol,
+                    drinks.alcohol.toDouble(),
                 displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
                 backgroundColor: Colors.grey[200] ?? Colors.white,
                 progressColor: Colors.blueGrey,

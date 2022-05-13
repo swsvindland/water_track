@@ -35,8 +35,8 @@ class ReportCard extends StatelessWidget {
               height: 16,
               child: FAProgressBar(
                 direction: Axis.horizontal,
-                maxValue: preferences.waterGoal,
-                currentValue: drink.water,
+                maxValue: preferences.waterGoal.toDouble(),
+                currentValue: drink.water.toDouble(),
                 displayText: preferences.unit == 'imperial' ? 'oz of water' : 'ml of water',
                 backgroundColor: Colors.grey[200] ?? Colors.white,
                 progressColor: Colors.blue[800] ?? Colors.blue,
@@ -48,7 +48,7 @@ class ReportCard extends StatelessWidget {
               height: 16,
               child: FAProgressBar(
                 direction: Axis.horizontal,
-                maxValue: preferences.totalGoal,
+                maxValue: preferences.totalGoal.toDouble(),
                 currentValue: drink.water +
                     drink.energyDrink +
                     drink.tea +
@@ -56,7 +56,7 @@ class ReportCard extends StatelessWidget {
                     drink.sparklingWater +
                     drink.soda +
                     drink.sportsDrink +
-                    drink.alcohol,
+                    drink.alcohol.toDouble(),
                 displayText: preferences.unit == 'imperial' ? 'oz of drinks' : 'ml of drinks',
                 backgroundColor: Colors.grey[200] ?? Colors.white,
                 progressColor: Colors.blueGrey,
