@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About', style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.about, style: TextStyle(color: Colors.white)),
         elevation: 0,
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
@@ -27,7 +28,7 @@ class AboutPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Designed and Built by',
+                  AppLocalizations.of(context)!.aboutPageCredits,
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 Text(
@@ -36,7 +37,7 @@ class AboutPage extends StatelessWidget {
                 ),
                 SizedBox(height: 36),
                 Text(
-                  'Version',
+                  AppLocalizations.of(context)!.aboutPageVersion,
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 Text(

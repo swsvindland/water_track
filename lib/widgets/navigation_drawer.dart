@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
@@ -26,7 +27,7 @@ class NavigationDrawer extends StatelessWidget {
                 children: [
                   Icon(Icons.local_drink, color: Colors.white, size: 36),
                   SizedBox(width: 8),
-                  Text('WaterTrack',
+                  Text(AppLocalizations.of(context)!.waterTrack,
                       style: TextStyle(fontSize: 24, color: Colors.white)),
                 ],
               ),
@@ -34,7 +35,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 0,
-            title: const Text('Home'),
+            title: Text(AppLocalizations.of(context)!.home),
             leading: Icon(Icons.home),
             onTap: () {
               // Update the state of the app
@@ -46,7 +47,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 1,
-            title: const Text('Reports'),
+            title: Text(AppLocalizations.of(context)!.reports),
             leading: Icon(Icons.insights),
             onTap: () {
               // Update the state of the app
@@ -58,7 +59,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 2,
-            title: const Text('Settings'),
+            title: Text(AppLocalizations.of(context)!.settings),
             leading: Icon(Icons.settings),
             onTap: () {
               // Update the state of the app

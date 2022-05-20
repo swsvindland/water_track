@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/layouts/layouts.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'firebase_options.dart';
 
@@ -30,6 +32,25 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'WaterTrack',
         debugShowCheckedModeBanner: false,
+        localizationsDelegates: [
+          AppLocalizations.delegate, // Add this line
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('en', ''), // English
+          Locale('es', ''), // Spanish
+          Locale('pt', ''), // Portuguese
+          Locale('fr', ''), // French
+          Locale('de', ''), // German
+          Locale('it', ''), // Italian
+          Locale('zh', ''), // Simplified Chinese
+          Locale('ko', ''), // Korean
+          Locale('ja', ''), // Japanese
+          Locale('ar', ''), // Arabic
+          Locale('hi', ''), // Hindi
+        ],
         theme: ThemeData(
           primarySwatch: Colors.lightBlue,
           primaryTextTheme: TextTheme(

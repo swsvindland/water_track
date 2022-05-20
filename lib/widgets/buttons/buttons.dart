@@ -5,6 +5,7 @@ import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
 import 'drink_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Buttons extends StatelessWidget {
   final db = DatabaseService();
@@ -36,35 +37,35 @@ class Buttons extends StatelessWidget {
         spacing: 8.0,
         children: <Widget>[
       DrinkButton(
-          title: 'Water',
+          title: AppLocalizations.of(context)!.water,
           color: Colors.blue[800],
           inc: () => incDrink(
               user, drinks, 'water', graphAnimation, preferences.drinkSize),
           dec: () => decDrink(
               user, drinks, 'water', graphAnimation, preferences.drinkSize)),
       DrinkButton(
-          title: 'Coffee',
+          title: AppLocalizations.of(context)!.coffee,
           color: Colors.brown,
           inc: () => incDrink(
               user, drinks, 'coffee', graphAnimation, preferences.drinkSize),
           dec: () => decDrink(
               user, drinks, 'coffee', graphAnimation, preferences.drinkSize)),
       DrinkButton(
-          title: 'Sparkling Water',
+          title: AppLocalizations.of(context)!.sparklingWater,
           color: Colors.orange,
           inc: () => incDrink(user, drinks, 'sparklingWater', graphAnimation,
               preferences.drinkSize),
           dec: () => decDrink(user, drinks, 'sparklingWater', graphAnimation,
               preferences.drinkSize)),
       DrinkButton(
-          title: 'Tea',
+          title: AppLocalizations.of(context)!.tea,
           color: Colors.lightGreen,
           inc: () => incDrink(
               user, drinks, 'tea', graphAnimation, preferences.drinkSize),
           dec: () => decDrink(
               user, drinks, 'tea', graphAnimation, preferences.drinkSize)),
       DrinkButton(
-          title: 'Sports Drink',
+          title: AppLocalizations.of(context)!.sportsDrink,
           color: Colors.yellow,
           textColor: Colors.black,
           inc: () => incDrink(user, drinks, 'sportsDrink', graphAnimation,
@@ -72,21 +73,21 @@ class Buttons extends StatelessWidget {
           dec: () => decDrink(user, drinks, 'sportsDrink', graphAnimation,
               preferences.drinkSize)),
       DrinkButton(
-          title: 'Energy Drink',
+          title: AppLocalizations.of(context)!.energyDrink,
           color: Colors.purple,
           inc: () => incDrink(user, drinks, 'energyDrink', graphAnimation,
               preferences.drinkSize),
           dec: () => decDrink(user, drinks, 'energyDrink', graphAnimation,
               preferences.drinkSize)),
       DrinkButton(
-          title: 'Soda',
+          title: AppLocalizations.of(context)!.soda,
           color: Colors.red,
           inc: () => incDrink(
               user, drinks, 'soda', graphAnimation, preferences.drinkSize),
           dec: () => decDrink(
               user, drinks, 'soda', graphAnimation, preferences.drinkSize)),
       DrinkButton(
-          title: 'Alcohol',
+          title: AppLocalizations.of(context)!.alcohol,
           color: Colors.black,
           inc: () => incDrink(
               user, drinks, 'alcohol', graphAnimation, preferences.drinkSize),

@@ -3,6 +3,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ReportCard extends StatelessWidget {
   const ReportCard({Key? key, required this.drink}) : super(key: key);
@@ -24,7 +25,7 @@ class ReportCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${DateFormat.MMMMd().format(drink.date)}',
+              '${DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date)}',
               textAlign: TextAlign.left,
               style: TextStyle(fontSize: 20),
             ),
@@ -37,7 +38,7 @@ class ReportCard extends StatelessWidget {
                 direction: Axis.horizontal,
                 maxValue: preferences.waterGoal.toDouble(),
                 currentValue: drink.water.toDouble(),
-                displayText: preferences.unit == 'imperial' ? 'oz of water' : 'ml of water',
+                displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfWaterOz : AppLocalizations.of(context)!.reportOfWaterMl,
                 backgroundColor: Colors.grey[200] ?? Colors.white,
                 progressColor: Colors.blue[800] ?? Colors.blue,
               ),
@@ -57,7 +58,7 @@ class ReportCard extends StatelessWidget {
                     drink.soda +
                     drink.sportsDrink +
                     drink.alcohol.toDouble(),
-                displayText: preferences.unit == 'imperial' ? 'oz of drinks' : 'ml of drinks',
+                displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfDrinkOz : AppLocalizations.of(context)!.reportOfDrinkMl,
                 backgroundColor: Colors.grey[200] ?? Colors.white,
                 progressColor: Colors.blueGrey,
               ),

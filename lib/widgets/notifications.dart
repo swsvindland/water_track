@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'buttons/button.dart';
 
@@ -47,7 +48,7 @@ class _NotificationsState extends State<Notifications> {
         padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
         child: Column(
           children: [
-            Text('Reminder Notification'),
+            Text(AppLocalizations.of(context)!.reminderNotification),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +57,7 @@ class _NotificationsState extends State<Notifications> {
                 Column(
                   children: [
                     Text(
-                      "Start",
+                      AppLocalizations.of(context)!.start,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 24),
                     ),
@@ -87,7 +88,7 @@ class _NotificationsState extends State<Notifications> {
                 Column(
                   children: [
                     Text(
-                      "End",
+                      AppLocalizations.of(context)!.end,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 24),
                     ),
@@ -122,7 +123,7 @@ class _NotificationsState extends State<Notifications> {
                 update(user, preferences);
               },
               child: Text(
-                'Update',
+                AppLocalizations.of(context)!.update,
                 style: new TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,

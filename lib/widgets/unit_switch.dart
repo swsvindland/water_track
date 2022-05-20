@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/preferences.dart';
 import 'package:water_track/services/database_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UnitSwitch extends StatelessWidget {
   final db = DatabaseService();
@@ -28,7 +29,7 @@ class UnitSwitch extends StatelessWidget {
             minWidth: 100.0,
             height: 35,
             color: Colors.white,
-            child: new Text('Imperial'),
+            child: new Text(AppLocalizations.of(context)!.imperial),
             onPressed: preferences.unit == 'metric'
                 ? () => onPressed(user, preferences)
                 : null),
@@ -39,7 +40,7 @@ class UnitSwitch extends StatelessWidget {
             minWidth: 100.0,
             height: 35,
             color: Colors.white,
-            child: new Text('Metric'),
+            child: new Text(AppLocalizations.of(context)!.metric),
             onPressed: preferences.unit == 'imperial'
                 ? () => onPressed(user, preferences)
                 : null),

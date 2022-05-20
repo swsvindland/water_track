@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'buttons/button.dart';
 
@@ -59,16 +60,16 @@ class _GoalsState extends State<Goals> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('water: ${preferences.waterGoal.toString()}'),
-                Text('total: ${preferences.totalGoal.toString()}'),
-                Text('drink size: ${preferences.drinkSize.toString()}'),
+                Text('${AppLocalizations.of(context)!.water}: ${preferences.waterGoal.toString()}'),
+                Text('${AppLocalizations.of(context)!.total}: ${preferences.totalGoal.toString()}'),
+                Text('${AppLocalizations.of(context)!.drinkSize}: ${preferences.drinkSize.toString()}'),
               ],
             ),
             SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Enter daily water goal',
+                labelText: AppLocalizations.of(context)!.waterGoalField,
               ),
               onChanged: (value) {
                 waterGoal = value;
@@ -78,7 +79,7 @@ class _GoalsState extends State<Goals> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Enter daily fluid goal',
+                labelText: AppLocalizations.of(context)!.fluidGoalField,
               ),
               onChanged: (value) {
                 totalGoal = value;
@@ -88,7 +89,7 @@ class _GoalsState extends State<Goals> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Enter your drink size',
+                labelText: AppLocalizations.of(context)!.drinkSizeField,
               ),
               onChanged: (value) {
                 drinkSize = value;
@@ -100,7 +101,7 @@ class _GoalsState extends State<Goals> {
                 updateGoals(user, preferences);
               },
               child: Text(
-                'Update',
+                AppLocalizations.of(context)!.update,
                 style: new TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,

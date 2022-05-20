@@ -5,6 +5,7 @@ import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:os_detect/os_detect.dart" as Platform;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:water_track/utils/helper.dart';
 import 'package:water_track/widgets/buttons/button.dart';
@@ -75,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Image.asset('images/google-logo.png',
                                     width: 24, height: 24),
                                 SizedBox(width: 8),
-                                Text('Continue with Google',
+                                Text(AppLocalizations.of(context)!.googleSignIn,
                                     style: new TextStyle(
                                         fontSize: 16.0, color: Colors.black)),
                               ],
@@ -111,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       Icon(Icons.apple),
                                       SizedBox(width: 8),
-                                      Text('Continue with Apple',
+                                      Text(AppLocalizations.of(context)!.appleSignIn,
                                           style: new TextStyle(
                                               fontSize: 16.0,
                                               color: Colors.black)),
@@ -139,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                                   loggingIn = false;
                                 });
                               },
-                              child: Text('Continue without Account',
+                              child: Text(AppLocalizations.of(context)!.anonSignIn,
                                   style: new TextStyle(
                                       fontSize: 16.0, color: Colors.white))),
                         ],

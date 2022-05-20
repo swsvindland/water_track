@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationBottom extends StatelessWidget {
   const NavigationBottom({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
@@ -13,18 +14,18 @@ class NavigationBottom extends StatelessWidget {
     }
 
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: AppLocalizations.of(context)!.home,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.insights),
-          label: 'Reports',
+          label: AppLocalizations.of(context)!.reports,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
-          label: 'Settings',
+          label: AppLocalizations.of(context)!.settings,
         ),
       ],
       currentIndex: selectedIndex,

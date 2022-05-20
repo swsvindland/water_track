@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Graph extends StatelessWidget {
   static List<charts.Series<GraphDrinks, String>> _createData(Drinks drinks) {
@@ -62,7 +63,7 @@ class Graph extends StatelessWidget {
                         new charts.ArcRendererConfig(arcWidth: 30)))
             : Container(),
         Container(
-            height: 16, child: Text("Breakdown", textAlign: TextAlign.center)),
+            height: 16, child: Text(AppLocalizations.of(context)!.breakdown, textAlign: TextAlign.center)),
         SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -112,12 +113,12 @@ class Graph extends StatelessWidget {
             Container(
                 width: 60,
                 height: 15,
-                child: Text("Water", textAlign: TextAlign.center)),
+                child: Text(AppLocalizations.of(context)!.water, textAlign: TextAlign.center)),
             SizedBox(width: 24),
             Container(
                 width: 60,
                 height: 15,
-                child: Text("Total", textAlign: TextAlign.center)),
+                child: Text(AppLocalizations.of(context)!.total, textAlign: TextAlign.center)),
           ],
         ),
         SizedBox(height: 8)
