@@ -52,24 +52,45 @@ class App extends StatelessWidget {
           Locale('hi', ''), // Hindi
         ],
         theme: ThemeData(
-          primarySwatch: Colors.lightBlue,
-          primaryTextTheme: TextTheme(
-            headline1: TextStyle(color: Colors.white),
-            headline2: TextStyle(color: Colors.white),
-            headline3: TextStyle(color: Colors.white),
-            headline4: TextStyle(color: Colors.white),
-            headline5: TextStyle(color: Colors.white),
-            headline6: TextStyle(color: Colors.white),
-            subtitle1: TextStyle(color: Colors.white),
-            subtitle2: TextStyle(color: Colors.white),
-            bodyText1: TextStyle(color: Colors.white),
-            bodyText2: TextStyle(color: Colors.white)
-          ),
-          appBarTheme: AppBarTheme(
+            colorSchemeSeed: Colors.lightBlue,
+            brightness: Brightness.light,
+            useMaterial3: true,
             backgroundColor: Colors.lightBlue,
-            foregroundColor: Colors.white
-          )
-        ),
+            scaffoldBackgroundColor: Colors.lightBlue,
+            primaryTextTheme: TextTheme(
+                headline1: TextStyle(color: Colors.white),
+                headline2: TextStyle(color: Colors.white),
+                headline3: TextStyle(color: Colors.white),
+                headline4: TextStyle(color: Colors.white),
+                headline5: TextStyle(color: Colors.white),
+                headline6: TextStyle(color: Colors.white),
+                subtitle1: TextStyle(color: Colors.white),
+                subtitle2: TextStyle(color: Colors.white),
+                bodyText1: TextStyle(color: Colors.white),
+                bodyText2: TextStyle(color: Colors.white)),
+            appBarTheme: AppBarTheme(
+                backgroundColor: Colors.lightBlue,
+                foregroundColor: Colors.white)),
+        darkTheme: ThemeData(
+            colorSchemeSeed: Colors.lightBlue,
+            brightness: Brightness.dark,
+            useMaterial3: true,
+            backgroundColor: Colors.black,
+            scaffoldBackgroundColor: Colors.black,
+            primaryTextTheme: TextTheme(
+                headline1: TextStyle(color: Colors.white),
+                headline2: TextStyle(color: Colors.white),
+                headline3: TextStyle(color: Colors.white),
+                headline4: TextStyle(color: Colors.white),
+                headline5: TextStyle(color: Colors.white),
+                headline6: TextStyle(color: Colors.white),
+                subtitle1: TextStyle(color: Colors.white),
+                subtitle2: TextStyle(color: Colors.white),
+                bodyText1: TextStyle(color: Colors.white),
+                bodyText2: TextStyle(color: Colors.white)),
+            appBarTheme: AppBarTheme(
+                backgroundColor: Colors.black, foregroundColor: Colors.white)),
+        themeMode: ThemeMode.system,
         initialRoute: '/',
         navigatorKey: navigatorKey,
         routes: {

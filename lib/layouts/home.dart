@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.waterTrack, style: TextStyle(color: Colors.white)),
-        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         actions: <Widget>[
           PopupMenuButton<Popup>(
@@ -69,7 +68,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).primaryColor,
       drawer: MediaQuery.of(context).size.width > sm
           ? NavigationDrawer(
               selectedIndex: _selectedIndex, onItemTapped: _onItemTapped)

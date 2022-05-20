@@ -17,7 +17,6 @@ class AboutPage extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(24),

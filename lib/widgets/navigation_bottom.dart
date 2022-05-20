@@ -29,7 +29,6 @@ class NavigationBottom extends StatelessWidget {
         ),
       ],
       currentIndex: selectedIndex,
-      selectedItemColor: Theme.of(context).primaryColor,
       onTap: onItemTapped,
     );
   }
