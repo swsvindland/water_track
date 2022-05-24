@@ -3,8 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
-  final selectedIndex;
-  final onItemTapped;
+  final int selectedIndex;
+  final Function(int) onItemTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class NavigationDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  Icon(Icons.local_drink, color: Colors.white, size: 36),
-                  SizedBox(width: 8),
+                  const Icon(Icons.local_drink, color: Colors.white, size: 36),
+                  const SizedBox(width: 8),
                   Text(AppLocalizations.of(context)!.waterTrack,
-                      style: TextStyle(fontSize: 24, color: Colors.white)),
+                      style: const TextStyle(fontSize: 24, color: Colors.white)),
                 ],
               ),
             ),
@@ -36,7 +36,7 @@ class NavigationDrawer extends StatelessWidget {
           ListTile(
             selected: selectedIndex == 0,
             title: Text(AppLocalizations.of(context)!.home),
-            leading: Icon(Icons.home),
+            leading: const Icon(Icons.home),
             onTap: () {
               // Update the state of the app
               // ...
@@ -48,7 +48,7 @@ class NavigationDrawer extends StatelessWidget {
           ListTile(
             selected: selectedIndex == 1,
             title: Text(AppLocalizations.of(context)!.reports),
-            leading: Icon(Icons.insights),
+            leading: const Icon(Icons.insights),
             onTap: () {
               // Update the state of the app
               // ...
@@ -60,7 +60,7 @@ class NavigationDrawer extends StatelessWidget {
           ListTile(
             selected: selectedIndex == 2,
             title: Text(AppLocalizations.of(context)!.settings),
-            leading: Icon(Icons.settings),
+            leading: const Icon(Icons.settings),
             onTap: () {
               // Update the state of the app
               // ...

@@ -33,8 +33,7 @@ class Drinks {
         energyDrink: 0,
         sportsDrink: 0,
         alcohol: 0,
-        date: DateUtils.dateOnly(DateTime.now())
-    );
+        date: DateUtils.dateOnly(DateTime.now()));
   }
 
   factory Drinks.fromMap(Map data) {
@@ -48,8 +47,7 @@ class Drinks {
         energyDrink: data['energyDrink'] ?? 0,
         sportsDrink: data['sportsDrink'] ?? 0,
         alcohol: data['alcohol'] ?? 0,
-        date: data['date'].toDate()
-    );
+        date: data['date'].toDate());
   }
 
   static Map<String, dynamic> toMap(Drinks data) {
@@ -71,42 +69,42 @@ class Drinks {
     switch (drink) {
       case 'water':
         {
-          this.water += value;
+          water += value;
         }
         break;
       case 'coffee':
         {
-          this.coffee += value;
+          coffee += value;
         }
         break;
       case 'tea':
         {
-          this.tea += value;
+          tea += value;
         }
         break;
       case 'sparklingWater':
         {
-          this.sparklingWater += value;
+          sparklingWater += value;
         }
         break;
       case 'soda':
         {
-          this.soda += value;
+          soda += value;
         }
         break;
       case 'energyDrink':
         {
-          this.energyDrink += value;
+          energyDrink += value;
         }
         break;
       case 'sportsDrink':
         {
-          this.sportsDrink += value;
+          sportsDrink += value;
         }
         break;
       case 'alcohol':
         {
-          this.alcohol += value;
+          alcohol += value;
         }
         break;
     }
@@ -116,65 +114,65 @@ class Drinks {
     switch (drink) {
       case 'water':
         {
-          this.water -= value;
-          if (this.water < 0) {
-            this.water = 0;
+          water -= value;
+          if (water < 0) {
+            water = 0;
           }
         }
         break;
       case 'coffee':
         {
-          this.coffee -= value;
-          if (this.coffee < 0) {
-            this.coffee = 0;
+          coffee -= value;
+          if (coffee < 0) {
+            coffee = 0;
           }
         }
         break;
       case 'tea':
         {
-          this.tea -= value;
-          if (this.tea < 0) {
-            this.tea = 0;
+          tea -= value;
+          if (tea < 0) {
+            tea = 0;
           }
         }
         break;
       case 'sparklingWater':
         {
-          this.sparklingWater -= value;
-          if (this.sparklingWater < 0) {
-            this.sparklingWater = 0;
+          sparklingWater -= value;
+          if (sparklingWater < 0) {
+            sparklingWater = 0;
           }
         }
         break;
       case 'soda':
         {
-          this.soda -= value;
-          if (this.soda < 0) {
-            this.soda = 0;
+          soda -= value;
+          if (soda < 0) {
+            soda = 0;
           }
         }
         break;
       case 'energyDrink':
         {
-          this.energyDrink -= value;
-          if (this.energyDrink < 0) {
-            this.energyDrink = 0;
+          energyDrink -= value;
+          if (energyDrink < 0) {
+            energyDrink = 0;
           }
         }
         break;
       case 'sportsDrink':
         {
-          this.sportsDrink -= value;
-          if (this.sportsDrink < 0) {
-            this.sportsDrink = 0;
+          sportsDrink -= value;
+          if (sportsDrink < 0) {
+            sportsDrink = 0;
           }
         }
         break;
       case 'alcohol':
         {
-          this.alcohol -= value;
-          if (this.alcohol < 0) {
-            this.alcohol = 0;
+          alcohol -= value;
+          if (alcohol < 0) {
+            alcohol = 0;
           }
         }
         break;

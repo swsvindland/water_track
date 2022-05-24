@@ -5,14 +5,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:water_track/utils/helper.dart';
-import "package:os_detect/os_detect.dart" as Platform;
+import "package:os_detect/os_detect.dart" as platform;
 
-class SplashScreenPage extends StatefulWidget {
+class SplashscreenPage extends StatefulWidget {
+  const SplashscreenPage({Key? key}) : super(key: key);
+
   @override
-  _SplashState createState() => _SplashState();
+  State<SplashscreenPage> createState() => _SplashscreenPageState();
 }
 
-class _SplashState extends State<SplashScreenPage> {
+class _SplashscreenPageState extends State<SplashscreenPage> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
   late StreamSubscription iosSubscription;
@@ -21,7 +23,7 @@ class _SplashState extends State<SplashScreenPage> {
   void initState() {
     super.initState();
 
-    if (Platform.isIOS) {
+    if (platform.isIOS) {
       _fcm.requestPermission(
         alert: true,
         announcement: false,
@@ -40,11 +42,11 @@ class _SplashState extends State<SplashScreenPage> {
     User? currentUser = FirebaseAuth.instance.currentUser;
 
     if (currentUser == null) {
-      Timer(Duration(milliseconds: 850),
+      Timer(const Duration(milliseconds: 850),
           () => navigatorKey.currentState!.pushReplacementNamed("/login"));
     } else {
       Timer(
-        Duration(milliseconds: 500),
+        const Duration(milliseconds: 500),
         () {
           updateUserData(_db, currentUser);
           createDefaultPreferences(_db, currentUser);
@@ -61,11 +63,11 @@ class _SplashState extends State<SplashScreenPage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+          padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: const <Widget>[
               Icon(Icons.local_drink, size: 96.0, color: Colors.white),
               SizedBox(height: 75),
               CircularProgressIndicator(

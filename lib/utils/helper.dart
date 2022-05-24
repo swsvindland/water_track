@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import "package:os_detect/os_detect.dart" as Platform;
+import "package:os_detect/os_detect.dart" as platform;
 
 void setFCMData(
   FirebaseFirestore db,
@@ -14,7 +14,7 @@ void setFCMData(
     var tokenRef = db.collection('tokens').doc(user.uid);
     tokenRef.set({
       'created': FieldValue.serverTimestamp(),
-      'platform': Platform.operatingSystem,
+      'platform': platform.operatingSystem,
       'token': fcmToken
     });
   }

@@ -74,15 +74,15 @@ class Preferences {
 
   void changeUnit() {
     if (unit == 'imperial') {
-      this.unit = 'metric';
-      this.waterGoal = 3000;
-      this.totalGoal = 4000;
-      this.drinkSize = 200;
+      unit = 'metric';
+      waterGoal = 3000;
+      totalGoal = 4000;
+      drinkSize = 200;
     } else {
-      this.unit = 'imperial';
-      this.waterGoal = 96;
-      this.totalGoal = 128;
-      this.drinkSize = 8;
+      unit = 'imperial';
+      waterGoal = 96;
+      totalGoal = 128;
+      drinkSize = 8;
     }
   }
 }

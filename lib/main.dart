@@ -15,10 +15,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -32,13 +34,13 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'WaterTrack',
         debugShowCheckedModeBanner: false,
-        localizationsDelegates: [
+        localizationsDelegates: const [
           AppLocalizations.delegate, // Add this line
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [
+        supportedLocales: const [
           Locale('en', ''), // English
           Locale('es', ''), // Spanish
           Locale('pt', ''), // Portuguese
@@ -57,7 +59,7 @@ class App extends StatelessWidget {
             useMaterial3: true,
             backgroundColor: Colors.lightBlue,
             scaffoldBackgroundColor: Colors.lightBlue,
-            primaryTextTheme: TextTheme(
+            primaryTextTheme: const TextTheme(
                 headline1: TextStyle(color: Colors.white),
                 headline2: TextStyle(color: Colors.white),
                 headline3: TextStyle(color: Colors.white),
@@ -68,7 +70,7 @@ class App extends StatelessWidget {
                 subtitle2: TextStyle(color: Colors.white),
                 bodyText1: TextStyle(color: Colors.white),
                 bodyText2: TextStyle(color: Colors.white)),
-            appBarTheme: AppBarTheme(
+            appBarTheme: const AppBarTheme(
                 backgroundColor: Colors.lightBlue,
                 foregroundColor: Colors.white)),
         darkTheme: ThemeData(
@@ -77,7 +79,7 @@ class App extends StatelessWidget {
             useMaterial3: true,
             backgroundColor: Colors.black,
             scaffoldBackgroundColor: Colors.black,
-            primaryTextTheme: TextTheme(
+            primaryTextTheme: const TextTheme(
                 headline1: TextStyle(color: Colors.white),
                 headline2: TextStyle(color: Colors.white),
                 headline3: TextStyle(color: Colors.white),
@@ -88,16 +90,16 @@ class App extends StatelessWidget {
                 subtitle2: TextStyle(color: Colors.white),
                 bodyText1: TextStyle(color: Colors.white),
                 bodyText2: TextStyle(color: Colors.white)),
-            appBarTheme: AppBarTheme(
+            appBarTheme: const AppBarTheme(
                 backgroundColor: Colors.black, foregroundColor: Colors.white)),
         themeMode: ThemeMode.system,
         initialRoute: '/',
         navigatorKey: navigatorKey,
         routes: {
-          '/': (context) => SplashScreenPage(),
-          '/login': (context) => LoginPage(),
-          '/home': (context) => HomePage(),
-          '/about': (context) => AboutPage(),
+          '/': (context) => const SplashscreenPage(),
+          '/login': (context) => const LoginPage(),
+          '/home': (context) => const HomePage(),
+          '/about': (context) => const AboutPage(),
         },
       ),
     );

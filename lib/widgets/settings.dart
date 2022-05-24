@@ -30,10 +30,10 @@ class Settings extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 UnitSwitch(),
-                SizedBox(height: 16),
-                Goals(),
-                SizedBox(height: 16),
-                Notifications()
+                const SizedBox(height: 16),
+                const Goals(),
+                const SizedBox(height: 16),
+                const Notifications()
               ],
             ),
           ),

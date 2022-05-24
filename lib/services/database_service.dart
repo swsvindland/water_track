@@ -17,7 +17,6 @@ class DatabaseService {
           .snapshots()
           .map((snap) => Drinks.fromMap(snap.data()!));
     } catch (err) {
-      print(err);
       return Stream.error(err);
     }
   }
@@ -31,7 +30,6 @@ class DatabaseService {
           .doc(DateUtils.dateOnly(date).toIso8601String())
           .set(Drinks.toMap(drinks));
     } catch (err) {
-      print(err);
       return Future.error(err);
     }
   }
@@ -45,7 +43,6 @@ class DatabaseService {
           .snapshots()
           .map((event) => event.docs.map((e) => Drinks.fromMap(e.data())));
     } catch (err) {
-      print(err);
       return Stream.error(err);
     }
   }
@@ -58,7 +55,6 @@ class DatabaseService {
           .snapshots()
           .map((snap) => Preferences.fromMap(snap.data()!));
     } catch (err) {
-      print(err);
       return Stream.error(err);
     }
   }
@@ -70,7 +66,6 @@ class DatabaseService {
           .doc(id)
           .set(Preferences.toMap(preferences));
     } catch (err) {
-      print(err);
       return Future.error(err);
     }
   }

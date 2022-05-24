@@ -46,10 +46,10 @@ class Home extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  child: Graph(),
+                  child: const Graph(),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Expanded(flex: 3, child: Buttons()),
             ],
           )
@@ -70,11 +70,11 @@ class Home extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        child: Graph(),
+                        child: const Graph(),
                       ),
                     ),
                   ),
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                   Expanded(flex: 1, child: Buttons()),
                 ],
               ),

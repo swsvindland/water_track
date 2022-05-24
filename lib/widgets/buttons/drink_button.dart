@@ -7,17 +7,18 @@ class DrinkButton extends StatelessWidget {
   final Function()? inc;
   final Function()? dec;
 
-  DrinkButton(
-      {required this.title,
+  const DrinkButton(
+      {Key? key,
+      required this.title,
       required this.color,
       required this.inc,
       required this.dec,
       this.textColor})
-      : super();
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 175,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,14 +30,14 @@ class DrinkButton extends StatelessWidget {
             minWidth: 125.0,
             height: 35,
             color: color,
-            child: new Text(
+            onPressed: inc,
+            child: Text(
               title,
-              style: new TextStyle(
+              style: TextStyle(
                 fontSize: 12.0,
-                color: textColor != null ? textColor : Colors.white,
+                color: textColor ?? Colors.white,
               ),
             ),
-            onPressed: inc,
           ),
           MaterialButton(
             height: 35,
@@ -44,12 +45,12 @@ class DrinkButton extends StatelessWidget {
             onPressed: dec,
             elevation: 2.0,
             color: color,
+            shape: const CircleBorder(),
             child: Icon(
               Icons.remove,
               size: 15.0,
-              color: textColor != null ? textColor : Colors.white,
+              color: textColor ?? Colors.white,
             ),
-            shape: CircleBorder(),
           )
         ],
       ),

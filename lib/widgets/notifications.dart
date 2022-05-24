@@ -8,9 +8,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'buttons/button.dart';
 
 class Notifications extends StatefulWidget {
-  Notifications() : super();
+  const Notifications({Key? key}) : super(key: key);
 
-  _NotificationsState createState() => _NotificationsState();
+  @override
+  State<Notifications> createState() => _NotificationsState();
 }
 
 class _NotificationsState extends State<Notifications> {
@@ -45,11 +46,11 @@ class _NotificationsState extends State<Notifications> {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
+        padding: const EdgeInsets.all(24),
         child: Column(
           children: [
             Text(AppLocalizations.of(context)!.reminderNotification),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,18 +60,18 @@ class _NotificationsState extends State<Notifications> {
                     Text(
                       AppLocalizations.of(context)!.start,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 24),
+                      style: const TextStyle(fontSize: 24),
                     ),
                     OutlinedButton(
                       onPressed: () async {
                         TimeOfDay? picked = await showTimePicker(
                           context: context,
-                          initialTime: TimeOfDay(hour: 12, minute: 00),
+                          initialTime: const TimeOfDay(hour: 12, minute: 00),
                           builder: (BuildContext context, Widget? child) {
                             return MediaQuery(
                               data: MediaQuery.of(context)
                                   .copyWith(alwaysUse24HourFormat: true),
-                              child: child ?? new Text('error'),
+                              child: child ?? const Text('error'),
                             );
                           },
                         );
@@ -84,24 +85,24 @@ class _NotificationsState extends State<Notifications> {
                     ),
                   ],
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Column(
                   children: [
                     Text(
                       AppLocalizations.of(context)!.end,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 24),
+                      style: const TextStyle(fontSize: 24),
                     ),
                     OutlinedButton(
                       onPressed: () async {
                         TimeOfDay? picked = await showTimePicker(
                           context: context,
-                          initialTime: TimeOfDay(hour: 12, minute: 00),
+                          initialTime: const TimeOfDay(hour: 12, minute: 00),
                           builder: (BuildContext context, Widget? child) {
                             return MediaQuery(
                               data: MediaQuery.of(context)
                                   .copyWith(alwaysUse24HourFormat: true),
-                              child: child ?? new Text('error'),
+                              child: child ?? const Text('error'),
                             );
                           },
                         );
@@ -117,19 +118,19 @@ class _NotificationsState extends State<Notifications> {
                 )
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Button(
               onPressed: () {
                 update(user, preferences);
               },
+              variant: "secondary",
               child: Text(
                 AppLocalizations.of(context)!.update,
-                style: new TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
                 ),
               ),
-              variant: "secondary",
             ),
           ],
         ),

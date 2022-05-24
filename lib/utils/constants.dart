@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-final int xs = 370;
-final int sm = 600;
-final int md = 900;
-final int lg = 1200;
-final int xl = 1536;
+const int xs = 370;
+const int sm = 600;
+const int md = 900;
+const int lg = 1200;
+const int xl = 1536;

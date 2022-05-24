@@ -3,14 +3,16 @@ import 'package:water_track/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
+  const AboutPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.about, style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.about, style: const TextStyle(color: Colors.white)),
         elevation: 0,
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
             navigatorKey.currentState!.pop();
@@ -19,7 +21,7 @@ class AboutPage extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
           child: SizedBox(
             width: sm.toDouble(),
             child: Column(
@@ -28,19 +30,19 @@ class AboutPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   AppLocalizations.of(context)!.aboutPageCredits,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                Text(
+                const Text(
                   'Sam Svindland',
                   style: TextStyle(color: Colors.white, fontSize: 12),
                 ),
-                SizedBox(height: 36),
+                const SizedBox(height: 36),
                 Text(
                   AppLocalizations.of(context)!.aboutPageVersion,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                Text(
-                  '2.0.1',
+                const Text(
+                  '2.1.0',
                   style: TextStyle(color: Colors.white, fontSize: 12),
                 ),
               ],

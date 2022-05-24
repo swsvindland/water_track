@@ -6,6 +6,6 @@ class GraphAnimationProvider with ChangeNotifier {
   bool get animate => _animate;
 
   void setAnimate(bool animate) {
-    this._animate = animate;
+    _animate = animate;
   }
 }

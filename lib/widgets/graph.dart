@@ -7,6 +7,8 @@ import 'package:water_track/services/graph_animation_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Graph extends StatelessWidget {
+  const Graph({Key? key}) : super(key: key);
+
   static List<charts.Series<GraphDrinks, String>> _createData(Drinks drinks) {
     var none = drinks.water +
                 drinks.energyDrink +
@@ -21,19 +23,19 @@ class Graph extends StatelessWidget {
         : 0;
 
     var data = [
-      new GraphDrinks('Water', drinks.water, Colors.blue[800]!),
-      new GraphDrinks('Coffee', drinks.coffee, Colors.brown),
-      new GraphDrinks('Sparkling Water', drinks.sparklingWater, Colors.orange),
-      new GraphDrinks('Tea', drinks.tea, Colors.green),
-      new GraphDrinks('Soda', drinks.soda, Colors.red),
-      new GraphDrinks('Energy Drink', drinks.energyDrink, Colors.purple),
-      new GraphDrinks('Sports Drink', drinks.sportsDrink, Colors.yellow),
-      new GraphDrinks('Alcohol', drinks.alcohol, Colors.black),
-      new GraphDrinks('None', none, Colors.grey[200]!)
+      GraphDrinks('Water', drinks.water, Colors.blue[800]!),
+      GraphDrinks('Coffee', drinks.coffee, Colors.brown),
+      GraphDrinks('Sparkling Water', drinks.sparklingWater, Colors.orange),
+      GraphDrinks('Tea', drinks.tea, Colors.green),
+      GraphDrinks('Soda', drinks.soda, Colors.red),
+      GraphDrinks('Energy Drink', drinks.energyDrink, Colors.purple),
+      GraphDrinks('Sports Drink', drinks.sportsDrink, Colors.yellow),
+      GraphDrinks('Alcohol', drinks.alcohol, Colors.black),
+      GraphDrinks('None', none, Colors.grey[200]!)
     ];
 
     return [
-      new charts.Series<GraphDrinks, String>(
+      charts.Series<GraphDrinks, String>(
         id: 'Drinks',
         domainFn: (GraphDrinks drinks, _) => drinks.drink,
         measureFn: (GraphDrinks drinks, _) => drinks.value,
@@ -54,22 +56,23 @@ class Graph extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        graphData.length > 0
+        graphData.isNotEmpty
             ? Flexible(
                 child: charts.PieChart<String>(graphData,
                     animate: context.watch<GraphAnimationProvider>().animate,
-                    animationDuration: Duration(milliseconds: 300),
-                    defaultRenderer:
-                        new charts.ArcRendererConfig(arcWidth: 30)))
+                    animationDuration: const Duration(milliseconds: 300),
+                    defaultRenderer: charts.ArcRendererConfig(arcWidth: 30)))
             : Container(),
-        Container(
-            height: 16, child: Text(AppLocalizations.of(context)!.breakdown, textAlign: TextAlign.center)),
-        SizedBox(height: 8),
+        SizedBox(
+            height: 16,
+            child: Text(AppLocalizations.of(context)!.breakdown,
+                textAlign: TextAlign.center)),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 60,
               height: MediaQuery.of(context).size.height * 0.15,
               child: FAProgressBar(
@@ -82,8 +85,8 @@ class Graph extends StatelessWidget {
                 progressColor: Colors.blue[800] ?? Colors.blue,
               ),
             ),
-            SizedBox(width: 24),
-            Container(
+            const SizedBox(width: 24),
+            SizedBox(
               width: 60,
               height: MediaQuery.of(context).size.height * 0.15,
               child: FAProgressBar(
@@ -105,23 +108,25 @@ class Graph extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
                 width: 60,
                 height: 15,
-                child: Text(AppLocalizations.of(context)!.water, textAlign: TextAlign.center)),
-            SizedBox(width: 24),
-            Container(
+                child: Text(AppLocalizations.of(context)!.water,
+                    textAlign: TextAlign.center)),
+            const SizedBox(width: 24),
+            SizedBox(
                 width: 60,
                 height: 15,
-                child: Text(AppLocalizations.of(context)!.total, textAlign: TextAlign.center)),
+                child: Text(AppLocalizations.of(context)!.total,
+                    textAlign: TextAlign.center)),
           ],
         ),
-        SizedBox(height: 8)
+        const SizedBox(height: 8)
       ],
     );
   }

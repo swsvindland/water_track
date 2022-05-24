@@ -54,15 +54,10 @@ Future<User?> signInWithApple() async {
     final authResult =
     await _auth.signInWithCredential(oauthCredential);
 
-    // final displayName =
-    //     '${appleCredential.givenName} ${appleCredential.familyName}';
-    // final userEmail = '${appleCredential.email}';
-
     final firebaseUser = authResult.user;
 
     return firebaseUser;
   } catch (error) {
-    print(error);
     return null;
   }
 }

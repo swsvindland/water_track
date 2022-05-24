@@ -14,6 +14,8 @@ import '../widgets/reports.dart';
 import '../widgets/settings.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -34,7 +36,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.waterTrack, style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.waterTrack, style: const TextStyle(color: Colors.white)),
         elevation: 0,
         actions: <Widget>[
           PopupMenuButton<Popup>(
@@ -48,19 +50,19 @@ class _HomePageState extends State<HomePage> {
                     .pushNamedAndRemoveUntil('/login', (route) => false);
               }
             },
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             itemBuilder: (BuildContext context) => <PopupMenuEntry<Popup>>[
               PopupMenuItem<Popup>(
                 value: Popup.about,
                 child: ListTile(
-                  leading: Icon(Icons.info),
+                  leading: const Icon(Icons.info),
                   title: Text(AppLocalizations.of(context)!.about),
                 ),
               ),
               PopupMenuItem<Popup>(
                 value: Popup.logOut,
                 child: ListTile(
-                  leading: Icon(Icons.exit_to_app),
+                  leading: const Icon(Icons.exit_to_app),
                   title: Text(AppLocalizations.of(context)!.logOut),
                 ),
               ),
@@ -76,10 +78,10 @@ class _HomePageState extends State<HomePage> {
         initialData: Preferences.empty(),
         value: db.streamPreferences(user!.uid),
         child: _selectedIndex == 0
-            ? Home()
+            ? const Home()
             : _selectedIndex == 1
-                ? Reports()
-                : Settings(),
+                ? const Reports()
+                : const Settings(),
       ),
       bottomNavigationBar: MediaQuery.of(context).size.width < sm
           ? NavigationBottom(

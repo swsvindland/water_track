@@ -6,6 +6,8 @@ import 'package:water_track/services/database_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UnitSwitch extends StatelessWidget {
+  UnitSwitch({Key? key}) : super(key: key);
+
   final db = DatabaseService();
 
   void onPressed(User? user, Preferences preferences) {
@@ -29,10 +31,10 @@ class UnitSwitch extends StatelessWidget {
             minWidth: 100.0,
             height: 35,
             color: Colors.white,
-            child: new Text(AppLocalizations.of(context)!.imperial),
             onPressed: preferences.unit == 'metric'
                 ? () => onPressed(user, preferences)
-                : null),
+                : null,
+            child: Text(AppLocalizations.of(context)!.imperial)),
         MaterialButton(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -40,10 +42,10 @@ class UnitSwitch extends StatelessWidget {
             minWidth: 100.0,
             height: 35,
             color: Colors.white,
-            child: new Text(AppLocalizations.of(context)!.metric),
             onPressed: preferences.unit == 'imperial'
                 ? () => onPressed(user, preferences)
-                : null),
+                : null,
+            child: Text(AppLocalizations.of(context)!.metric)),
       ],
     );
   }

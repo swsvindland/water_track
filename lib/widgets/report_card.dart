@@ -19,19 +19,19 @@ class ReportCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date)}',
+              DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date),
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
-            Divider(),
-            SizedBox(height: 8),
-            Container(
+            const Divider(),
+            const SizedBox(height: 8),
+            SizedBox(
               width: MediaQuery.of(context).size.width * .85,
               height: 16,
               child: FAProgressBar(
@@ -43,8 +43,8 @@ class ReportCard extends StatelessWidget {
                 progressColor: Colors.blue[800] ?? Colors.blue,
               ),
             ),
-            SizedBox(height: 16),
-            Container(
+            const SizedBox(height: 16),
+            SizedBox(
               width: MediaQuery.of(context).size.width * .85,
               height: 16,
               child: FAProgressBar(

@@ -8,6 +8,8 @@ import 'drink_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Buttons extends StatelessWidget {
+  Buttons({Key? key}) : super(key: key);
+
   final db = DatabaseService();
 
   void incDrink(User? user, Drinks drinks, String drink,

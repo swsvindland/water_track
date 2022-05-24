@@ -17,13 +17,13 @@ class Reports extends StatelessWidget {
 
     return Center(
       child: Padding(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         child: SizedBox(
           width: sm.toDouble(),
           child: StreamProvider<Iterable<Drinks>>.value(
             initialData: [Drinks.empty()],
             value: db.streamAllDrinks(user!.uid),
-            child: ReportsList()
+            child: const ReportsList()
           ),
         ),
       ),

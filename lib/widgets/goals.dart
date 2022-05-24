@@ -8,9 +8,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'buttons/button.dart';
 
 class Goals extends StatefulWidget {
-  Goals() : super();
+  const Goals({Key? key}) : super(key: key);
 
-  _GoalsState createState() => _GoalsState();
+  @override
+  State<Goals> createState() => _GoalsState();
 }
 
 class _GoalsState extends State<Goals> {
@@ -51,7 +52,7 @@ class _GoalsState extends State<Goals> {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Padding(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,49 +66,49 @@ class _GoalsState extends State<Goals> {
                 Text('${AppLocalizations.of(context)!.drinkSize}: ${preferences.drinkSize.toString()}'),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.waterGoalField,
               ),
               onChanged: (value) {
                 waterGoal = value;
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.fluidGoalField,
               ),
               onChanged: (value) {
                 totalGoal = value;
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.drinkSizeField,
               ),
               onChanged: (value) {
                 drinkSize = value;
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Button(
               onPressed: () {
                 updateGoals(user, preferences);
               },
+              variant: "secondary",
               child: Text(
                 AppLocalizations.of(context)!.update,
-                style: new TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
                 ),
               ),
-              variant: "secondary",
             ),
           ],
         ),
