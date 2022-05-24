@@ -90,7 +90,7 @@ class Buttons extends StatelessWidget {
               user, drinks, 'soda', graphAnimation, preferences.drinkSize)),
       DrinkButton(
           title: AppLocalizations.of(context)!.alcohol,
-          color: Colors.black,
+          color: Colors.black54,
           inc: () => incDrink(
               user, drinks, 'alcohol', graphAnimation, preferences.drinkSize),
           dec: () => decDrink(

@@ -30,7 +30,7 @@ class Graph extends StatelessWidget {
       GraphDrinks('Soda', drinks.soda, Colors.red),
       GraphDrinks('Energy Drink', drinks.energyDrink, Colors.purple),
       GraphDrinks('Sports Drink', drinks.sportsDrink, Colors.yellow),
-      GraphDrinks('Alcohol', drinks.alcohol, Colors.black),
+      GraphDrinks('Alcohol', drinks.alcohol, Colors.black54),
       GraphDrinks('None', none, Colors.grey[200]!)
     ];
 
