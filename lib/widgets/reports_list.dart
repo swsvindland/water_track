@@ -8,7 +8,7 @@ class ReportsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var drinks = Provider.of<Iterable<Drinks>>(context).toList();
+    var drinks = Provider.of<Iterable<Drinks>>(context).toList().reversed.toList();
 
     return ListView.builder(
       padding: const EdgeInsets.all(8),
