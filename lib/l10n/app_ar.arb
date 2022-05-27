@@ -34,5 +34,9 @@
   "reportOfWaterOz": "أوقية من الماء",
   "reportOfWaterMl": "مل من الماء",
   "reportOfDrinkOz": "أوقية من الشراب",
-  "reportOfDrinkMl": "مل من الشراب"
+  "reportOfDrinkMl": "مل من الشراب",
+  "deleteAccount": "حذف الحساب",
+  "deleteAccountConfirm": "سيؤدي هذا إلى حذف حسابك وجميع بيانات المستخدم إلى الأبد. هل أنت واثق؟",
+  "delete": "يحذف",
+  "cancel": "يلغي"
 }

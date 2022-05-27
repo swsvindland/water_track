@@ -34,5 +34,9 @@
   "reportOfWaterOz": "水のオンス",
   "reportOfWaterMl": "水ml",
   "reportOfDrinkOz": "飲み物のオンス",
-  "reportOfDrinkMl": "飲み物のml"
+  "reportOfDrinkMl": "飲み物のml",
+  "deleteAccount": "アカウントを削除する",
+  "deleteAccountConfirm": "これにより、アカウントとすべてのユーザーデータが完全に削除されます。 本気ですか？",
+  "delete": "消去",
+  "cancel": "キャンセル"
 }

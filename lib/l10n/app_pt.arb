@@ -34,5 +34,9 @@
   "reportOfWaterOz": "oz de água",
   "reportOfWaterMl": "ml de água",
   "reportOfDrinkOz": "oz de bebida",
-  "reportOfDrinkMl": "ml de bebida"
+  "reportOfDrinkMl": "ml de bebida",
+  "deleteAccount": "Deletar conta",
+  "deleteAccountConfirm": "Isso excluirá sua conta e todos os dados do usuário para sempre. Tem certeza?",
+  "delete": "Deletar",
+  "cancel": "Cancelar"
 }

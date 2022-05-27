@@ -34,5 +34,9 @@
   "reportOfWaterOz": "पानी का आउंस",
   "reportOfWaterMl": "पानी का मिलीलीटर",
   "reportOfDrinkOz": "पेय का आउंस",
-  "reportOfDrinkMl": "पेय का मिलीलीटर"
+  "reportOfDrinkMl": "पेय का मिलीलीटर",
+  "deleteAccount": "खाता हटा दो",
+  "deleteAccountConfirm": "यह आपके खाते और सभी उपयोगकर्ता डेटा को हमेशा के लिए हटा देगा। क्या आपको यकीन है?",
+  "delete": "मिटाना",
+  "cancel": "रद्द करना"
 }

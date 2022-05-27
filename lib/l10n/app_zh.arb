@@ -34,5 +34,9 @@
   "reportOfWaterOz": "盎司水",
   "reportOfWaterMl": "毫升水",
   "reportOfDrinkOz": "盎司饮料",
-  "reportOfDrinkMl": "毫升饮料"
+  "reportOfDrinkMl": "毫升饮料",
+  "deleteAccount": "删除帐户",
+  "deleteAccountConfirm": "这将永远删除您的帐户和所有用户数据。 你确定吗？",
+  "delete": "删除",
+  "cancel": "取消"
 }

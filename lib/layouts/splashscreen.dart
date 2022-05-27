@@ -41,6 +41,8 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
   navigateUser() {
     User? currentUser = FirebaseAuth.instance.currentUser;
 
+    print(currentUser?.uid);
+
     if (currentUser == null) {
       Timer(const Duration(milliseconds: 850),
           () => navigatorKey.currentState!.pushReplacementNamed("/login"));
