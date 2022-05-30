@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:water_track/widgets/app_bar_ad.dart';
 import 'package:water_track/widgets/navigation_bottom.dart';
 import 'package:water_track/widgets/navigation_drawer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.waterTrack, style: const TextStyle(color: Colors.white)),
+        title: const AppBarAd(),
         elevation: 0,
         actions: <Widget>[
           PopupMenuButton<Popup>(
