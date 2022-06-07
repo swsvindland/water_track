@@ -19,16 +19,31 @@ class DrinkButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 175,
+      width: 225,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           MaterialButton(
+            height: 50,
+            minWidth: 35,
+            elevation: 0,
+            onPressed: dec,
+            color: color,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.horizontal(left: Radius.circular(16), right: Radius.zero)),
+            child: Icon(
+              Icons.remove,
+              size: 15.0,
+              color: textColor ?? Colors.white,
+            ),
+          ),
+          MaterialButton(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0)),
-            minWidth: 125.0,
-            height: 35,
+                borderRadius: BorderRadius.circular(0.0)),
+            minWidth: 150.0,
+            height: 50,
+            elevation: 0,
             color: color,
             onPressed: inc,
             child: Text(
@@ -40,14 +55,15 @@ class DrinkButton extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            height: 35,
+            height: 50,
             minWidth: 35,
-            onPressed: dec,
-            elevation: 2.0,
+            elevation: 0,
+            onPressed: inc,
             color: color,
-            shape: const CircleBorder(),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.horizontal(left: Radius.zero, right: Radius.circular(16))),
             child: Icon(
-              Icons.remove,
+              Icons.add,
               size: 15.0,
               color: textColor ?? Colors.white,
             ),
