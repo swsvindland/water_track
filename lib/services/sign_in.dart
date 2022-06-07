@@ -27,6 +27,25 @@ Future<User?> signInWithGoogle() async {
   return firebaseUser;
 }
 
+Future<User?> signInWithGoogleWeb() async {
+  // Create a new provider
+  GoogleAuthProvider googleProvider = GoogleAuthProvider();
+
+  googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  googleProvider.setCustomParameters({
+    'login_hint': 'user@example.com'
+  });
+
+  // Once signed in, return the UserCredential
+  final UserCredential authResult = await FirebaseAuth.instance.signInWithPopup(googleProvider);
+
+  final User? firebaseUser = authResult.user;
+
+  final User? currentUser = _auth.currentUser;
+  assert(firebaseUser?.uid == currentUser?.uid);
+  return firebaseUser;
+}
+
 String sha256ofString(String input) {
   final bytes = utf8.encode(input);
   final digest = sha256.convert(bytes);

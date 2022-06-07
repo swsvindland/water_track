@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
@@ -55,16 +56,31 @@ class _LoginPageState extends State<LoginPage> {
                               setState(() {
                                 loggingIn = true;
                               });
-                              signInWithGoogle().then((User? user) {
-                                if (user != null) {
-                                  updateUserData(_db, user);
-                                  createDefaultPreferences(_db, user);
-                                  setFCMData(_db, _fcm, user);
-                                  navigatorKey.currentState!
-                                      .pushNamedAndRemoveUntil('/home',
-                                          (Route<dynamic> route) => false);
-                                }
-                              });
+
+                              if (platform.isBrowser) {
+                                signInWithGoogleWeb().then((User? user) {
+                                  if (user != null) {
+                                    updateUserData(_db, user);
+                                    createDefaultPreferences(_db, user);
+                                    setFCMData(_db, _fcm, user);
+                                    navigatorKey.currentState!
+                                        .pushNamedAndRemoveUntil('/home',
+                                            (Route<dynamic> route) => false);
+                                  }
+                                });
+                              }
+                              else {
+                                signInWithGoogle().then((User? user) {
+                                  if (user != null) {
+                                    updateUserData(_db, user);
+                                    createDefaultPreferences(_db, user);
+                                    setFCMData(_db, _fcm, user);
+                                    navigatorKey.currentState!
+                                        .pushNamedAndRemoveUntil('/home',
+                                            (Route<dynamic> route) => false);
+                                  }
+                                });
+                              }
                               setState(() {
                                 loggingIn = false;
                               });
