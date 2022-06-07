@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/layouts/layouts.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
@@ -57,15 +58,22 @@ class App extends StatelessWidget {
             colorSchemeSeed: background,
             brightness: Brightness.light,
             useMaterial3: true,
+            textTheme: GoogleFonts.oswaldTextTheme(),
             backgroundColor: background,
             scaffoldBackgroundColor: background,
             appBarTheme: const AppBarTheme(
                 backgroundColor: background,
-                foregroundColor: Colors.white)),
+                foregroundColor: Colors.white,
+            ),
+            cardTheme: const CardTheme(
+              color: primaryDark
+            )
+        ),
         darkTheme: ThemeData(
             colorSchemeSeed: background,
             brightness: Brightness.dark,
             useMaterial3: true,
+            textTheme: GoogleFonts.oswaldTextTheme(),
             backgroundColor: Colors.black,
             scaffoldBackgroundColor: Colors.black,
             appBarTheme: const AppBarTheme(

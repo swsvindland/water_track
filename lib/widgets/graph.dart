@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:water_track/utils/constants.dart';
 
 class Graph extends StatelessWidget {
   const Graph({Key? key}) : super(key: key);
@@ -23,14 +23,14 @@ class Graph extends StatelessWidget {
         : 0;
 
     var data = [
-      GraphDrinks('Water', drinks.water, Colors.blue[800]!),
-      GraphDrinks('Coffee', drinks.coffee, Colors.brown),
-      GraphDrinks('Sparkling Water', drinks.sparklingWater, Colors.orange),
-      GraphDrinks('Tea', drinks.tea, Colors.green),
-      GraphDrinks('Soda', drinks.soda, Colors.red),
-      GraphDrinks('Energy Drink', drinks.energyDrink, Colors.purple),
-      GraphDrinks('Sports Drink', drinks.sportsDrink, Colors.yellow),
-      GraphDrinks('Alcohol', drinks.alcohol, Colors.grey[700]!),
+      GraphDrinks('Water', drinks.water, primary),
+      GraphDrinks('Sparkling Water', drinks.sparklingWater, primaryDark),
+      GraphDrinks('Sports Drink', drinks.sportsDrink, primaryLight),
+      GraphDrinks('Coffee', drinks.coffee, secondaryDark),
+      GraphDrinks('Tea', drinks.tea, secondary),
+      GraphDrinks('Soda', drinks.soda, ternary),
+      GraphDrinks('Energy Drink', drinks.energyDrink, ternaryLight),
+      GraphDrinks('Alcohol', drinks.alcohol, ternaryDark),
       GraphDrinks('None', none, Colors.grey[200]!)
     ];
 
@@ -52,82 +52,56 @@ class Graph extends StatelessWidget {
     final preferences = Provider.of<Preferences>(context);
     var graphData = _createData(drinks);
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        graphData.isNotEmpty
-            ? Flexible(
-                child: charts.PieChart<String>(graphData,
-                    animate: context.watch<GraphAnimationProvider>().animate,
-                    animationDuration: const Duration(milliseconds: 300),
-                    defaultRenderer: charts.ArcRendererConfig(arcWidth: 30)))
-            : Container(),
-        SizedBox(
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          graphData.isNotEmpty
+              ? SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: charts.PieChart<String>(graphData,
+                      animate: context.watch<GraphAnimationProvider>().animate,
+                      animationDuration: const Duration(milliseconds: 300),
+                      defaultRenderer: charts.ArcRendererConfig(arcWidth: 180)))
+              : Container(),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: 300,
             height: 16,
-            child: Text(AppLocalizations.of(context)!.breakdown,
-                textAlign: TextAlign.center)),
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 60,
-              height: MediaQuery.of(context).size.height * 0.15,
-              child: FAProgressBar(
-                verticalDirection: VerticalDirection.up,
-                direction: Axis.vertical,
-                maxValue: preferences.waterGoal.toDouble(),
-                currentValue: drinks.water.toDouble(),
-                displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
-                backgroundColor: Colors.grey[200] ?? Colors.white,
-                progressColor: Colors.blue[800] ?? Colors.blue,
-              ),
+            child: FAProgressBar(
+              maxValue: preferences.waterGoal.toDouble(),
+              currentValue: drinks.water.toDouble(),
+              displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
+              displayTextStyle: const TextStyle(color: background),
+              backgroundColor: primary,
+              progressColor: primaryLight,
             ),
-            const SizedBox(width: 24),
-            SizedBox(
-              width: 60,
-              height: MediaQuery.of(context).size.height * 0.15,
-              child: FAProgressBar(
-                verticalDirection: VerticalDirection.up,
-                direction: Axis.vertical,
-                maxValue: preferences.totalGoal.toDouble(),
-                currentValue: drinks.water +
-                    drinks.energyDrink +
-                    drinks.tea +
-                    drinks.coffee +
-                    drinks.sparklingWater +
-                    drinks.soda +
-                    drinks.sportsDrink +
-                    drinks.alcohol.toDouble(),
-                displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
-                backgroundColor: Colors.grey[200] ?? Colors.white,
-                progressColor: Colors.blueGrey,
-              ),
+          ),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: 300,
+            height: 16,
+            child: FAProgressBar(
+              maxValue: preferences.totalGoal.toDouble(),
+              currentValue: drinks.water +
+                  drinks.energyDrink +
+                  drinks.tea +
+                  drinks.coffee +
+                  drinks.sparklingWater +
+                  drinks.soda +
+                  drinks.sportsDrink +
+                  drinks.alcohol.toDouble(),
+              displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
+              displayTextStyle: const TextStyle(color: background),
+              backgroundColor: primary,
+              progressColor: primaryLight,
             ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-                width: 60,
-                height: 15,
-                child: Text(AppLocalizations.of(context)!.water,
-                    textAlign: TextAlign.center)),
-            const SizedBox(width: 24),
-            SizedBox(
-                width: 60,
-                height: 15,
-                child: Text(AppLocalizations.of(context)!.total,
-                    textAlign: TextAlign.center)),
-          ],
-        ),
-        const SizedBox(height: 8)
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

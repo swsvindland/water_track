@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../utils/constants.dart';
+
 class ReportCard extends StatelessWidget {
   const ReportCard({Key? key, required this.drink}) : super(key: key);
   final Drinks drink;
@@ -16,10 +18,10 @@ class ReportCard extends StatelessWidget {
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,8 +41,9 @@ class ReportCard extends StatelessWidget {
                 maxValue: preferences.waterGoal.toDouble(),
                 currentValue: drink.water.toDouble(),
                 displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfWaterOz : AppLocalizations.of(context)!.reportOfWaterMl,
-                backgroundColor: Colors.grey[200] ?? Colors.white,
-                progressColor: Colors.blue[800] ?? Colors.blue,
+                displayTextStyle: const TextStyle(color: background),
+                backgroundColor: primary,
+                progressColor: primaryLight,
               ),
             ),
             const SizedBox(height: 16),
@@ -59,8 +62,9 @@ class ReportCard extends StatelessWidget {
                     drink.sportsDrink +
                     drink.alcohol.toDouble(),
                 displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfDrinkOz : AppLocalizations.of(context)!.reportOfDrinkMl,
-                backgroundColor: Colors.grey[200] ?? Colors.white,
-                progressColor: Colors.blueGrey,
+                displayTextStyle: const TextStyle(color: background),
+                backgroundColor: primary,
+                progressColor: primaryLight,
               ),
             ),
           ],
