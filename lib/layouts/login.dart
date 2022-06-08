@@ -56,31 +56,16 @@ class _LoginPageState extends State<LoginPage> {
                               setState(() {
                                 loggingIn = true;
                               });
-
-                              if (platform.isBrowser) {
-                                signInWithGoogleWeb().then((User? user) {
-                                  if (user != null) {
-                                    updateUserData(_db, user);
-                                    createDefaultPreferences(_db, user);
-                                    setFCMData(_db, _fcm, user);
-                                    navigatorKey.currentState!
-                                        .pushNamedAndRemoveUntil('/home',
-                                            (Route<dynamic> route) => false);
-                                  }
-                                });
-                              }
-                              else {
-                                signInWithGoogle().then((User? user) {
-                                  if (user != null) {
-                                    updateUserData(_db, user);
-                                    createDefaultPreferences(_db, user);
-                                    setFCMData(_db, _fcm, user);
-                                    navigatorKey.currentState!
-                                        .pushNamedAndRemoveUntil('/home',
-                                            (Route<dynamic> route) => false);
-                                  }
-                                });
-                              }
+                              signInWithGoogle().then((User? user) {
+                                if (user != null) {
+                                  updateUserData(_db, user);
+                                  createDefaultPreferences(_db, user);
+                                  setFCMData(_db, _fcm, user);
+                                  navigatorKey.currentState!
+                                      .pushNamedAndRemoveUntil('/home',
+                                          (Route<dynamic> route) => false);
+                                }
+                              });
                               setState(() {
                                 loggingIn = false;
                               });
