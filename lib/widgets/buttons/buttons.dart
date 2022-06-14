@@ -42,28 +42,28 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.sparklingWater,
             color: primaryDark,
-            inc: () => incDrink(user, drinks, 'sparklingWater',
-                graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'sparklingWater',
-                graphAnimation, preferences.drinkSize)),
+            inc: () => incDrink(user, drinks, 'sparklingWater', graphAnimation,
+                preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'sparklingWater', graphAnimation,
+                preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.sportsDrink,
             color: primaryLight,
             textColor: Colors.black,
-            inc: () => incDrink(user, drinks, 'sportsDrink',
-                graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'sportsDrink',
-                graphAnimation, preferences.drinkSize)),
+            inc: () => incDrink(user, drinks, 'sportsDrink', graphAnimation,
+                preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'sportsDrink', graphAnimation,
+                preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.sportsDrink,
             color: primaryLight,
             textColor: Colors.black,
-            inc: () => incDrink(user, drinks, 'sportsDrink',
-                graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'sportsDrink',
-                graphAnimation, preferences.drinkSize)),
+            inc: () => incDrink(user, drinks, 'sportsDrink', graphAnimation,
+                preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'sportsDrink', graphAnimation,
+                preferences.drinkSize)),
       ],
     );
 
@@ -74,26 +74,26 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.coffee,
             color: secondaryDark,
-            inc: () => incDrink(user, drinks, 'coffee', graphAnimation,
-                preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'coffee', graphAnimation,
-                preferences.drinkSize)),
+            inc: () => incDrink(
+                user, drinks, 'coffee', graphAnimation, preferences.drinkSize),
+            dec: () => decDrink(
+                user, drinks, 'coffee', graphAnimation, preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.tea,
             color: secondary,
             inc: () => incDrink(
                 user, drinks, 'tea', graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'tea', graphAnimation,
-                preferences.drinkSize)),
+            dec: () => decDrink(
+                user, drinks, 'tea', graphAnimation, preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.tea,
             color: secondary,
             inc: () => incDrink(
                 user, drinks, 'tea', graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'tea', graphAnimation,
-                preferences.drinkSize)),
+            dec: () => decDrink(
+                user, drinks, 'tea', graphAnimation, preferences.drinkSize)),
       ],
     );
 
@@ -114,49 +114,56 @@ class Buttons extends StatelessWidget {
             title: AppLocalizations.of(context)!.soda,
             color: ternary,
             textColor: Colors.black,
-            inc: () => incDrink(user, drinks, 'soda', graphAnimation,
-                preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'soda', graphAnimation,
-                preferences.drinkSize)),
+            inc: () => incDrink(
+                user, drinks, 'soda', graphAnimation, preferences.drinkSize),
+            dec: () => decDrink(
+                user, drinks, 'soda', graphAnimation, preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.alcohol,
             color: ternaryDark,
             textColor: Colors.black,
-            inc: () => incDrink(user, drinks, 'alcohol', graphAnimation,
-                preferences.drinkSize),
+            inc: () => incDrink(
+                user, drinks, 'alcohol', graphAnimation, preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'alcohol', graphAnimation,
                 preferences.drinkSize)),
       ],
     );
 
-    return Column(
-      children: [
-        DrinkButton(
-            title: AppLocalizations.of(context)!.water,
-            color: primary,
-            inc: () => incDrink(
-                user, drinks, 'water', graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(
-                user, drinks, 'water', graphAnimation, preferences.drinkSize)),
-        const SizedBox(height: 16),
-        CarouselSlider(
-          options: CarouselOptions(height: 200.0, viewportFraction: 1),
-          items: [1, 2, 3].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(color: primary),
-                  child: Center(
-                    child: i == 1 ? waterDrinks : i == 2 ? dirtDrinks : chemDrinks
-                  ),
-                );
-              },
-            );
-          }).toList(),
-        ),
-      ],
+    return SizedBox(
+      width: 600,
+      child: Column(
+        children: [
+          DrinkButton(
+              title: AppLocalizations.of(context)!.water,
+              color: primary,
+              inc: () => incDrink(
+                  user, drinks, 'water', graphAnimation, preferences.drinkSize),
+              dec: () => decDrink(user, drinks, 'water', graphAnimation,
+                  preferences.drinkSize)),
+          const SizedBox(height: 16),
+          CarouselSlider(
+            options: CarouselOptions(height: 250.0, viewportFraction: 1),
+            items: [1, 2, 3].map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    margin: const EdgeInsets.all(16),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(color: primary, borderRadius: BorderRadius.all(Radius.circular(16))),
+                    child: Center(
+                        child: i == 1
+                            ? waterDrinks
+                            : i == 2
+                                ? dirtDrinks
+                                : chemDrinks),
+                  );
+                },
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 }
