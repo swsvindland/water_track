@@ -60,9 +60,9 @@ class Buttons extends StatelessWidget {
             title: AppLocalizations.of(context)!.sportsDrink,
             color: primaryLight,
             textColor: Colors.black,
-            inc: () => incDrink(user, drinks, 'sportsDrink', graphAnimation,
+            inc: () => incDrink(user, drinks, 'dietSportsDrink', graphAnimation,
                 preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'sportsDrink', graphAnimation,
+            dec: () => decDrink(user, drinks, 'dietSportsDrink', graphAnimation,
                 preferences.drinkSize)),
       ],
     );
@@ -88,12 +88,12 @@ class Buttons extends StatelessWidget {
                 user, drinks, 'tea', graphAnimation, preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
-            title: AppLocalizations.of(context)!.tea,
-            color: secondary,
+            title: AppLocalizations.of(context)!.milk,
+            color: secondaryLight,
             inc: () => incDrink(
-                user, drinks, 'tea', graphAnimation, preferences.drinkSize),
+                user, drinks, 'milk', graphAnimation, preferences.drinkSize),
             dec: () => decDrink(
-                user, drinks, 'tea', graphAnimation, preferences.drinkSize)),
+                user, drinks, 'milk', graphAnimation, preferences.drinkSize)),
       ],
     );
 
@@ -120,12 +120,12 @@ class Buttons extends StatelessWidget {
                 user, drinks, 'soda', graphAnimation, preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
-            title: AppLocalizations.of(context)!.alcohol,
+            title: AppLocalizations.of(context)!.soda,
             color: ternaryDark,
             textColor: Colors.black,
             inc: () => incDrink(
-                user, drinks, 'alcohol', graphAnimation, preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'alcohol', graphAnimation,
+                user, drinks, 'dietSoda', graphAnimation, preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'dietSoda', graphAnimation,
                 preferences.drinkSize)),
       ],
     );
