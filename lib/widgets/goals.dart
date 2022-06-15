@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:water_track/utils/constants.dart';
 
 import 'buttons/button.dart';
 
@@ -71,6 +72,7 @@ class _GoalsState extends State<Goals> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.waterGoalField,
+                labelStyle: const TextStyle(color: primaryVeryLight)
               ),
               onChanged: (value) {
                 waterGoal = value;
@@ -81,6 +83,7 @@ class _GoalsState extends State<Goals> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.fluidGoalField,
+                  labelStyle: const TextStyle(color: primaryVeryLight)
               ),
               onChanged: (value) {
                 totalGoal = value;
@@ -91,6 +94,7 @@ class _GoalsState extends State<Goals> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.drinkSizeField,
+                  labelStyle: const TextStyle(color: primaryVeryLight)
               ),
               onChanged: (value) {
                 drinkSize = value;
