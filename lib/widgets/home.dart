@@ -5,6 +5,8 @@ import 'package:water_track/services/database_service.dart';
 
 import '../models/drink.dart';
 import '../models/preferences.dart';
+import '../utils/constants.dart';
+import 'app_bar_ad.dart';
 import 'buttons/buttons.dart';
 import 'graph.dart';
 
@@ -15,6 +17,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     var db = DatabaseService();
     var user = Provider.of<User?>(context);
+    var preferences = Provider.of<Preferences>(context);
 
     return MultiProvider(
       providers: [
@@ -22,20 +25,21 @@ class Home extends StatelessWidget {
             initialData: Drinks.empty(),
             value: db.streamDrinks(user!.uid),
             catchError: (_, err) => Drinks.empty()),
-        StreamProvider<Preferences>.value(
-            initialData: Preferences.empty(),
-            value: db.streamPreferences(user.uid),
-            catchError: (_, err) => Preferences.empty())
       ],
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const Graph(),
-            const SizedBox(height: 16),
-            Buttons()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              preferences.adFree || MediaQuery.of(context).size.width < md
+                  ? const SizedBox(height: 0)
+                  : const AppBarAd(),
+              const Graph(),
+              const SizedBox(height: 16),
+              Buttons()
+            ],
+          ),
         ),
       ),
     );

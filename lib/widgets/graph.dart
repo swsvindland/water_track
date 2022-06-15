@@ -5,6 +5,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
 import 'package:water_track/utils/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Graph extends StatelessWidget {
   const Graph({Key? key}) : super(key: key);
@@ -74,7 +75,7 @@ class Graph extends StatelessWidget {
             child: FAProgressBar(
               maxValue: preferences.waterGoal.toDouble(),
               currentValue: drinks.water.toDouble(),
-              displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
+              displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfWaterOz : AppLocalizations.of(context)!.reportOfWaterMl,
               displayTextStyle: const TextStyle(color: background),
               backgroundColor: primary,
               progressColor: primaryLight,
@@ -94,7 +95,7 @@ class Graph extends StatelessWidget {
                   drinks.soda +
                   drinks.sportsDrink +
                   drinks.alcohol.toDouble(),
-              displayText: preferences.unit == 'imperial' ? 'oz' : 'ml',
+              displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfDrinkOz : AppLocalizations.of(context)!.reportOfDrinkMl,
               displayTextStyle: const TextStyle(color: background),
               backgroundColor: primary,
               progressColor: primaryLight,

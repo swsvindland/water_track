@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../services/sign_in.dart';
+import '../../utils/constants.dart';
+
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
   final int selectedIndex;
@@ -67,6 +70,28 @@ class NavigationDrawer extends StatelessWidget {
               // Then close the drawer
               onItemTapped(2);
               Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            selected: selectedIndex == 3,
+            title: Text(AppLocalizations.of(context)!.about),
+            leading: const Icon(Icons.info),
+            onTap: () {
+              // Update the state of the app
+              // ...
+              // Then close the drawer
+              onItemTapped(3);
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            selected: selectedIndex == 4,
+            title: Text(AppLocalizations.of(context)!.logOut),
+            leading: const Icon(Icons.logout),
+            onTap: () {
+              signOut();
+              navigatorKey.currentState!
+                  .pushNamedAndRemoveUntil('/login', (route) => false);
             },
           ),
         ],

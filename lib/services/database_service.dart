@@ -47,7 +47,11 @@ class DatabaseService {
     }
   }
 
-  Stream<Preferences> streamPreferences(String id) {
+  Stream<Preferences> streamPreferences(String? id) {
+    if (id == null) {
+      return Stream.value(Preferences.empty());
+    }
+
     try {
       return _db
           .collection('preferences')

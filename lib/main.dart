@@ -5,22 +5,26 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/layouts/layouts.dart';
+import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'firebase_options.dart';
+import 'layouts/home.dart';
+import 'models/preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const App());
+  runApp( App());
 }
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+   App({Key? key}) : super(key: key);
+  final db = DatabaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,10 @@ class App extends StatelessWidget {
             value: FirebaseAuth.instance.authStateChanges()),
         ChangeNotifierProvider<GraphAnimationProvider>(
             create: (_) => GraphAnimationProvider()),
+        StreamProvider<Preferences>.value(
+            initialData: Preferences.empty(),
+            value: db.streamPreferences(FirebaseAuth.instance.currentUser?.uid),
+            catchError: (_, err) => Preferences.empty()),
       ],
       child: MaterialApp(
         title: 'WaterTrack',
@@ -64,6 +72,14 @@ class App extends StatelessWidget {
             appBarTheme: const AppBarTheme(
                 backgroundColor: background,
                 foregroundColor: Colors.white,
+            ),
+            navigationRailTheme: const NavigationRailThemeData(
+              // backgroundColor: primaryDark,
+              selectedLabelTextStyle: TextStyle(color: primaryDark),
+              selectedIconTheme: IconThemeData(color: primaryDark),
+              // unselectedLabelTextStyle: TextStyle(color: secondary),
+              // unselectedIconTheme: IconThemeData(color: secondary),
+              useIndicator: false,
             ),
             cardTheme: const CardTheme(
               color: primaryDark

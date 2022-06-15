@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
+import '../models/preferences.dart';
 import '../utils/ad_helper.dart';
 
 class AppBarAd extends StatefulWidget {
@@ -48,6 +50,13 @@ class _AppBarAdState extends State<AppBarAd> {
 
   @override
   Widget build(BuildContext context) {
+    var preferences = Provider.of<Preferences>(context);
+
+    if (preferences.adFree) {
+      return Text(AppLocalizations.of(context)!.waterTrack,
+          style: const TextStyle(color: Colors.white));
+    }
+
     if (_bannerAd == null || !_isBannerAdReady) {
       return Text(AppLocalizations.of(context)!.waterTrack,
           style: const TextStyle(color: Colors.white));

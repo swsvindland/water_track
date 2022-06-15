@@ -5,6 +5,7 @@ class Preferences {
   int drinkSize;
   int start;
   int end;
+  bool adFree;
 
   Preferences(
       {required this.unit,
@@ -12,7 +13,9 @@ class Preferences {
       required this.totalGoal,
       required this.drinkSize,
       required this.start,
-      required this.end});
+      required this.end,
+      required this.adFree
+      });
 
   void setWaterGoal(int value) {
     waterGoal = value;
@@ -41,7 +44,9 @@ class Preferences {
         totalGoal: 128,
         drinkSize: 8,
         start: 7,
-        end: 20);
+        end: 20,
+      adFree: false,
+    );
   }
 
   factory Preferences.fromMap(Map data) {
@@ -55,7 +60,9 @@ class Preferences {
             data['totalGoal'] ?? (data['unit'] == 'imperial' ? 128 : 4000),
         drinkSize: data['drinkSize'] ?? (data['unit'] == 'imperial' ? 8 : 200),
         start: data['start'].toDate().hour,
-        end: data['end'].toDate().hour);
+        end: data['end'].toDate().hour,
+        adFree: data['adFree']
+    );
   }
 
   static Map<String, dynamic> toMap(Preferences data) {
@@ -69,6 +76,7 @@ class Preferences {
           '2000-01-01 ${data.start.toString().padLeft(2, '0')}:00:00'),
       'end': DateTime.parse(
           '2000-01-01 ${data.end.toString().padLeft(2, '0')}:00:00'),
+      'adFree': data.adFree
     };
   }
 
