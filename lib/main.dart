@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:water_track/layouts/layouts.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'firebase_options.dart';
+import 'layouts/about.dart';
 import 'layouts/home.dart';
+import 'layouts/login.dart';
+import 'layouts/splashscreen.dart';
 import 'models/preferences.dart';
 
 void main() async {

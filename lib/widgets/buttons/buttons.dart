@@ -148,7 +148,7 @@ class Buttons extends StatelessWidget {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                    margin: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(12),
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(color: primary, borderRadius: BorderRadius.all(Radius.circular(16))),
                     child: Center(

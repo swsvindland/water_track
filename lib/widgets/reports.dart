@@ -15,17 +15,14 @@ class Reports extends StatelessWidget {
     var db = DatabaseService();
     var user = Provider.of<User?>(context);
 
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: SizedBox(
-          width: sm.toDouble(),
-          child: StreamProvider<Iterable<Drinks>>.value(
+    return MultiProvider(
+      providers: [
+        StreamProvider<Iterable<Drinks>>.value(
             initialData: [Drinks.empty()],
-            value: db.streamAllDrinks(user!.uid),
-            child: const ReportsList()
-          ),
-        ),
+            value: db.streamAllDrinks(user!.uid)),
+      ],
+      child: Center(
+        child: SizedBox(width: sm.toDouble(), child: const ReportsList()),
       ),
     );
   }
