@@ -41,7 +41,7 @@ class Buttons extends StatelessWidget {
       children: [
         DrinkButton(
             title: AppLocalizations.of(context)!.sparklingWater,
-            color: primaryDark,
+            color: sparklingWater,
             inc: () => incDrink(user, drinks, 'sparklingWater', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'sparklingWater', graphAnimation,
@@ -49,17 +49,15 @@ class Buttons extends StatelessWidget {
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.sportsDrink,
-            color: primaryLight,
-            textColor: Colors.black,
+            color: sportsDrink,
             inc: () => incDrink(user, drinks, 'sportsDrink', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'sportsDrink', graphAnimation,
                 preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
-            title: AppLocalizations.of(context)!.sportsDrink,
-            color: primaryLight,
-            textColor: Colors.black,
+            title: AppLocalizations.of(context)!.dietSportsDrink,
+            color: dietSportsDrink,
             inc: () => incDrink(user, drinks, 'dietSportsDrink', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'dietSportsDrink', graphAnimation,
@@ -73,7 +71,7 @@ class Buttons extends StatelessWidget {
       children: [
         DrinkButton(
             title: AppLocalizations.of(context)!.coffee,
-            color: secondaryDark,
+            color: coffee,
             inc: () => incDrink(
                 user, drinks, 'coffee', graphAnimation, preferences.drinkSize),
             dec: () => decDrink(
@@ -81,7 +79,7 @@ class Buttons extends StatelessWidget {
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.tea,
-            color: secondary,
+            color: tea,
             inc: () => incDrink(
                 user, drinks, 'tea', graphAnimation, preferences.drinkSize),
             dec: () => decDrink(
@@ -89,7 +87,8 @@ class Buttons extends StatelessWidget {
         const SizedBox(height: 16),
         DrinkButton(
             title: AppLocalizations.of(context)!.milk,
-            color: secondaryLight,
+            color: milk,
+            textColor: Colors.black,
             inc: () => incDrink(
                 user, drinks, 'milk', graphAnimation, preferences.drinkSize),
             dec: () => decDrink(
@@ -102,30 +101,51 @@ class Buttons extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         DrinkButton(
-            title: AppLocalizations.of(context)!.energyDrink,
-            color: ternaryLight,
-            textColor: Colors.black,
-            inc: () => incDrink(user, drinks, 'energyDrink', graphAnimation,
-                preferences.drinkSize),
-            dec: () => decDrink(user, drinks, 'energyDrink', graphAnimation,
-                preferences.drinkSize)),
-        const SizedBox(height: 16),
-        DrinkButton(
             title: AppLocalizations.of(context)!.soda,
-            color: ternary,
-            textColor: Colors.black,
+            color: soda,
             inc: () => incDrink(
                 user, drinks, 'soda', graphAnimation, preferences.drinkSize),
             dec: () => decDrink(
                 user, drinks, 'soda', graphAnimation, preferences.drinkSize)),
         const SizedBox(height: 16),
         DrinkButton(
-            title: AppLocalizations.of(context)!.soda,
-            color: ternaryDark,
+            title: AppLocalizations.of(context)!.dietSoda,
+            color: dietSoda,
             textColor: Colors.black,
-            inc: () => incDrink(
-                user, drinks, 'dietSoda', graphAnimation, preferences.drinkSize),
+            inc: () => incDrink(user, drinks, 'dietSoda', graphAnimation,
+                preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'dietSoda', graphAnimation,
+                preferences.drinkSize)),
+      ],
+    );
+
+    Widget energyDrinks = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        DrinkButton(
+            title: AppLocalizations.of(context)!.dietEnergyDrink,
+            color: dietEnergyDrink,
+            inc: () => incDrink(user, drinks, 'dietEnergyDrink', graphAnimation,
+                preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'dietEnergyDrink', graphAnimation,
+                preferences.drinkSize)),
+        const SizedBox(height: 16),
+        DrinkButton(
+            title: AppLocalizations.of(context)!.energyDrink,
+            color: energyDrink,
+            inc: () => incDrink(user, drinks, 'energyDrink', graphAnimation,
+                preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'energyDrink', graphAnimation,
+                preferences.drinkSize)),
+        const SizedBox(height: 16),
+        DrinkButton(
+            title: AppLocalizations.of(context)!.preWorkout,
+            color: preWorkout,
+            textColor: Colors.black,
+            inc: () => incDrink(user, drinks, 'preWorkout', graphAnimation,
+                preferences.drinkSize),
+            dec: () => decDrink(user, drinks, 'preWorkout', graphAnimation,
                 preferences.drinkSize)),
       ],
     );
@@ -144,19 +164,23 @@ class Buttons extends StatelessWidget {
           const SizedBox(height: 16),
           CarouselSlider(
             options: CarouselOptions(height: 250.0, viewportFraction: 1),
-            items: [1, 2, 3].map((i) {
+            items: [1, 2, 3, 4].map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
                     margin: const EdgeInsets.all(12),
                     width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(color: primary, borderRadius: BorderRadius.all(Radius.circular(16))),
+                    decoration: const BoxDecoration(
+                        color: primary,
+                        borderRadius: BorderRadius.all(Radius.circular(16))),
                     child: Center(
                         child: i == 1
-                            ? waterDrinks
+                            ? energyDrinks
                             : i == 2
                                 ? dirtDrinks
-                                : chemDrinks),
+                                : i == 3
+                                    ? waterDrinks
+                                    : chemDrinks),
                   );
                 },
               );
