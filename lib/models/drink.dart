@@ -4,35 +4,47 @@ class Drinks {
   int water;
   int coffee;
   int tea;
+  int milk;
   int sparklingWater;
   int soda;
+  int dietSoda;
   int energyDrink;
+  int dietEnergyDrink;
+  int preWorkout;
   int sportsDrink;
-  int alcohol;
+  int dietSportsDrink;
   DateTime date;
 
-  Drinks(
-      {required this.water,
-      required this.coffee,
-      required this.tea,
-      required this.sparklingWater,
-      required this.soda,
-      required this.energyDrink,
-      required this.sportsDrink,
-      required this.alcohol,
-      required this.date,
-      });
+  Drinks({
+    required this.water,
+    required this.coffee,
+    required this.tea,
+    required this.milk,
+    required this.sparklingWater,
+    required this.soda,
+    required this.dietSoda,
+    required this.energyDrink,
+    required this.dietEnergyDrink,
+    required this.preWorkout,
+    required this.sportsDrink,
+    required this.dietSportsDrink,
+    required this.date,
+  });
 
   static Drinks empty() {
     return Drinks(
         water: 0,
         coffee: 0,
         tea: 0,
+        milk: 0,
         sparklingWater: 0,
         soda: 0,
+        dietSoda: 0,
         energyDrink: 0,
+        dietEnergyDrink: 0,
+        preWorkout: 0,
         sportsDrink: 0,
-        alcohol: 0,
+        dietSportsDrink: 0,
         date: DateUtils.dateOnly(DateTime.now()));
   }
 
@@ -42,11 +54,15 @@ class Drinks {
         water: data['water'] ?? 0,
         coffee: data['coffee'] ?? 0,
         tea: data['tea'] ?? 0,
+        milk: data['milk'] ?? 0,
         sparklingWater: data['sparklingWater'] ?? 0,
         soda: data['soda'] ?? 0,
+        dietSoda: data['dietSoda'] ?? 0,
         energyDrink: data['energyDrink'] ?? 0,
+        dietEnergyDrink: data['dietEnergyDrink'] ?? 0,
+        preWorkout: data['preWorkout'] ?? 0,
         sportsDrink: data['sportsDrink'] ?? 0,
-        alcohol: data['alcohol'] ?? 0,
+        dietSportsDrink: data['dietSportsDrink'] ?? 0,
         date: data['date'].toDate());
   }
 
@@ -56,11 +72,15 @@ class Drinks {
       'water': data.water,
       'coffee': data.coffee,
       'tea': data.tea,
+      'milk': data.milk,
       'sparklingWater': data.sparklingWater,
       'soda': data.soda,
+      'dietSoda': data.dietSoda,
       'energyDrink': data.energyDrink,
+      'dietEnergyDrink': data.dietEnergyDrink,
+      'preWorkout': data.preWorkout,
       'sportsDrink': data.sportsDrink,
-      'alcohol': data.alcohol,
+      'dietSportsDrink': data.dietSportsDrink,
       'date': DateUtils.dateOnly(DateTime.now())
     };
   }
@@ -82,6 +102,11 @@ class Drinks {
           tea += value;
         }
         break;
+      case 'milk':
+        {
+          milk += value;
+        }
+        break;
       case 'sparklingWater':
         {
           sparklingWater += value;
@@ -92,9 +117,24 @@ class Drinks {
           soda += value;
         }
         break;
+      case 'dietSoda':
+        {
+          dietSoda += value;
+        }
+        break;
       case 'energyDrink':
         {
           energyDrink += value;
+        }
+        break;
+      case 'dietEnergyDrink':
+        {
+          dietEnergyDrink += value;
+        }
+        break;
+      case 'preWorkout':
+        {
+          preWorkout += value;
         }
         break;
       case 'sportsDrink':
@@ -102,9 +142,9 @@ class Drinks {
           sportsDrink += value;
         }
         break;
-      case 'alcohol':
+      case 'dietSportsDrink':
         {
-          alcohol += value;
+          dietSportsDrink += value;
         }
         break;
     }
@@ -136,6 +176,14 @@ class Drinks {
           }
         }
         break;
+      case 'milk':
+        {
+          milk -= value;
+          if (milk < 0) {
+            milk = 0;
+          }
+        }
+        break;
       case 'sparklingWater':
         {
           sparklingWater -= value;
@@ -152,11 +200,35 @@ class Drinks {
           }
         }
         break;
+      case 'dietSoda':
+        {
+          dietSoda -= value;
+          if (dietSoda < 0) {
+            dietSoda = 0;
+          }
+        }
+        break;
       case 'energyDrink':
         {
           energyDrink -= value;
           if (energyDrink < 0) {
             energyDrink = 0;
+          }
+        }
+        break;
+      case 'dietEnergyDrink':
+        {
+          dietEnergyDrink -= value;
+          if (dietEnergyDrink < 0) {
+            dietEnergyDrink = 0;
+          }
+        }
+        break;
+      case 'preWorkout':
+        {
+          preWorkout -= value;
+          if (preWorkout < 0) {
+            preWorkout = 0;
           }
         }
         break;
@@ -168,11 +240,11 @@ class Drinks {
           }
         }
         break;
-      case 'alcohol':
+      case 'dietSportsDrink':
         {
-          alcohol -= value;
-          if (alcohol < 0) {
-            alcohol = 0;
+          dietSportsDrink -= value;
+          if (dietSportsDrink < 0) {
+            dietSportsDrink = 0;
           }
         }
         break;

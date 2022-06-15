@@ -55,12 +55,16 @@ class ReportCard extends StatelessWidget {
                 maxValue: preferences.totalGoal.toDouble(),
                 currentValue: drink.water +
                     drink.energyDrink +
+                    drink.dietEnergyDrink +
+                    drink.preWorkout +
                     drink.tea +
+                    drink.milk +
                     drink.coffee +
                     drink.sparklingWater +
                     drink.soda +
+                    drink.dietSoda +
                     drink.sportsDrink +
-                    drink.alcohol.toDouble(),
+                    drink.dietSportsDrink.toDouble(),
                 displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfDrinkOz : AppLocalizations.of(context)!.reportOfDrinkMl,
                 displayTextStyle: const TextStyle(color: background),
                 backgroundColor: primary,
