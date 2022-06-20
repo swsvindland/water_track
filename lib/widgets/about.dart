@@ -18,11 +18,20 @@ class About extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                AppLocalizations.of(context)!.aboutPageCredits,
+                AppLocalizations.of(context)!.aboutPageCreditsBuilt,
                 style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
               const Text(
                 'Sam Svindland',
+                style: TextStyle(color: Colors.white, fontSize: 12),
+              ),
+              const SizedBox(height: 36),
+              Text(
+                AppLocalizations.of(context)!.aboutPageCreditsDesigned,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+              ),
+              const Text(
+                'Charlena Kea',
                 style: TextStyle(color: Colors.white, fontSize: 12),
               ),
               const SizedBox(height: 36),

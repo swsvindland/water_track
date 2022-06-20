@@ -21,7 +21,7 @@ class AboutPage extends StatelessWidget {
           },
         ),
       ),
-      body: About()
+      body: const About()
     );
   }
 }

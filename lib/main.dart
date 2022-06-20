@@ -21,11 +21,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp( App());
+  runApp(App());
 }
 
 class App extends StatelessWidget {
-   App({Key? key}) : super(key: key);
+  App({Key? key}) : super(key: key);
   final db = DatabaseService();
 
   @override
@@ -65,32 +65,30 @@ class App extends StatelessWidget {
           Locale('hi', ''), // Hindi
         ],
         theme: ThemeData(
-            colorSchemeSeed: background,
-            brightness: Brightness.light,
-            useMaterial3: true,
-            textTheme: GoogleFonts.oswaldTextTheme(
-                ThemeData(brightness: Brightness.dark).textTheme
-            ),
+          colorSchemeSeed: background,
+          brightness: Brightness.light,
+          useMaterial3: true,
+          textTheme: GoogleFonts.oswaldTextTheme(
+              ThemeData(brightness: Brightness.dark).textTheme),
+          backgroundColor: background,
+          scaffoldBackgroundColor: background,
+          appBarTheme: const AppBarTheme(
             backgroundColor: background,
-            scaffoldBackgroundColor: background,
-            appBarTheme: const AppBarTheme(
-                backgroundColor: background,
-                foregroundColor: Colors.white,
-            ),
-            navigationRailTheme: const NavigationRailThemeData(
-              // backgroundColor: primaryDark,
-              selectedLabelTextStyle: TextStyle(color: primaryDark),
-              selectedIconTheme: IconThemeData(color: primaryDark),
-              // unselectedLabelTextStyle: TextStyle(color: secondary),
-              // unselectedIconTheme: IconThemeData(color: secondary),
-              useIndicator: false,
-            ),
-            cardTheme: const CardTheme(
-              color: primaryDark
-            ),
+            foregroundColor: Colors.white,
+          ),
+          navigationRailTheme: const NavigationRailThemeData(
+            // backgroundColor: primaryDark,
+            selectedLabelTextStyle: TextStyle(color: primaryDark),
+            selectedIconTheme: IconThemeData(color: primaryDark),
+            // unselectedLabelTextStyle: TextStyle(color: secondary),
+            // unselectedIconTheme: IconThemeData(color: secondary),
+            useIndicator: false,
+          ),
+          cardTheme: const CardTheme(color: primaryDark),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),
+              backgroundColor:
+                  MaterialStateProperty.all<Color>(primaryVeryLight),
               foregroundColor: MaterialStateProperty.all<Color>(textPrimary),
               fixedSize: MaterialStateProperty.all<Size>(const Size(300, 55)),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -102,7 +100,8 @@ class App extends StatelessWidget {
           ),
           outlinedButtonTheme: OutlinedButtonThemeData(
             style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),
+              foregroundColor:
+                  MaterialStateProperty.all<Color>(primaryVeryLight),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
@@ -115,17 +114,42 @@ class App extends StatelessWidget {
           ),
         ),
         darkTheme: ThemeData(
-            colorSchemeSeed: background,
-            brightness: Brightness.dark,
-            useMaterial3: true,
-            textTheme: GoogleFonts.oswaldTextTheme(
-                ThemeData(brightness: Brightness.dark).textTheme
+          colorSchemeSeed: background,
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          textTheme: GoogleFonts.oswaldTextTheme(
+              ThemeData(brightness: Brightness.dark).textTheme),
+          backgroundColor: Colors.black,
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.black, foregroundColor: Colors.white),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),
+              fixedSize: MaterialStateProperty.all<Size>(const Size(300, 55)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
             ),
-            backgroundColor: Colors.black,
-            scaffoldBackgroundColor: Colors.black,
-            appBarTheme: const AppBarTheme(
-                backgroundColor: Colors.black, foregroundColor: Colors.white)),
-        themeMode: ThemeMode.system,
+          ),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor:
+                  MaterialStateProperty.all<Color>(primaryVeryLight),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              side: MaterialStateProperty.all(
+                const BorderSide(color: primaryVeryLight),
+              ),
+            ),
+          ),
+        ),
+        themeMode: ThemeMode.dark,
         initialRoute: '/',
         navigatorKey: navigatorKey,
         routes: {

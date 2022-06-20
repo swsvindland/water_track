@@ -74,9 +74,12 @@ class _LoginPageState extends State<LoginPage> {
                                 Image.asset('images/google-logo.png',
                                     width: 24, height: 24),
                                 const SizedBox(width: 8),
-                                Text(AppLocalizations.of(context)!.googleSignIn,
-                                    style: const TextStyle(
-                                        fontSize: 16.0, color: Colors.black)),
+                                Text(
+                                  AppLocalizations.of(context)!.googleSignIn,
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -111,11 +114,12 @@ class _LoginPageState extends State<LoginPage> {
                                       const Icon(Icons.apple),
                                       const SizedBox(width: 8),
                                       Text(
-                                          AppLocalizations.of(context)!
-                                              .appleSignIn,
-                                          style: const TextStyle(
-                                              fontSize: 16.0,
-                                              color: Colors.black)),
+                                        AppLocalizations.of(context)!
+                                            .appleSignIn,
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 )
