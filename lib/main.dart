@@ -149,7 +149,7 @@ class App extends StatelessWidget {
             ),
           ),
         ),
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.system,
         initialRoute: '/',
         navigatorKey: navigatorKey,
         routes: {
