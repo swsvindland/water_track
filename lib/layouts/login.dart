@@ -1,15 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:water_track/services/sign_in.dart';
 import 'package:water_track/utils/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:os_detect/os_detect.dart" as platform;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:water_track/utils/helper.dart';
-import 'package:water_track/widgets/buttons/button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -51,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Button(
+                          ElevatedButton(
                             onPressed: () {
                               setState(() {
                                 loggingIn = true;
@@ -85,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(height: 16),
                           platform.isIOS
-                              ? Button(
+                              ? ElevatedButton(
                                   onPressed: () {
                                     setState(() {
                                       loggingIn = true;
@@ -113,7 +110,9 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       const Icon(Icons.apple),
                                       const SizedBox(width: 8),
-                                      Text(AppLocalizations.of(context)!.appleSignIn,
+                                      Text(
+                                          AppLocalizations.of(context)!
+                                              .appleSignIn,
                                           style: const TextStyle(
                                               fontSize: 16.0,
                                               color: Colors.black)),
@@ -123,27 +122,30 @@ class _LoginPageState extends State<LoginPage> {
                               : const SizedBox(),
                           SizedBox(height: platform.isIOS ? 16 : 0),
                           TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  loggingIn = true;
-                                });
-                                signInAnon().then((User? user) {
-                                  if (user != null) {
-                                    updateUserData(_db, user);
-                                    createDefaultPreferences(_db, user);
-                                    setFCMData(_db, _fcm, user);
-                                    navigatorKey.currentState!
-                                        .pushNamedAndRemoveUntil('/home',
-                                            (Route<dynamic> route) => false);
-                                  }
-                                });
-                                setState(() {
-                                  loggingIn = false;
-                                });
-                              },
-                              child: Text(AppLocalizations.of(context)!.anonSignIn,
-                                  style: const TextStyle(
-                                      fontSize: 16.0, color: Colors.white))),
+                            onPressed: () {
+                              setState(() {
+                                loggingIn = true;
+                              });
+                              signInAnon().then((User? user) {
+                                if (user != null) {
+                                  updateUserData(_db, user);
+                                  createDefaultPreferences(_db, user);
+                                  setFCMData(_db, _fcm, user);
+                                  navigatorKey.currentState!
+                                      .pushNamedAndRemoveUntil('/home',
+                                          (Route<dynamic> route) => false);
+                                }
+                              });
+                              setState(() {
+                                loggingIn = false;
+                              });
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.anonSignIn,
+                              style: const TextStyle(
+                                  fontSize: 16.0, color: primaryVeryLight),
+                            ),
+                          ),
                         ],
                       ),
               ],

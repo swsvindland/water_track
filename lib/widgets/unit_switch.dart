@@ -4,13 +4,23 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/preferences.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:water_track/utils/constants.dart';
 
-class UnitSwitch extends StatelessWidget {
-  UnitSwitch({Key? key}) : super(key: key);
+class UnitSwitch extends StatefulWidget {
+  const UnitSwitch({Key? key}) : super(key: key);
 
+  @override
+  State<UnitSwitch> createState() => _UnitSwitchState();
+}
+
+class _UnitSwitchState extends State<UnitSwitch> {
   final db = DatabaseService();
+  final isSelected = [true, false];
 
   void onPressed(User? user, Preferences preferences) {
+    if (preferences.unit == 'imperial' && isSelected[0]) return;
+    if (preferences.unit == 'metric' && isSelected[1]) return;
+
     preferences.changeUnit();
     db.updatePreferences(user!.uid, preferences);
   }
@@ -20,32 +30,26 @@ class UnitSwitch extends StatelessWidget {
     final user = Provider.of<User?>(context);
     final preferences = Provider.of<Preferences>(context);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        MaterialButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            disabledColor: Colors.grey[200],
-            minWidth: 100.0,
-            height: 35,
-            color: Colors.white,
-            onPressed: preferences.unit == 'metric'
-                ? () => onPressed(user, preferences)
-                : null,
-            child: Text(AppLocalizations.of(context)!.imperial)),
-        MaterialButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            disabledColor: Colors.grey[200],
-            minWidth: 100.0,
-            height: 35,
-            color: Colors.white,
-            onPressed: preferences.unit == 'imperial'
-                ? () => onPressed(user, preferences)
-                : null,
-            child: Text(AppLocalizations.of(context)!.metric)),
+    return ToggleButtons(
+      onPressed: (int index) {
+        setState(() {
+          isSelected[0] = false;
+          isSelected[1] = false;
+          isSelected[index] = !isSelected[index];
+        });
+        onPressed(user, preferences);
+      },
+      isSelected: isSelected,
+      selectedBorderColor: primaryVeryLight,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.imperial,
+          style: const TextStyle(color: primaryVeryLight),
+        ),
+        Text(
+          AppLocalizations.of(context)!.metric,
+          style: const TextStyle(color: primaryVeryLight),
+        )
       ],
     );
   }

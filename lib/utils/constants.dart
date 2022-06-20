@@ -37,3 +37,5 @@ const dietSoda = Color(0xFFEFD7C0);
 const preWorkout = Color(0xFFD0E6ED);
 const energyDrink = Color(0xFF7AB7CC);
 const dietEnergyDrink = Color(0xFF3A88A2);
+
+const textPrimary = Color(0xFF071C26);

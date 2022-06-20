@@ -51,7 +51,7 @@ class DeleteAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Button(
+    return ElevatedButton(
       onPressed: () {
         showAlertDialog(context);
       },

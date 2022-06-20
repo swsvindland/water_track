@@ -101,16 +101,14 @@ class _GoalsState extends State<Goals> {
               },
             ),
             const SizedBox(height: 16),
-            Button(
+            ElevatedButton(
               onPressed: () {
                 updateGoals(user, preferences);
               },
-              variant: "secondary",
               child: Text(
                 AppLocalizations.of(context)!.update,
                 style: const TextStyle(
                   fontSize: 16.0,
-                  color: Colors.white,
                 ),
               ),
             ),

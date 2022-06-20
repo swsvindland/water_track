@@ -87,7 +87,32 @@ class App extends StatelessWidget {
             ),
             cardTheme: const CardTheme(
               color: primaryDark
-            )
+            ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),
+              foregroundColor: MaterialStateProperty.all<Color>(textPrimary),
+              fixedSize: MaterialStateProperty.all<Size>(const Size(300, 55)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+            ),
+          ),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              side: MaterialStateProperty.all(
+                const BorderSide(color: primaryVeryLight),
+              ),
+            ),
+          ),
         ),
         darkTheme: ThemeData(
             colorSchemeSeed: background,
