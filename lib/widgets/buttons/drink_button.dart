@@ -47,9 +47,11 @@ class DrinkButton extends StatelessWidget {
             color: color,
             onPressed: inc,
             child: Text(
-              title,
+              title.toUpperCase(),
               style: TextStyle(
-                fontSize: 12.0,
+                fontSize: 14.0,
+                letterSpacing: 0.25,
+                fontWeight: FontWeight.w200,
                 color: textColor ?? Colors.white,
               ),
             ),

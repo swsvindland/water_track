@@ -77,12 +77,18 @@ class App extends StatelessWidget {
             foregroundColor: Colors.white,
           ),
           navigationRailTheme: const NavigationRailThemeData(
-            // backgroundColor: primaryDark,
+            backgroundColor: primaryVeryLight,
             selectedLabelTextStyle: TextStyle(color: primaryDark),
             selectedIconTheme: IconThemeData(color: primaryDark),
             // unselectedLabelTextStyle: TextStyle(color: secondary),
             // unselectedIconTheme: IconThemeData(color: secondary),
             useIndicator: false,
+          ),
+          drawerTheme: const DrawerThemeData(
+            backgroundColor: primaryVeryLight
+          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: primaryVeryLight
           ),
           cardTheme: const CardTheme(color: primaryDark),
           elevatedButtonTheme: ElevatedButtonThemeData(
