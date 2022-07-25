@@ -26,13 +26,13 @@ class NavigationDrawer extends StatelessWidget {
           SizedBox(
             height: 100,
             child: DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+              decoration: const BoxDecoration(
+                color: background,
               ),
               padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  const Icon(Icons.local_drink, color: Colors.white, size: 36),
+                  Image.asset('images/logo.png', width: 36, height: 36),
                   const SizedBox(width: 8),
                   Text(AppLocalizations.of(context)!.waterTrack,
                       style: const TextStyle(fontSize: 24, color: Colors.white)),

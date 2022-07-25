@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const Icon(Icons.local_drink, size: 96.0, color: Colors.white),
+                Image.asset('images/logo.png', width: 96, height: 96),
                 const SizedBox(height: 40),
                 loggingIn
                     ? const CircularProgressIndicator()

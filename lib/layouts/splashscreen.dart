@@ -69,10 +69,10 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const <Widget>[
-              Icon(Icons.local_drink, size: 96.0, color: Colors.white),
-              SizedBox(height: 75),
-              CircularProgressIndicator(
+            children: <Widget>[
+              Image.asset('images/logo.png', width: 96, height: 96),
+              const SizedBox(height: 75),
+              const CircularProgressIndicator(
                 backgroundColor: Colors.white,
               )
             ],

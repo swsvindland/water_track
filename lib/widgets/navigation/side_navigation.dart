@@ -22,7 +22,7 @@ class SideNavigation extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(Icons.local_drink, color: primaryDark, size: 36),
+            Image.asset('images/logo-alt.png', width: 48, height: 48),
             const SizedBox(width: 16),
             Text(AppLocalizations.of(context)!.waterTrack,
                 style: const TextStyle(fontSize: 24, color: primaryDark)),
