@@ -30,9 +30,6 @@ class _HomePageMobileState extends State<HomePageMobile> {
 
   @override
   Widget build(BuildContext context) {
-    var db = DatabaseService();
-    var user = Provider.of<User?>(context);
-
     return Scaffold(
         appBar: AppBar(
           title: const AppBarAd(),
@@ -55,14 +52,14 @@ class _HomePageMobileState extends State<HomePageMobile> {
                   value: Popup.about,
                   child: ListTile(
                     leading: const Icon(Icons.info),
-                    title: Text(AppLocalizations.of(context)!.about),
+                    title: Text(AppLocalizations.of(context)!.about, style: const TextStyle(color: textPrimary)),
                   ),
                 ),
                 PopupMenuItem<Popup>(
                   value: Popup.logOut,
                   child: ListTile(
                     leading: const Icon(Icons.exit_to_app),
-                    title: Text(AppLocalizations.of(context)!.logOut),
+                    title: Text(AppLocalizations.of(context)!.logOut, style: const TextStyle(color: textPrimary)),
                   ),
                 ),
               ].toList(),

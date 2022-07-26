@@ -31,7 +31,7 @@ class About extends StatelessWidget {
                 style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
               const Text(
-                'Charlena Kea',
+                'By Char and Co',
                 style: TextStyle(color: Colors.white, fontSize: 12),
               ),
               const SizedBox(height: 36),
