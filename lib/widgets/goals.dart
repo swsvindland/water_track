@@ -6,8 +6,6 @@ import 'package:water_track/services/database_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:water_track/utils/constants.dart';
 
-import 'buttons/button.dart';
-
 class Goals extends StatefulWidget {
   const Goals({Key? key}) : super(key: key);
 

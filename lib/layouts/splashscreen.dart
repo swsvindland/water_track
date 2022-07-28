@@ -26,7 +26,7 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
     if (platform.isIOS) {
       _fcm.requestPermission(
         alert: true,
-        announcement: false,
+        announcement: true,
         badge: true,
         carPlay: false,
         criticalAlert: false,
@@ -40,8 +40,6 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
 
   navigateUser() {
     User? currentUser = FirebaseAuth.instance.currentUser;
-
-    print(currentUser?.uid);
 
     if (currentUser == null) {
       Timer(const Duration(milliseconds: 850),

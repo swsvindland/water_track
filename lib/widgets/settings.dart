@@ -1,7 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:water_track/services/database_service.dart';
 import 'package:water_track/widgets/delete_account.dart';
 import 'package:water_track/widgets/unit_switch.dart';
 
@@ -14,9 +11,6 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User?>(context);
-    var db = DatabaseService();
-
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Center(
@@ -27,14 +21,14 @@ class Settings extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
+              children: const <Widget>[
                 UnitSwitch(),
-                const SizedBox(height: 16),
-                const Goals(),
-                const SizedBox(height: 16),
-                const Notifications(),
-                const SizedBox(height: 16),
-                const DeleteAccount()
+                SizedBox(height: 16),
+                Goals(),
+                SizedBox(height: 16),
+                Notifications(),
+                SizedBox(height: 16),
+                DeleteAccount()
               ],
             ),
           ),

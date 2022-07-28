@@ -5,8 +5,6 @@ import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'buttons/button.dart';
-
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
 
