@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
 import 'package:water_track/services/graph_animation_provider.dart';
+import 'package:water_track/widgets/buttons/carousel.dart';
 import '../../utils/constants.dart';
 import 'drink_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -162,30 +163,7 @@ class Buttons extends StatelessWidget {
               dec: () => decDrink(user, drinks, 'water', graphAnimation,
                   preferences.drinkSize)),
           const SizedBox(height: 16),
-          CarouselSlider(
-            options: CarouselOptions(height: 250.0, viewportFraction: 1),
-            items: [1, 2, 3, 4].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    margin: const EdgeInsets.all(12),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        color: primary,
-                        borderRadius: BorderRadius.all(Radius.circular(16))),
-                    child: Center(
-                        child: i == 1
-                            ? energyDrinks
-                            : i == 2
-                                ? dirtDrinks
-                                : i == 3
-                                    ? waterDrinks
-                                    : chemDrinks),
-                  );
-                },
-              );
-            }).toList(),
-          ),
+          Carousel(items: [energyDrinks, dirtDrinks, waterDrinks, chemDrinks])
         ],
       ),
     );
