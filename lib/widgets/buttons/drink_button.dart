@@ -31,7 +31,7 @@ class DrinkButton extends StatelessWidget {
             onPressed: dec,
             color: color,
             shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.horizontal(left: Radius.circular(16), right: Radius.zero)),
+                borderRadius: BorderRadius.horizontal(left: Radius.circular(25), right: Radius.zero)),
             child: Icon(
               Icons.remove,
               size: 15.0,
@@ -63,7 +63,7 @@ class DrinkButton extends StatelessWidget {
             onPressed: inc,
             color: color,
             shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.horizontal(left: Radius.zero, right: Radius.circular(16))),
+                borderRadius: BorderRadius.horizontal(left: Radius.zero, right: Radius.circular(25))),
             child: Icon(
               Icons.add,
               size: 15.0,
