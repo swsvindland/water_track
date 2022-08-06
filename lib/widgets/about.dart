@@ -40,7 +40,7 @@ class About extends StatelessWidget {
                 style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
               const Text(
-                '3.0.0',
+                '3.1.0',
                 style: TextStyle(color: Colors.white, fontSize: 12),
               ),
             ],
