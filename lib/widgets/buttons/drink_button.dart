@@ -19,7 +19,7 @@ class DrinkButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
+      width: 275,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +41,7 @@ class DrinkButton extends StatelessWidget {
           MaterialButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0)),
-            minWidth: 150.0,
+            minWidth: 175.0,
             height: 50,
             elevation: 0,
             color: color,
@@ -50,8 +50,8 @@ class DrinkButton extends StatelessWidget {
               title.toUpperCase(),
               style: TextStyle(
                 fontSize: 14.0,
-                letterSpacing: 0.25,
-                fontWeight: FontWeight.w200,
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.w100,
                 color: textColor ?? Colors.white,
               ),
             ),
