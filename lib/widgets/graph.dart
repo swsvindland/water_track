@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:water_track/models/models.dart';
@@ -86,7 +87,7 @@ class Graph extends StatelessWidget {
               displayText: preferences.unit == 'imperial'
                   ? AppLocalizations.of(context)!.reportOfWaterOz
                   : AppLocalizations.of(context)!.reportOfWaterMl,
-              displayTextStyle: const TextStyle(color: background),
+              displayTextStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
               backgroundColor: primary,
               progressColor: primaryLight,
             ),
@@ -112,7 +113,7 @@ class Graph extends StatelessWidget {
               displayText: preferences.unit == 'imperial'
                   ? AppLocalizations.of(context)!.reportOfDrinkOz
                   : AppLocalizations.of(context)!.reportOfDrinkMl,
-              displayTextStyle: const TextStyle(color: background),
+              displayTextStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
               backgroundColor: primary,
               progressColor: primaryLight,
             ),

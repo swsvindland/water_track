@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
@@ -16,10 +17,6 @@ class ReportCard extends StatelessWidget {
     var preferences = Provider.of<Preferences>(context);
 
     return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -29,7 +26,7 @@ class ReportCard extends StatelessWidget {
             Text(
               DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date),
               textAlign: TextAlign.left,
-              style: const TextStyle(fontSize: 20, color: primaryVeryLight),
+              style: const TextStyle(fontSize: 20, color: primaryVeryLight, letterSpacing: 1.5, fontWeight: FontWeight.w100),
             ),
             const Divider(),
             const SizedBox(height: 8),
@@ -41,7 +38,7 @@ class ReportCard extends StatelessWidget {
                 maxValue: preferences.waterGoal.toDouble(),
                 currentValue: drink.water.toDouble(),
                 displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfWaterOz : AppLocalizations.of(context)!.reportOfWaterMl,
-                displayTextStyle: const TextStyle(color: background),
+                displayTextStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
                 backgroundColor: primary,
                 progressColor: primaryLight,
               ),
@@ -66,7 +63,7 @@ class ReportCard extends StatelessWidget {
                     drink.sportsDrink +
                     drink.dietSportsDrink.toDouble(),
                 displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfDrinkOz : AppLocalizations.of(context)!.reportOfDrinkMl,
-                displayTextStyle: const TextStyle(color: background),
+                displayTextStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
                 backgroundColor: primary,
                 progressColor: primaryLight,
               ),
