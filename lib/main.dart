@@ -67,6 +67,8 @@ class App extends StatelessWidget {
           Locale('ja', ''), // Japanese
           Locale('ar', ''), // Arabic
           Locale('hi', ''), // Hindi
+          Locale('ru', ''), // Russian
+          Locale('no', ''), // Norwegian
         ],
         theme: ThemeData(
           colorSchemeSeed: background,
