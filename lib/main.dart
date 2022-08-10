@@ -82,19 +82,21 @@ class App extends StatelessWidget {
             backgroundColor: background,
             foregroundColor: Colors.white,
           ),
-          navigationRailTheme: const NavigationRailThemeData(
+          navigationRailTheme: NavigationRailThemeData(
             backgroundColor: primaryVeryLight,
-            selectedLabelTextStyle: TextStyle(color: primaryDark),
-            selectedIconTheme: IconThemeData(color: primaryDark),
-            // unselectedLabelTextStyle: TextStyle(color: secondary),
-            // unselectedIconTheme: IconThemeData(color: secondary),
+            selectedLabelTextStyle: TextStyle(color: primaryDark, fontFamily: GoogleFonts.oswald().fontFamily),
+            selectedIconTheme: const IconThemeData(color: primaryDark),
+            unselectedLabelTextStyle: TextStyle(color: textSecondary, fontFamily: GoogleFonts.oswald().fontFamily),
+            unselectedIconTheme: const IconThemeData(color: textSecondary),
             useIndicator: false,
           ),
           drawerTheme: const DrawerThemeData(
             backgroundColor: primaryVeryLight
           ),
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: primaryVeryLight
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: primaryVeryLight,
+            selectedLabelStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
+            unselectedLabelStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
           ),
           cardTheme: const CardTheme(color: primaryDark),
           elevatedButtonTheme: ElevatedButtonThemeData(
@@ -135,6 +137,17 @@ class App extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black,
           appBarTheme: const AppBarTheme(
               backgroundColor: Colors.black, foregroundColor: Colors.white),
+          navigationRailTheme: NavigationRailThemeData(
+            selectedLabelTextStyle: TextStyle(color: primaryLight, fontFamily: GoogleFonts.oswald().fontFamily),
+            selectedIconTheme: const IconThemeData(color: primaryLight),
+            unselectedLabelTextStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
+            useIndicator: false,
+          ),
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedLabelStyle: TextStyle(color: primaryLight, fontFamily: GoogleFonts.oswald().fontFamily),
+            selectedIconTheme: const IconThemeData(color: primaryLight),
+            unselectedLabelStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
+          ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),

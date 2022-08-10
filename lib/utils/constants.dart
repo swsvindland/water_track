@@ -39,3 +39,4 @@ const energyDrink = Color(0xFF7AB7CC);
 const dietEnergyDrink = Color(0xFF3A88A2);
 
 const textPrimary = Color(0xFF071C26);
+const textSecondary = Color(0xFF666666);
