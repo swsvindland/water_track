@@ -8,6 +8,7 @@ class Drinks {
   int sparklingWater;
   int soda;
   int dietSoda;
+  int juice;
   int energyDrink;
   int dietEnergyDrink;
   int preWorkout;
@@ -23,6 +24,7 @@ class Drinks {
     required this.sparklingWater,
     required this.soda,
     required this.dietSoda,
+    required this.juice,
     required this.energyDrink,
     required this.dietEnergyDrink,
     required this.preWorkout,
@@ -40,6 +42,7 @@ class Drinks {
         sparklingWater: 0,
         soda: 0,
         dietSoda: 0,
+        juice: 0,
         energyDrink: 0,
         dietEnergyDrink: 0,
         preWorkout: 0,
@@ -58,6 +61,7 @@ class Drinks {
         sparklingWater: data['sparklingWater'] ?? 0,
         soda: data['soda'] ?? 0,
         dietSoda: data['dietSoda'] ?? 0,
+        juice: data['juice'] ?? 0,
         energyDrink: data['energyDrink'] ?? 0,
         dietEnergyDrink: data['dietEnergyDrink'] ?? 0,
         preWorkout: data['preWorkout'] ?? 0,
@@ -76,6 +80,7 @@ class Drinks {
       'sparklingWater': data.sparklingWater,
       'soda': data.soda,
       'dietSoda': data.dietSoda,
+      'juice': data.juice,
       'energyDrink': data.energyDrink,
       'dietEnergyDrink': data.dietEnergyDrink,
       'preWorkout': data.preWorkout,
@@ -120,6 +125,11 @@ class Drinks {
       case 'dietSoda':
         {
           dietSoda += value;
+        }
+        break;
+      case 'juice':
+        {
+          juice += value;
         }
         break;
       case 'energyDrink':
@@ -205,6 +215,14 @@ class Drinks {
           dietSoda -= value;
           if (dietSoda < 0) {
             dietSoda = 0;
+          }
+        }
+        break;
+      case 'juice':
+        {
+          juice -= value;
+          if (juice < 0) {
+            juice = 0;
           }
         }
         break;

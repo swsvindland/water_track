@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +42,7 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.sparklingWater,
             color: sparklingWater,
+            textColor: textPrimary,
             inc: () => incDrink(user, drinks, 'sparklingWater', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'sparklingWater', graphAnimation,
@@ -51,6 +51,7 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.sportsDrink,
             color: sportsDrink,
+            textColor: textPrimary,
             inc: () => incDrink(user, drinks, 'sportsDrink', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'sportsDrink', graphAnimation,
@@ -59,6 +60,7 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.dietSportsDrink,
             color: dietSportsDrink,
+            textColor: textPrimary,
             inc: () => incDrink(user, drinks, 'dietSportsDrink', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'dietSportsDrink', graphAnimation,
@@ -117,6 +119,15 @@ class Buttons extends StatelessWidget {
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'dietSoda', graphAnimation,
                 preferences.drinkSize)),
+      const SizedBox(height: 16),
+      DrinkButton(
+          title: AppLocalizations.of(context)!.juice,
+          color: juice,
+          textColor: Colors.black,
+          inc: () => incDrink(user, drinks, 'juice', graphAnimation,
+              preferences.drinkSize),
+          dec: () => decDrink(user, drinks, 'juice', graphAnimation,
+              preferences.drinkSize)),
       ],
     );
 
@@ -127,6 +138,7 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.dietEnergyDrink,
             color: dietEnergyDrink,
+            textColor: textPrimary,
             inc: () => incDrink(user, drinks, 'dietEnergyDrink', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'dietEnergyDrink', graphAnimation,
@@ -143,7 +155,6 @@ class Buttons extends StatelessWidget {
         DrinkButton(
             title: AppLocalizations.of(context)!.preWorkout,
             color: preWorkout,
-            textColor: Colors.black,
             inc: () => incDrink(user, drinks, 'preWorkout', graphAnimation,
                 preferences.drinkSize),
             dec: () => decDrink(user, drinks, 'preWorkout', graphAnimation,

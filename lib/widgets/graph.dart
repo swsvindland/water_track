@@ -22,6 +22,7 @@ class Graph extends StatelessWidget {
                 drinks.sparklingWater +
                 drinks.soda +
                 drinks.dietSoda +
+                drinks.juice +
                 drinks.sportsDrink +
                 drinks.dietSportsDrink ==
             0
@@ -38,6 +39,7 @@ class Graph extends StatelessWidget {
       GraphDrinks('Milk', drinks.milk, milk),
       GraphDrinks('Soda', drinks.soda, ternary),
       GraphDrinks('Diet Soda', drinks.dietSoda, dietSoda),
+      GraphDrinks('Juice', drinks.juice, juice),
       GraphDrinks('Energy Drink', drinks.energyDrink, energyDrink),
       GraphDrinks('Diet Energy Drink', drinks.dietEnergyDrink, dietEnergyDrink),
       GraphDrinks('Pre Workout', drinks.preWorkout, preWorkout),
@@ -87,7 +89,8 @@ class Graph extends StatelessWidget {
               displayText: preferences.unit == 'imperial'
                   ? AppLocalizations.of(context)!.reportOfWaterOz
                   : AppLocalizations.of(context)!.reportOfWaterMl,
-              displayTextStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
+              displayTextStyle: GoogleFonts.quicksand(
+                  color: background, fontSize: 12, letterSpacing: 1),
               backgroundColor: primary,
               progressColor: primaryLight,
             ),
@@ -108,12 +111,14 @@ class Graph extends StatelessWidget {
                   drinks.sparklingWater +
                   drinks.soda +
                   drinks.dietSoda +
+                  drinks.juice +
                   drinks.sportsDrink +
                   drinks.dietSportsDrink.toDouble(),
               displayText: preferences.unit == 'imperial'
                   ? AppLocalizations.of(context)!.reportOfDrinkOz
                   : AppLocalizations.of(context)!.reportOfDrinkMl,
-              displayTextStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
+              displayTextStyle: GoogleFonts.quicksand(
+                  color: background, fontSize: 12, letterSpacing: 1),
               backgroundColor: primary,
               progressColor: primaryLight,
             ),

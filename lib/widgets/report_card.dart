@@ -60,6 +60,7 @@ class ReportCard extends StatelessWidget {
                     drink.sparklingWater +
                     drink.soda +
                     drink.dietSoda +
+                    drink.juice +
                     drink.sportsDrink +
                     drink.dietSportsDrink.toDouble(),
                 displayText: preferences.unit == 'imperial' ? AppLocalizations.of(context)!.reportOfDrinkOz : AppLocalizations.of(context)!.reportOfDrinkMl,

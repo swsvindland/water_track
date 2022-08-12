@@ -23,20 +23,21 @@ const ternary = Color(0xffFFEECD);
 const ternaryDark = Color(0xffFCD78F);
 
 const water = primary;
-const sparklingWater = Color(0xFF071C26);
-const sportsDrink = Color(0xFF0D394F);
-const dietSportsDrink = Color (0xFF155E83);
+const sparklingWater = Color(0xff70C9E8);
+const sportsDrink = Color(0xffFFDA93);
+const dietSportsDrink = Color (0xffFFF3DA);
 
-const coffee = Color(0xFF562B00);
-const tea = Color(0xFFA95500);
-const milk = Color(0xFFFCF7F3);
+const coffee = Color(0xffBD5F00);
+const tea = Color(0xffFFC249);
+const milk = Color(0xffEBFCFF);
 
-const soda = Color(0xFFD18F4D);
-const dietSoda = Color(0xFFEFD7C0);
+const soda = Color(0xff276D8F);
+const dietSoda = Color(0xff9FE7F5);
+const juice = Color(0xffFFA800);
 
-const preWorkout = Color(0xFFD0E6ED);
-const energyDrink = Color(0xFF7AB7CC);
-const dietEnergyDrink = Color(0xFF3A88A2);
+const preWorkout = Color(0xff053F5C);
+const energyDrink = Color(0xffF27F0C);
+const dietEnergyDrink = Color(0xffFFC286);
 
 const textPrimary = Color(0xFF071C26);
 const textSecondary = Color(0xFF666666);
