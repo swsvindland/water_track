@@ -18,5 +18,5 @@ samples, guidance on mobile development, and a full API reference.
 ### l10n
 
 ```
-flutter packages pub run arb_translator:translate --source_arb lib/l10n/app_en.arb --api_key key --language_codes es,pt,fr,de,it,zh,ko,ja,ar,hi  --output_file_name app_
+flutter packages pub run arb_translator:translate --source_arb lib/l10n/app_en.arb --api_key key --language_codes es,pt,fr,de,it,zh,ko,ja,ar,hi,no,ru  --output_file_name app_
 ```

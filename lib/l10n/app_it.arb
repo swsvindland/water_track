@@ -23,7 +23,7 @@
   "metric": "metrico",
   "waterGoalField": "Inserisci l'obiettivo idrico giornaliero",
   "fluidGoalField": "Inserisci l'obiettivo di fluidi giornalieri",
-  "drinkSizeField": "Inserisci la misura della tua bevanda",
+  "drinkSizeField": "Inserisci la dimensione della tua bevanda",
   "reminderNotification": "Notifica di promemoria",
   "start": "Inizio",
   "end": "Fine",
