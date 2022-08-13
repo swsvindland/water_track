@@ -55,7 +55,12 @@ class DeleteAccount extends StatelessWidget {
       },
       child: Text(
         AppLocalizations.of(context)!.deleteAccount,
-        style: const TextStyle(color: Colors.red),
+        style: const TextStyle(
+          fontSize: 14.0,
+          letterSpacing: 2.5,
+          fontWeight: FontWeight.w100,
+          color: Colors.red,
+        ),
       ),
     );
   }

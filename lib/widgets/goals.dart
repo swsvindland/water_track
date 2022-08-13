@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/models.dart';
 import 'package:water_track/services/database_service.dart';
@@ -60,9 +61,9 @@ class _GoalsState extends State<Goals> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('${AppLocalizations.of(context)!.water}: ${preferences.waterGoal.toString()}'),
-                Text('${AppLocalizations.of(context)!.total}: ${preferences.totalGoal.toString()}'),
-                Text('${AppLocalizations.of(context)!.drinkSize}: ${preferences.drinkSize.toString()}'),
+                Text('${AppLocalizations.of(context)!.water}: ${preferences.waterGoal.toString()}', style: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),),
+                Text('${AppLocalizations.of(context)!.total}: ${preferences.totalGoal.toString()}', style: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),),
+                Text('${AppLocalizations.of(context)!.drinkSize}: ${preferences.drinkSize.toString()}', style: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),),
               ],
             ),
             const SizedBox(height: 16),
@@ -70,7 +71,7 @@ class _GoalsState extends State<Goals> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.waterGoalField,
-                labelStyle: const TextStyle(color: primaryVeryLight)
+                labelStyle: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),
               ),
               onChanged: (value) {
                 waterGoal = value;
@@ -81,7 +82,7 @@ class _GoalsState extends State<Goals> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.fluidGoalField,
-                  labelStyle: const TextStyle(color: primaryVeryLight)
+                labelStyle: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),
               ),
               onChanged: (value) {
                 totalGoal = value;
@@ -92,7 +93,7 @@ class _GoalsState extends State<Goals> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: AppLocalizations.of(context)!.drinkSizeField,
-                  labelStyle: const TextStyle(color: primaryVeryLight)
+                labelStyle: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),
               ),
               onChanged: (value) {
                 drinkSize = value;
@@ -106,7 +107,10 @@ class _GoalsState extends State<Goals> {
               child: Text(
                 AppLocalizations.of(context)!.update,
                 style: const TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 14.0,
+                  letterSpacing: 2.5,
+                  fontWeight: FontWeight.w100,
+                  color: textPrimary,
                 ),
               ),
             ),

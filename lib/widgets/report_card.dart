@@ -26,7 +26,12 @@ class ReportCard extends StatelessWidget {
             Text(
               DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date),
               textAlign: TextAlign.left,
-              style: const TextStyle(fontSize: 20, color: primaryVeryLight, letterSpacing: 1.5, fontWeight: FontWeight.w100),
+              style: const TextStyle(
+                fontSize: 14.0,
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.w100,
+                color: primaryVeryLight,
+              ),
             ),
             const Divider(),
             const SizedBox(height: 8),

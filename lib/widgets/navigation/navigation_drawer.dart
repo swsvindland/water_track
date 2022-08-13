@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../services/sign_in.dart';
 import '../../utils/constants.dart';
@@ -42,7 +43,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 0,
-            title: Text(AppLocalizations.of(context)!.home),
+            title: Text(AppLocalizations.of(context)!.home, style: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1)),
             leading: const Icon(Icons.home),
             onTap: () {
               // Update the state of the app
@@ -54,7 +55,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 1,
-            title: Text(AppLocalizations.of(context)!.reports),
+            title: Text(AppLocalizations.of(context)!.reports, style: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1)),
             leading: const Icon(Icons.insights),
             onTap: () {
               // Update the state of the app
@@ -66,7 +67,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 2,
-            title: Text(AppLocalizations.of(context)!.settings),
+            title: Text(AppLocalizations.of(context)!.settings, style: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1)),
             leading: const Icon(Icons.settings),
             onTap: () {
               // Update the state of the app
@@ -78,7 +79,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 3,
-            title: Text(AppLocalizations.of(context)!.about),
+            title: Text(AppLocalizations.of(context)!.about, style: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1)),
             leading: const Icon(Icons.info),
             onTap: () {
               // Update the state of the app
@@ -90,7 +91,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           ListTile(
             selected: selectedIndex == 4,
-            title: Text(AppLocalizations.of(context)!.logOut),
+            title: Text(AppLocalizations.of(context)!.logOut, style: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1)),
             leading: const Icon(Icons.logout),
             onTap: () {
               signOut();

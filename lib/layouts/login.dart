@@ -77,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                                 Text(
                                   AppLocalizations.of(context)!.googleSignIn,
                                   style: const TextStyle(
-                                    fontSize: 16.0,
+                                    fontSize: 14.0,
+                                    letterSpacing: 2.5,
+                                    fontWeight: FontWeight.w100,
+                                    color: textPrimary,
                                   ),
                                 ),
                               ],
@@ -117,7 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                                         AppLocalizations.of(context)!
                                             .appleSignIn,
                                         style: const TextStyle(
-                                          fontSize: 16.0,
+                                          fontSize: 14.0,
+                                          letterSpacing: 2.5,
+                                          fontWeight: FontWeight.w100,
+                                          color: textPrimary,
                                         ),
                                       ),
                                     ],
@@ -147,7 +153,11 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               AppLocalizations.of(context)!.anonSignIn,
                               style: const TextStyle(
-                                  fontSize: 16.0, color: primaryVeryLight),
+                                fontSize: 14.0,
+                                letterSpacing: 2.5,
+                                fontWeight: FontWeight.w100,
+                                color: primaryVeryLight,
+                              ),
                             ),
                           ),
                         ],

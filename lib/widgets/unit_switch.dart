@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:water_track/models/preferences.dart';
 import 'package:water_track/services/database_service.dart';
@@ -44,11 +45,11 @@ class _UnitSwitchState extends State<UnitSwitch> {
       children: [
         Text(
           AppLocalizations.of(context)!.imperial,
-          style: const TextStyle(color: primaryVeryLight),
+          style: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),
         ),
         Text(
           AppLocalizations.of(context)!.metric,
-          style: const TextStyle(color: primaryVeryLight),
+          style: GoogleFonts.quicksand(color: primaryVeryLight, fontSize: 12, letterSpacing: 1),
         )
       ],
     );

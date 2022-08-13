@@ -84,9 +84,9 @@ class App extends StatelessWidget {
           ),
           navigationRailTheme: NavigationRailThemeData(
             backgroundColor: primaryVeryLight,
-            selectedLabelTextStyle: TextStyle(color: primaryDark, fontFamily: GoogleFonts.oswald().fontFamily),
+            selectedLabelTextStyle: GoogleFonts.quicksand(color: primaryDark, fontSize: 12, letterSpacing: 1),
             selectedIconTheme: const IconThemeData(color: primaryDark),
-            unselectedLabelTextStyle: TextStyle(color: textSecondary, fontFamily: GoogleFonts.oswald().fontFamily),
+            unselectedLabelTextStyle: GoogleFonts.quicksand(color: textSecondary, fontSize: 12, letterSpacing: 1),
             unselectedIconTheme: const IconThemeData(color: textSecondary),
             useIndicator: false,
           ),
@@ -95,8 +95,8 @@ class App extends StatelessWidget {
           ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: primaryVeryLight,
-            selectedLabelStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
-            unselectedLabelStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
+            selectedLabelStyle: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1),
+            unselectedLabelStyle: GoogleFonts.quicksand(fontSize: 12, letterSpacing: 1),
           ),
           cardTheme: const CardTheme(color: primaryDark),
           elevatedButtonTheme: ElevatedButtonThemeData(
@@ -144,9 +144,9 @@ class App extends StatelessWidget {
             useIndicator: false,
           ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedLabelStyle: TextStyle(color: primaryLight, fontFamily: GoogleFonts.oswald().fontFamily),
+            selectedLabelStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
             selectedIconTheme: const IconThemeData(color: primaryLight),
-            unselectedLabelStyle: TextStyle(fontFamily: GoogleFonts.oswald().fontFamily),
+            unselectedLabelStyle: GoogleFonts.quicksand(color: background, fontSize: 12, letterSpacing: 1),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
