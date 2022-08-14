@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                                     width: 24, height: 24),
                                 const SizedBox(width: 8),
                                 Text(
-                                  AppLocalizations.of(context)!.googleSignIn,
+                                  AppLocalizations.of(context)!.googleSignIn.toUpperCase(),
                                   style: const TextStyle(
                                     fontSize: 14.0,
                                     letterSpacing: 2.5,
@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                                       const SizedBox(width: 8),
                                       Text(
                                         AppLocalizations.of(context)!
-                                            .appleSignIn,
+                                            .appleSignIn.toUpperCase(),
                                         style: const TextStyle(
                                           fontSize: 14.0,
                                           letterSpacing: 2.5,
@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                               });
                             },
                             child: Text(
-                              AppLocalizations.of(context)!.anonSignIn,
+                              AppLocalizations.of(context)!.anonSignIn.toUpperCase(),
                               style: const TextStyle(
                                 fontSize: 14.0,
                                 letterSpacing: 2.5,

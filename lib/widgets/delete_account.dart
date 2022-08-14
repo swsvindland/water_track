@@ -54,7 +54,7 @@ class DeleteAccount extends StatelessWidget {
         showAlertDialog(context);
       },
       child: Text(
-        AppLocalizations.of(context)!.deleteAccount,
+        AppLocalizations.of(context)!.deleteAccount.toUpperCase(),
         style: const TextStyle(
           fontSize: 14.0,
           letterSpacing: 2.5,

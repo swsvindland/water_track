@@ -125,7 +125,7 @@ class _NotificationsState extends State<Notifications> {
                 update(user, preferences);
               },
               child: Text(
-                AppLocalizations.of(context)!.update,
+                AppLocalizations.of(context)!.update.toUpperCase(),
                 style: const TextStyle(
                   fontSize: 14.0,
                   letterSpacing: 2.5,

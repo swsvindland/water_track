@@ -24,7 +24,7 @@ class ReportCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date),
+              DateFormat.MMMMd(Localizations.localeOf(context).languageCode).format(drink.date).toUpperCase(),
               textAlign: TextAlign.left,
               style: const TextStyle(
                 fontSize: 14.0,
