@@ -31,8 +31,8 @@ class DeleteAccount extends StatelessWidget {
     );
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text(AppLocalizations.of(context)!.deleteAccount),
-      content: Text(AppLocalizations.of(context)!.deleteAccountConfirm),
+      title: Text(AppLocalizations.of(context)!.deleteAccount, style: const TextStyle(color: textPrimary),),
+      content: Text(AppLocalizations.of(context)!.deleteAccountConfirm, style: const TextStyle(color: textPrimary)),
       actions: [
         cancelButton,
         continueButton,
