@@ -37,7 +37,7 @@ class Graph extends StatelessWidget {
       GraphDrinks('Coffee', drinks.coffee, coffee),
       GraphDrinks('Tea', drinks.tea, tea),
       GraphDrinks('Milk', drinks.milk, milk),
-      GraphDrinks('Soda', drinks.soda, ternary),
+      GraphDrinks('Soda', drinks.soda, soda),
       GraphDrinks('Diet Soda', drinks.dietSoda, dietSoda),
       GraphDrinks('Juice', drinks.juice, juice),
       GraphDrinks('Energy Drink', drinks.energyDrink, energyDrink),
