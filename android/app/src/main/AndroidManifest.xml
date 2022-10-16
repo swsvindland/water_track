@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.svindland.watertrack">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
    <application
         android:label="WaterTrack"
         android:name="${applicationName}"
