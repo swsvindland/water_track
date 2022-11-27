@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:water_track/widgets/delete_account.dart';
-import 'package:water_track/widgets/unit_switch.dart';
+import 'package:water_track/widgets/settings/delete_account.dart';
+import 'package:water_track/widgets/settings/unit_switch.dart';
 
-import '../utils/constants.dart';
+import '../../utils/constants.dart';
 import 'goals.dart';
 import 'notifications.dart';
 

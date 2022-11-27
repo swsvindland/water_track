@@ -8,7 +8,7 @@ import '../widgets/about.dart';
 import '../widgets/home.dart';
 import '../widgets/navigation/side_navigation.dart';
 import '../widgets/reports.dart';
-import '../widgets/settings.dart';
+import '../widgets/settings/settings.dart';
 
 class HomePageDesktop extends StatefulWidget {
   const HomePageDesktop({Key? key}) : super(key: key);

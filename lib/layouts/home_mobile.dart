@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../widgets/home.dart';
 import '../widgets/reports.dart';
-import '../widgets/settings.dart';
+import '../widgets/settings/settings.dart';
 
 class HomePageMobile extends StatefulWidget {
   const HomePageMobile({Key? key}) : super(key: key);
@@ -27,6 +27,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    var isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
         appBar: AppBar(
           title: const AppBarAd(),
@@ -49,14 +52,14 @@ class _HomePageMobileState extends State<HomePageMobile> {
                   value: Popup.about,
                   child: ListTile(
                     leading: const Icon(Icons.info),
-                    title: Text(AppLocalizations.of(context)!.about, style: const TextStyle(color: textPrimary)),
+                    title: Text(AppLocalizations.of(context)!.about, style: TextStyle(color: isDarkMode ? primaryVeryLight : textPrimary)),
                   ),
                 ),
                 PopupMenuItem<Popup>(
                   value: Popup.logOut,
                   child: ListTile(
                     leading: const Icon(Icons.exit_to_app),
-                    title: Text(AppLocalizations.of(context)!.logOut, style: const TextStyle(color: textPrimary)),
+                    title: Text(AppLocalizations.of(context)!.logOut, style: TextStyle(color: isDarkMode ? primaryVeryLight : textPrimary)),
                   ),
                 ),
               ].toList(),

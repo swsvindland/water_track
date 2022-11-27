@@ -132,7 +132,7 @@ class App extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
           textTheme: GoogleFonts.oswaldTextTheme(
-              ThemeData(brightness: Brightness.dark).textTheme),
+              ThemeData(brightness: Brightness.light).textTheme),
           backgroundColor: Colors.black,
           scaffoldBackgroundColor: Colors.black,
           appBarTheme: const AppBarTheme(
@@ -151,6 +151,7 @@ class App extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(primaryVeryLight),
+              backgroundColor: MaterialStateProperty.all<Color>(background),
               fixedSize: MaterialStateProperty.all<Size>(const Size(300, 55)),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(

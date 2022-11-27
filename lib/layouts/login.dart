@@ -30,6 +30,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    var isDarkMode = brightness == Brightness.dark;
+
     return Scaffold(
       body: Center(
         child: Padding(
@@ -76,11 +79,11 @@ class _LoginPageState extends State<LoginPage> {
                                 const SizedBox(width: 8),
                                 Text(
                                   AppLocalizations.of(context)!.googleSignIn.toUpperCase(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 14.0,
                                     letterSpacing: 2.5,
                                     fontWeight: FontWeight.w100,
-                                    color: textPrimary,
+                                    color: isDarkMode ? primaryVeryLight : textPrimary,
                                   ),
                                 ),
                               ],
@@ -119,11 +122,11 @@ class _LoginPageState extends State<LoginPage> {
                                       Text(
                                         AppLocalizations.of(context)!
                                             .appleSignIn.toUpperCase(),
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           fontSize: 14.0,
                                           letterSpacing: 2.5,
                                           fontWeight: FontWeight.w100,
-                                          color: textPrimary,
+                                          color: isDarkMode ? primaryVeryLight : textPrimary,
                                         ),
                                       ),
                                     ],

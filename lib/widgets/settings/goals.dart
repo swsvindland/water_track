@@ -45,6 +45,8 @@ class _GoalsState extends State<Goals> {
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
     final preferences = Provider.of<Preferences>(context);
+    var brightness = MediaQuery.of(context).platformBrightness;
+    var isDarkMode = brightness == Brightness.dark;
 
     return Card(
       elevation: 2,
@@ -106,11 +108,11 @@ class _GoalsState extends State<Goals> {
               },
               child: Text(
                 AppLocalizations.of(context)!.update.toUpperCase(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14.0,
                   letterSpacing: 2.5,
                   fontWeight: FontWeight.w100,
-                  color: textPrimary,
+                  color: isDarkMode ? primaryVeryLight : textPrimary,
                 ),
               ),
             ),

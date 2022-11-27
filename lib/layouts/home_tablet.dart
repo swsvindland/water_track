@@ -9,7 +9,7 @@ import '../widgets/app_bar_ad.dart';
 import '../widgets/home.dart';
 import '../widgets/navigation/navigation_drawer.dart';
 import '../widgets/reports.dart';
-import '../widgets/settings.dart';
+import '../widgets/settings/settings.dart';
 
 class HomePageTablet extends StatefulWidget {
   const HomePageTablet({Key? key}) : super(key: key);
