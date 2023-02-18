@@ -7,7 +7,7 @@ import '../utils/constants.dart';
 import '../widgets/about.dart';
 import '../widgets/app_bar_ad.dart';
 import '../widgets/home.dart';
-import '../widgets/navigation/navigation_drawer.dart';
+import '../widgets/navigation/side_navigation_drawer.dart';
 import '../widgets/reports.dart';
 import '../widgets/settings/settings.dart';
 
@@ -46,7 +46,7 @@ class _HomePageTabletState extends State<HomePageTablet> {
         title: const AppBarAd(),
         elevation: 0,
       ),
-      drawer: NavigationDrawer(
+      drawer: SideNavigationDrawer(
           selectedIndex: _selectedIndex, onItemTapped: _onItemTapped),
       body: _selectedIndex == 0
           ? const Home()

@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../services/sign_in.dart';
 import '../../utils/constants.dart';
 
-class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
+class SideNavigationDrawer extends StatelessWidget {
+  const SideNavigationDrawer({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
   final int selectedIndex;
   final Function(int) onItemTapped;
 
