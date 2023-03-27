@@ -11,12 +11,12 @@ description: An application for tracking daily water intake.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 3.5.1+44
+version: 3.5.2+45
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ">=2.19.5 <3.0.0"
 
-  flutter: "3.7.0"
+  flutter: "3.7.8"
 
 dependencies:
   flutter:
