@@ -23,7 +23,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate(
-    webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+    webRecaptchaSiteKey: 'recaptcha-v3-site-google_translate_key.txt',
   );
   runApp(App());
 }
