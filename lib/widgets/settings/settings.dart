@@ -16,12 +16,12 @@ class Settings extends StatelessWidget {
       child: Center(
         child: SizedBox(
           width: sm.toDouble(),
-          child: Padding(
-            padding: const EdgeInsets.all(8),
+          child: const Padding(
+            padding: EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const <Widget>[
+              children: <Widget>[
                 UnitSwitch(),
                 SizedBox(height: 16),
                 Goals(),
