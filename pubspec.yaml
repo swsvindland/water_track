@@ -37,7 +37,7 @@ dependencies:
   firebase_core: ^2.13.1
   firebase_auth: ^4.6.1
   google_sign_in: ^6.1.0
-  sign_in_with_apple: ^4.3.0
+  sign_in_with_apple: ">=4.3.0 <6.0.0"
   cloud_firestore: ^4.8.0
   firebase_messaging: ^14.6.2
 
