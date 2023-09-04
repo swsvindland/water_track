@@ -14,9 +14,9 @@ description: An application for tracking daily water intake.
 version: 3.6.0+46
 
 environment:
-  sdk: ">=3.0.3 <4.0.0"
+  sdk: ">=3.1.0 <4.0.0"
 
-  flutter: "3.10.4"
+  flutter: "3.13.2"
 
 dependencies:
   flutter:
@@ -27,19 +27,19 @@ dependencies:
   intl: ^0.18.0
   carousel_slider: ^4.2.1
   google_fonts: ^4.0.4
-  firebase_app_check: ^0.1.4+2
+  firebase_app_check: ^0.1.5+2
   community_charts_flutter: ^1.0.1
   flutter_animation_progress_bar: ^2.3.1
   provider: ^6.0.5
   crypto: ^3.0.3
   os_detect: ^2.0.1
   google_mobile_ads: ^3.0.0
-  firebase_core: ^2.13.1
-  firebase_auth: ^4.6.1
-  google_sign_in: ^6.1.0
-  sign_in_with_apple: ^4.3.0
-  cloud_firestore: ^4.8.0
-  firebase_messaging: ^14.6.2
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
+  google_sign_in: ^6.1.5
+  sign_in_with_apple: ^5.0.0
+  cloud_firestore: ^4.9.1
+  firebase_messaging: ^14.6.7
 
 dev_dependencies:
   flutter_test:
