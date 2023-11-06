@@ -46,7 +46,7 @@ dev_dependencies:
     sdk: flutter
 
   arb_translator: ^1.0.5
-  flutter_lints: ^2.0.1
+  flutter_lints: ">=2.0.1 <4.0.0"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
